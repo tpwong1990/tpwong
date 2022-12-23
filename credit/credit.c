@@ -88,6 +88,7 @@ int Luhn_check(long card_no, int no_digit)
 
 int extract_digit(long number, int target_digit)
 {
+    for (int i = 1; i<=target_digit; i++)
     int temp = number % (long) pow(10.0, target_digit+2);
     return temp / pow(10.0,target_digit+1);
 }
