@@ -3,8 +3,9 @@
 #include <math.h>
 
 
-int digit_no_checking(long card_no_1);
-void type_checking(long card_no_1,int no_digit);
+int digit_no_checking(long card_no);
+void type_checking(long card_no,int no_digit);
+int Luhn_check(long card_no, no_digit);
 
 int main(void)
 {
@@ -20,13 +21,13 @@ int main(void)
 }
 
 // function for no of digit checking
-int digit_no_checking(long card_no_1)
+int digit_no_checking(long card_no)
 {   int check_digit = 0;
     int i = 15.0;
     do
     {
         //printf("%i\n",i);
-        if (card_no_1 /(long)pow(10.0,i)>0)
+        if (card_no /(long)pow(10.0,i)>0)
             {
                 check_digit = 1;
             }
@@ -37,10 +38,37 @@ int digit_no_checking(long card_no_1)
 }
 
 // check type of card
-void type_checking(long card_no_1,int no_digit)
+int type_checking(long card_no_1,int no_digit)
 {
+    // 0 = Invalid
+    // 1 = AE
+    // 2 = Master
+    // 3 = Visa
+    int type = 0;
+    int card_valid = Luhn_check(card_no);
+
      // get first 2 digit
-     int first_2 = card_no_1 / (long)pow(10.0,no_digit-2);
+     int first_2 = card_no / (long)pow(10.0,no_digit-2);
      printf("%i\n",first_2);
-    //if (no_digit ==16)
+
+    if (no_digit ==15)
+    {
+        if (first_2 == 34 || first_2 == 37)
+        {
+
+        }
+    }
+}
+
+int Luhn_checking(long card_no, no_digit)
+{
+    int valid;
+    if (no_digit == 15 || no_digit == 13 || no_digit == 16)
+    {
+        
+    }
+    else
+    {
+        return valid = 0;
+    }
 }
