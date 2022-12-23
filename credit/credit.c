@@ -19,6 +19,7 @@ int main(void)
     printf("%i\n",j);
     card_result = type_checking(card_no,j);
     printf("%i\n", card_result);
+    card_result = Luhn_check(card_no, j);
 
 }
 
@@ -72,11 +73,17 @@ int type_checking(long card_no,int no_digit)
      return type;
 }
 
-int Luhn_checking(long card_no, int no_digit)
+int Luhn_check(long card_no, int no_digit)
 {
     int valid;
     if (no_digit == 15 || no_digit == 13 || no_digit == 16)
     {
+        //extract the every other digit
+        for (int i = 1; i <= no_digit; i = i+2)
+        {
+            int ex_digit = card_no / (long)pow(10.0,i);
+            printf("%i\n", ex_digit);
+        }
         return valid = 1;
     }
     else
