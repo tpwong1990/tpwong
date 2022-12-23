@@ -22,7 +22,7 @@ int digit_no_checking(long card_no_1)
     int i = 15.0;
     do
     {
-        printf("%i\n",i);
+        //printf("%i\n",i);
         if (card_no_1 /(long)pow(10.0,i)>0)
             {
                 check_digit = 1;
@@ -30,5 +30,5 @@ int digit_no_checking(long card_no_1)
         i--;
     }
     while(check_digit==0);
-    return i;
+    return i+1;
 }
