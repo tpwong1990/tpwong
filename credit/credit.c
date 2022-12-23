@@ -15,10 +15,19 @@ int main(void)
     int j = digit_no_checking(card_no);
     printf("%i\n",j);
     if (j==15)
+    //AE card
     {
     }
     else
-    if ()
+    {
+        if (j==16)
+        {
+            if (j==13)
+            {
+                
+            }
+        }
+    }
 }
 
 // function for no of digit checking
