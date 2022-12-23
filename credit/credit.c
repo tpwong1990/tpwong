@@ -79,7 +79,7 @@ int type_checking(long card_no,int no_digit)
 
 int Luhn_check(long card_no, int no_digit)
 {
-    int valid = 0;
+    int valid;
     int digit_temp = 0;
     if (no_digit == 15 || no_digit == 13 || no_digit == 16)
     {
@@ -107,6 +107,14 @@ int Luhn_check(long card_no, int no_digit)
         {
             return valid = 1;
         }
+        else
+        {
+            return valid = 0;
+        }
+    }
+    else
+    {
+        return valid = 0;
     }
 }
 
