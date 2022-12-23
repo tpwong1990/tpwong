@@ -18,7 +18,7 @@ int main(void)
 
 // function for no of digit checking
 int digit_no_checking(long card_no_1)
-    int check_digit=0;
+{   int check_digit = 0;
     int i = 15.0;
     do
     {
@@ -31,3 +31,4 @@ int digit_no_checking(long card_no_1)
     }
     while(check_digit==0);
     return i;
+}
