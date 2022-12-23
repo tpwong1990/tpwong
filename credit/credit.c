@@ -78,7 +78,7 @@ int Luhn_check(long card_no, int no_digit)
     int valid;
     if (no_digit == 15 || no_digit == 13 || no_digit == 16)
     {
-        //extract the every other digit
+        //extract digit
         for (int i = 1; i <= no_digit; i = i+2)
         {
             long ex_digit = card_no / (long)pow(10.0,i);
