@@ -22,7 +22,7 @@ int main(void)
     if (card_result == 0)
         printf("INVALID\n");
     if (card_result == 1 )
-        printf("AEEX\n");
+        printf("AMEX\n");
     if (card_result == 2)
         printf("MASTERCARD\n");
     if (card_result == 3)
