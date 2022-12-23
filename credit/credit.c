@@ -6,7 +6,7 @@
 int digit_no_checking(long card_no);
 int type_checking(long card_no,int no_digit);
 int Luhn_check(long card_no, int no_digit);
-void extract_digit(long number, int no_digit);
+void extract_digit(long number, int no_digit, int target_digit);
 
 int main(void)
 {
@@ -16,12 +16,14 @@ int main(void)
 //Master: 51-55
 //Visa:4
     int j = digit_no_checking(card_no);
+    int k;
     int digit_array[j];
     int card_result;
     printf("j: %i\n",j);
     card_result = type_checking(card_no,j);
     printf("type: %i\n", card_result);
-    extract_digit(card_no, j);
+    k=get_int("target digit");
+    extract_digit(card_no, j, k);
 
 }
 
@@ -83,7 +85,7 @@ int Luhn_check(long card_no, int no_digit)
     return valid = 1;
 }
 
-int extract_digit(long number, int no_digit)
+void extract_digit(long number, int no_digit, int target_digit)
 {
     long temp = number;
     int digit;
@@ -91,7 +93,11 @@ int extract_digit(long number, int no_digit)
     {
         digit = temp % 10;
         temp = temp/10;
-        printf("digit %i %i\n", i, digit);
-        digit_array[i]=digit;
+        if (i == target_digit)
+        {
+            printf("digit %i %i\n", i, digit);
+            break;
+        }
+
     }
 }
