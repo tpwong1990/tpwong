@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <math.h>
 
 int main(void)
 {
@@ -9,14 +10,15 @@ int main(void)
 //Master: 51-55
 //Visa:4
 int check_digit=0;
-double i = 15.0;
+int i = 15.0;
     do
     {
-        if (card_no % pow(10.0,i)==1)
+        printf("%i\n",i);
+        if (card_no % (long)pow(10.0,i)==1)
             {
-                check_digit = 1
+                check_digit = 1;
             }
-        i--
+        i--;
     }
-    while(check_digit==0)
+    while(check_digit==0);
 }
