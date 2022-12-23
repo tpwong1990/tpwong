@@ -14,6 +14,11 @@ int main(void)
 //Visa:4
     int j = digit_no_checking(card_no);
     printf("%i\n",j);
+    if (j==15)
+    {
+    }
+    else
+    if ()
 }
 
 // function for no of digit checking
@@ -30,5 +35,5 @@ int digit_no_checking(long card_no_1)
         i--;
     }
     while(check_digit==0);
-    return i+1;
+    return i+2;
 }
