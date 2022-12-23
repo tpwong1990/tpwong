@@ -86,7 +86,7 @@ int Luhn_check(long card_no, int no_digit)
         // add digits which is multiplied by 2
         for(int i = 1; i <= no_digit; i=i+2)
             {
-                int temp = extract_digit(card_no, no_digit, i)*2;
+                int temp = extract_digit(card_no, no_digit, i) * 2;
                 if (temp>=10)
                 {
                     int temp1 = temp /10;
@@ -121,7 +121,7 @@ int extract_digit(long number, int no_digit, int target_digit)
         if (i == target_digit)
         {
             //printf("digit %i %i\n", i, digit);
-            return digit
+            return digit;
             break;
         }
 
