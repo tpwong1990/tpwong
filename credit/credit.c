@@ -12,11 +12,12 @@ int main(void)
 {
     // ask user to input credit card number
     long card_no = get_long("Number: ");
-// AE: 34 or 37
-//Master: 51-55
-//Visa:4
+
+    // check no of digit
     int j = digit_no_checking(card_no);
-    printf("j: %i\n",j);
+    //printf("j: %i\n",j);
+
+    // check the type
     int card_result = type_checking(card_no,j);
     printf("type: %i\n", card_result);
 
@@ -55,15 +56,15 @@ int type_checking(long card_no,int no_digit)
         //printf("first 2 digit: %i\n",first_2);
 
         //AE or Master or Visa check
-        if (first_2 == 34 || first_2 ==37)
+        if ((first_2 == 34 || first_2 ==37) && no_digit == 15 )
         {
             type = 1;
         }
-        if (first_2 >=51 && first_2 <=55)
+        if ((first_2 >=51 && first_2 <=55) && no_digit == 16)
         {
             type = 2;
         }
-        if (first_2 >= 40 && first_2 <=49)
+        if ((first_2 >= 40 && first_2 <=49) && (no_digit == 13 || (no_digit == 16)))
         {
             type = 3;
         }
@@ -75,7 +76,7 @@ int Luhn_check(long card_no, int no_digit)
 {
     int valid;
     int digit_temp = 0;
-    if (no_digit == 15 || no_digit == 13 || no_digit == 16)
+
     {
         // add digits which is multiplied by 2
         for(int i = 2; i <= no_digit; i=i+2)
@@ -106,10 +107,6 @@ int Luhn_check(long card_no, int no_digit)
         {
             return valid = 0;
         }
-    }
-    else
-    {
-        return valid = 0;
     }
 }
 
