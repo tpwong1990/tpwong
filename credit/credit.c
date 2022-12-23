@@ -103,8 +103,11 @@ int Luhn_check(long card_no, int no_digit)
         {
             digit_temp = digit_temp + extract_digit(card_no, no_digit, i)
         }
+        if (digit_temp % 10 ==0)
+        {
+            return valid = 1;
+        }
     }
-    return valid = 1;
 }
 
 int extract_digit(long number, int no_digit, int target_digit)
