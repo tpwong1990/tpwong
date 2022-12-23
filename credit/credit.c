@@ -4,6 +4,7 @@
 
 
 int digit_no_checking(long card_no_1);
+void type_checking(long card_no_1,int no_digit);
 
 int main(void)
 {
@@ -14,20 +15,8 @@ int main(void)
 //Visa:4
     int j = digit_no_checking(card_no);
     printf("%i\n",j);
-    if (j==15)
-    //AE card
-    {
-    }
-    else
-    {
-        if (j==16)
-        {
-            if (j==13)
-            {
+    type_checking(card_no,j);
 
-            }
-        }
-    }
 }
 
 // function for no of digit checking
@@ -48,7 +37,10 @@ int digit_no_checking(long card_no_1)
 }
 
 // check type of card
-int type_checking(long card_no_1,int no_digit)
+void type_checking(long card_no_1,int no_digit)
 {
-    if (no_digit ==16 )
+     // get first 2 digit
+     int first_2 = card_no_1 / (long)pow(10.0,no_digit-2);
+     printf("%i\n",first_2);
+    //if (no_digit ==16)
 }
