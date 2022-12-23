@@ -50,14 +50,6 @@ int type_checking(long card_no_1,int no_digit)
      // get first 2 digit
      int first_2 = card_no / (long)pow(10.0,no_digit-2);
      printf("%i\n",first_2);
-
-    if (no_digit ==15)
-    {
-        if (first_2 == 34 || first_2 == 37)
-        {
-
-        }
-    }
 }
 
 int Luhn_checking(long card_no, no_digit)
@@ -65,7 +57,7 @@ int Luhn_checking(long card_no, no_digit)
     int valid;
     if (no_digit == 15 || no_digit == 13 || no_digit == 16)
     {
-        
+
     }
     else
     {
