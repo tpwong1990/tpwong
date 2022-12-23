@@ -19,8 +19,14 @@ int main(void)
 
     // check the type
     int card_result = type_checking(card_no,j);
-    printf("type: %i\n", card_result);
-
+    if (card_result == 0)
+        printf("INVALID\n");
+    if (card_result == 1 )
+        printf("AEEX\n");
+    if (card_result == 2)
+        printf("MASTERCARD\n");
+    if (card_result == 3)
+        printf("VISA\n");
 }
 
 // No. of digit checking
