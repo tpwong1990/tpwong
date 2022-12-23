@@ -6,7 +6,7 @@
 int digit_no_checking(long card_no);
 int type_checking(long card_no,int no_digit);
 int Luhn_check(long card_no, int no_digit);
-void extract_digit(long number, int no_digit, int target_digit);
+int extract_digit(long number, int no_digit, int target_digit);
 
 int main(void)
 {
@@ -91,17 +91,17 @@ int Luhn_check(long card_no, int no_digit)
                 {
                     int temp1 = temp /10;
                     int temp2 = temp %10;
-                    digit_temp = digit temp + temp1 + temp2;
+                    digit_temp = digit_temp + temp1 + temp2;
                 }
                 else
                 {
-                    digit_temp = digit temp + temp;
+                    digit_temp = digit_temp + temp;
                 }
             }
         // add the other digits
         for (int i = 0; i<= no_digit; i=i+2)
         {
-            digit_temp = digit_temp + extract_digit(card_no, no_digit, i)
+            digit_temp = digit_temp + extract_digit(card_no, no_digit, i);
         }
         if (digit_temp % 10 ==0)
         {
