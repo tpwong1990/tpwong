@@ -14,7 +14,7 @@ int i = 15.0;
     do
     {
         printf("%i\n",i);
-        if (card_no % (long)pow(10.0,i)==1)
+        if (card_no /(long)pow(10.0,i)>0)
             {
                 check_digit = 1;
             }
