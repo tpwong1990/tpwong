@@ -83,7 +83,7 @@ int Luhn_check(long card_no, int no_digit)
     return valid = 1;
 }
 
-void extract_digit(long number, int no_digit)
+int extract_digit(long number, int no_digit)
 {
     long temp = number;
     int digit;
@@ -92,5 +92,6 @@ void extract_digit(long number, int no_digit)
         digit = temp % 10;
         temp = temp/10;
         printf("digit %i %i\n", i, digit);
+        return digit_array[i]=digit;
     }
 }
