@@ -124,18 +124,12 @@ int extract_digit(long number, int no_digit, int target_digit)
     {
         digit = temp % 10;
         temp = temp/10;
-        printf("%i %i\n",i, target_digit);
+        //printf("%i %i\n",i, target_digit);
         if (i == target_digit)
         {
-            printf("digit %i %i\n", i, digit);
-            return digit;
+            //printf("digit %i %i\n", i, digit);
             break;
         }
-        else
-        {
-            return 0;
-        }
-        return 0;
     }
-    return 0;
+return digit;
 }
