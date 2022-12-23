@@ -2,7 +2,21 @@
 #include <stdio.h>
 #include <math.h>
 
-//check no of digit
+
+int digit_no_checking(long card_no_1);
+
+int main(void)
+{
+    // ask user to input credit card number
+    long card_no = get_long("Number: ");
+// AE: 34 or 37
+//Master: 51-55
+//Visa:4
+    int j = digit_no_checking(card_no);
+    printf("%i\n",j);
+}
+
+// function for no of digit checking
 int digit_no_checking(long card_no_1)
     int check_digit=0;
     int i = 15.0;
@@ -17,14 +31,3 @@ int digit_no_checking(long card_no_1)
     }
     while(check_digit==0);
     return i;
-
-int main(void)
-{
-    // ask user to input credit card number
-    long card_no = get_long("Number: ");
-// AE: 34 or 37
-//Master: 51-55
-//Visa:4
-    int j = digit_no_checking(card_no);
-    printf("%i\n",j)
-}
