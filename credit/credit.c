@@ -85,15 +85,17 @@ int Luhn_check(long card_no, int no_digit)
     {
         for(int i = 1; i <= no_digit; i=i+2)
             {
-                if (extract_digit(card_no, no_digit, i)*2>=10)
+                int temp = extract_digit(card_no, no_digit, i)*2;
+                if (temp>=10)
                 {
-
+                    int temp1 = temp /10;
+                    int temp2 = temp %10;
+                    digit_temp = digit temp + temp1 + temp2;
                 }
                 else
                 {
-                    digit_temp = digit_temp + extract_digit(card_no, no_digit, i)*2;
+                    digit_temp = digit temp + temp;
                 }
-                
             }
 
     }
