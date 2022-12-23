@@ -52,7 +52,7 @@ int type_checking(long card_no,int no_digit)
      {
         // get first 2 digit
         int first_2 = card_no / (long)pow(10.0,no_digit-2);
-        printf("first 2 digit: %i\n",first_2);
+        //printf("first 2 digit: %i\n",first_2);
 
         //AE or Master or Visa check
         if (first_2 == 34 || first_2 ==37)
