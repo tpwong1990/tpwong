@@ -77,18 +77,13 @@ int type_checking(long card_no,int no_digit)
 int Luhn_check(long card_no, int no_digit)
 {
     int valid;
-    if (no_digit == 15 || no_digit == 13 || no_digit == 16)
-    {
+    //if (no_digit == 15 || no_digit == 13 || no_digit == 16)
+
         for (int i = 1; i<= no_digit; i=i+2)
             {
                 printf("i: %i %i\n", i, extract_digit(card_no, i));
             }
         return valid = 1;
-    }
-    else
-    {
-        return valid = 0;
-    }
 }
 
 int extract_digit(long number, int target_digit)
