@@ -80,12 +80,14 @@ int type_checking(long card_no,int no_digit)
 int Luhn_check(long card_no, int no_digit)
 {
     int valid;
-    //if (no_digit == 15 || no_digit == 13 || no_digit == 16)
-
+    if (no_digit == 15 || no_digit == 13 || no_digit == 16)
+    {
+        for 
+    }
     return valid = 1;
 }
 
-void extract_digit(long number, int no_digit, int target_digit)
+int extract_digit(long number, int no_digit, int target_digit)
 {
     long temp = number;
     int digit;
@@ -95,7 +97,8 @@ void extract_digit(long number, int no_digit, int target_digit)
         temp = temp/10;
         if (i == target_digit)
         {
-            printf("digit %i %i\n", i, digit);
+            //printf("digit %i %i\n", i, digit);
+            return digit
             break;
         }
 
