@@ -92,6 +92,6 @@ int extract_digit(long number, int no_digit)
         digit = temp % 10;
         temp = temp/10;
         printf("digit %i %i\n", i, digit);
-        return digit_array[i]=digit;
+        digit_array[i]=digit;
     }
 }
