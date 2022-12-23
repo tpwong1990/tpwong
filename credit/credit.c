@@ -3,7 +3,7 @@
 #include <math.h>
 
 //check no of digit
-int digit_no_checking(long card_no_1);
+int digit_no_checking(long card_no_1)
     int check_digit=0;
     int i = 15.0;
     do
