@@ -24,7 +24,7 @@ int main(void)
         {
             if (j==13)
             {
-                
+
             }
         }
     }
@@ -45,4 +45,10 @@ int digit_no_checking(long card_no_1)
     }
     while(check_digit==0);
     return i+2;
+}
+
+// check type of card
+int type_checking(long card_no_1,int no_digit)
+{
+    if (no_digit ==16 )
 }
