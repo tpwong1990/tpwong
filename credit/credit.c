@@ -80,9 +80,14 @@ int type_checking(long card_no,int no_digit)
 int Luhn_check(long card_no, int no_digit)
 {
     int valid;
+    int digit_temp = 0;
     if (no_digit == 15 || no_digit == 13 || no_digit == 16)
     {
-        for 
+        for(int i = 1; i <= no_digit; i=i+2)
+            {
+                digit_temp = digit_temp + extract_digit(card_no, no_digit, i)
+            }
+
     }
     return valid = 1;
 }
