@@ -18,6 +18,7 @@ int main(void)
     int card_result;
     printf("%i\n",j);
     card_result = type_checking(card_no,j);
+    printf("%i\n", card_result);
 
 }
 
