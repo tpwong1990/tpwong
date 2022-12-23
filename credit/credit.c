@@ -132,6 +132,9 @@ int extract_digit(long number, int no_digit, int target_digit)
             return digit;
             break;
         }
-
+        else
+        {
+            return null;
+        }
     }
 }
