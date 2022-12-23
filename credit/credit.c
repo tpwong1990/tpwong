@@ -9,7 +9,7 @@ int main(void)
 //Master: 51-55
 //Visa:4
 int check_digit=0;
-int i = 15;
+int i = 15.0;
     do
     {
         if (card_no % pow(10,i)==1)
