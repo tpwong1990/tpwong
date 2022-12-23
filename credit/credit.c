@@ -83,6 +83,7 @@ int Luhn_check(long card_no, int no_digit)
     int digit_temp = 0;
     if (no_digit == 15 || no_digit == 13 || no_digit == 16)
     {
+        // add digits which is multiplied by 2
         for(int i = 1; i <= no_digit; i=i+2)
             {
                 int temp = extract_digit(card_no, no_digit, i)*2;
@@ -97,7 +98,11 @@ int Luhn_check(long card_no, int no_digit)
                     digit_temp = digit temp + temp;
                 }
             }
-
+        // add the other digits
+        for (int i = 0; i<= no_digit; i=i+2)
+        {
+            digit_temp = digit_temp + extract_digit(card_no, no_digit, i)
+        }
     }
     return valid = 1;
 }
