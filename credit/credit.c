@@ -7,9 +7,6 @@ int main(void)
     long card_no;
     do
     {
-    card_no = get_long("Number: ");
-    if (card_no > 0) then
-        {
-        }
-    } while(true)
+        card_no = get_long("Number: ");
+    } while(card_no >0);
 }
