@@ -81,7 +81,7 @@ int Luhn_check(long card_no, int no_digit)
     {
         for (int i = 1; i<= no_digit; i=i+2)
             {
-                printf("%i\n", extract_digit(card_no, i));
+                printf("i: %i %i\n", i, extract_digit(card_no, i));
             }
         return valid = 1;
     }
@@ -93,6 +93,6 @@ int Luhn_check(long card_no, int no_digit)
 
 int extract_digit(long number, int target_digit)
 {
-    int temp = number % pow(10.0, target_digit+1);
-    return temp / pow(10.0,target);
+    int temp = number % (long) pow(10.0, target_digit+1);
+    return temp / pow(10.0,target_digit);
 }
