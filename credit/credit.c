@@ -8,8 +8,15 @@ int main(void)
 // AE: 34 or 37
 //Master: 51-55
 //Visa:4
-    for(int i = 16; i<0; i--)
+int check_digit=0;
+int i = 15;
+    do
     {
-        if (card_no % 10)
+        if (card_no % pow(10,i)==1)
+            {
+                check_digit = 1
+            }
+        i--
     }
+    while(check_digit==0)
 }
