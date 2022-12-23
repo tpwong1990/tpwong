@@ -81,8 +81,8 @@ int Luhn_check(long card_no, int no_digit)
         //extract the every other digit
         for (int i = 1; i <= no_digit; i = i+2)
         {
-            int ex_digit = card_no / (long)pow(10.0,i);
-            printf("%i\n", ex_digit);
+            long ex_digit = card_no / (long)pow(10.0,i);
+            printf("%li\n", ex_digit);
         }
         return valid = 1;
     }
