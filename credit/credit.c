@@ -6,7 +6,7 @@
 int digit_no_checking(long card_no);
 int type_checking(long card_no,int no_digit);
 int Luhn_check(long card_no, int no_digit);
-int extract_digit(lond card_no, int digit_n);
+int extract_digit(long number, int target_digit);
 
 int main(void)
 {
@@ -79,6 +79,10 @@ int Luhn_check(long card_no, int no_digit)
     int valid;
     if (no_digit == 15 || no_digit == 13 || no_digit == 16)
     {
+        for (int i = 1; i<= no_digit; i=i+2)
+            {
+                printf("%i\n", extract_digit(card_no, i));
+            }
         return valid = 1;
     }
     else
@@ -87,12 +91,8 @@ int Luhn_check(long card_no, int no_digit)
     }
 }
 
-int extract_digit(long number, int digit_n)
+int extract_digit(long number, int target_digit)
 {
-    int power = 1;
-    while (number>power)
-    {
-        power=power*10;
-    }
-    power = power/10;
+    int temp = number % pow(10.0, target_digit+1);
+    return temp / pow(10.0,target);
 }
