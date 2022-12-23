@@ -76,7 +76,7 @@ int Luhn_checking(long card_no, int no_digit)
     int valid;
     if (no_digit == 15 || no_digit == 13 || no_digit == 16)
     {
-
+        return valid = 1;
     }
     else
     {
