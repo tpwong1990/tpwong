@@ -101,7 +101,7 @@ int Luhn_check(long card_no, int no_digit)
                 }
             }
         // add the other digits
-        for (int i = 0; i<= no_digit; i=i+2)
+        for (int i = 1; i<= no_digit; i=i+2)
         {
             digit_temp = digit_temp + extract_digit(card_no, no_digit, i);
         }
