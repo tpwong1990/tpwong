@@ -120,10 +120,11 @@ int extract_digit(long number, int no_digit, int target_digit)
 {
     long temp = number;
     int digit;
-    for (int i = 1; i<=no_digit; i++)
+    for (int i = 1; i <= no_digit; i++)
     {
         digit = temp % 10;
         temp = temp/10;
+        printf("%i %i\n",i, target_digit);
         if (i == target_digit)
         {
             printf("digit %i %i\n", i, digit);
