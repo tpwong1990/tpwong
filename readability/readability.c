@@ -5,7 +5,7 @@
 int count_letters(string text);
 int count_words(string text);
 int count_sent(string text);
-int coleman_liau(int l, int w, int s);
+string coleman_liau(int l, int w, int s);
 
 int main(void)
 {
@@ -13,11 +13,11 @@ int main(void)
     int letter_c = count_letters(s);
     int word_c = count_words(s);
     int sent_c = count_sent(s);
-    printf("%i\n", letter_c);
-    printf("%i\n", word_c);
-    printf("%i\n", sent_c);
-    int c_l_index = coleman_liau(letter_c, word_c, sent_c);
-    printf("Grade %i\n", c_l_index);
+    //printf("%i\n", letter_c);
+    //printf("%i\n", word_c);
+    //printf("%i\n", sent_c);
+    string c_l_index = coleman_liau(letter_c, word_c, sent_c);
+    printf("Grade %s\n", c_l_index);
 }
 
 int count_letters(string text)
@@ -77,10 +77,19 @@ int count_sent(string text)
     return count;
 }
 
-int coleman_liau(int l, int w, int s)
+string coleman_liau(int l, int w, int s)
 {
-    long ave_l = (long) l / w * 100;
-    long ave_s = (long) s / w * 100;
+    double ave_l = (double) l / w * 100.0;
+    double ave_s = (double) s / w * 100.0;
     long index = 0.0588 * ave_l - 0.296 * ave_s -15.8;
-    return round(index);
+    int x = round(index);
+    if (x >= 16 )
+    {
+        string temp = "16+";
+    }
+    else
+    {
+        string temp = x;
+    }
+    return temp;
 }
