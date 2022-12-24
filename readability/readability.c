@@ -12,9 +12,9 @@ int main(void)
     int word_c = count_words(s);
     //printf("%i\n", letter_c);
     //printf("%i\n", word_c);
-    int x = 27;
+    int x = 65;
     char c = x;
-    printf("%c/n", c);
+    printf("%c\n", c);
 }
 
 int count_letters(string text)
