@@ -35,16 +35,18 @@ int count_words(string text)
     int count = 0;
     while (text[i] != '\0')
     {
-        if ((text[i] == '!' || text[i] == '?') || (text[i] == ',' || text[i] == '.'))
+        if(text[i] == ' ')
         {
-            count++;
+            if ((text[i] == '!' || text[i] == '?') || (text[i] == ',' || text[i] == '.'))
         }
         else
+        if ((text[i] == '!' || text[i] == '?') || (text[i] == ',' || text[i] == '.'))
         {
-            if(text[i] == ' ' && text[i])
+
 
         }
-        i++;
+
+
     }
     return count;
 }
