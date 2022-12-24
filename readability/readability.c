@@ -13,7 +13,8 @@ int main(void)
     //printf("%i\n", letter_c);
     //printf("%i\n", word_c);
     int x = 27;
-    printf("%c\n", (char) x);
+    char c = x;
+    printf("%c/n", c);
 }
 
 int count_letters(string text)
