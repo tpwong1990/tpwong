@@ -9,5 +9,10 @@ int main(void)
 
 int count_letters(string text)
 {
-    
+    int i = 0;
+    While (text[i] != /0)
+    {
+        if (text[i]>)
+
+    }
 }
