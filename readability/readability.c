@@ -89,7 +89,8 @@ string coleman_liau(int l, int w, int s)
     }
     else
     {
-        string temp = x;
+        string temp;
+        stringtf(temp, "%d", var);
     }
     return temp;
 }
