@@ -13,9 +13,9 @@ int main(void)
     int letter_c = count_letters(s);
     int word_c = count_words(s);
     int sent_c = count_sent(s);
-    //printf("%i\n", letter_c);
-    //printf("%i\n", word_c);
-    //printf("%i\n", sent_c);
+    printf("%i\n", letter_c);
+    printf("%i\n", word_c);
+    printf("%i\n", sent_c);
     int c_l_index = coleman_liau(letter_c, word_c, sent_c);
     if (c_l_index >= 16)
     {
