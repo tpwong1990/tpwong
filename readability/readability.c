@@ -10,8 +10,10 @@ int main(void)
     string s = get_string("Text: ");
     int letter_c = count_letters(s);
     int word_c = count_words(s);
-    printf("%i\n", letter_c);
-    printf("%i\n", word_c);
+    //printf("%i\n", letter_c);
+    //printf("%i\n", word_c);
+    int x = 27;
+    printf("%c\n", (char) x);
 }
 
 int count_letters(string text)
