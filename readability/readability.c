@@ -10,11 +10,8 @@ int main(void)
     string s = get_string("Text: ");
     int letter_c = count_letters(s);
     int word_c = count_words(s);
-    //printf("%i\n", letter_c);
-    //printf("%i\n", word_c);
-    int x = 65;
-    char c = x;
-    printf("%c\n", c);
+    printf("%i\n", letter_c);
+    printf("%i\n", word_c);
 }
 
 int count_letters(string text)
@@ -40,7 +37,7 @@ int count_words(string text)
     {
         if(text[i] == ' ')
         {
-            if ((((text[i-1] == '!' || text[i-1] == '?') || (text[i-1] == ',' || text[i-1] == '.')) || (int) text[i-1] == 27 )&& i > 1)
+            if ((((text[i-1] == '!' || text[i-1] == '?') || (text[i-1] == ',' || text[i-1] == '.')) || (int) text[i-1] == 39 )&& i > 1)
             {
 
             }
@@ -50,7 +47,7 @@ int count_words(string text)
             }
         }
         else
-        if (((text[i] == '!' || text[i] == '?') || (text[i] == ',' || text[i] == '.')) || (int) text[i] == 27)
+        if (((text[i] == '!' || text[i] == '?') || (text[i] == ',' || text[i] == '.')) || (int) text[i] == 39)
         {
             count++;
         }
