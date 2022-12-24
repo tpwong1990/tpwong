@@ -23,7 +23,14 @@ int main(void)
     }
     else
     {
-        printf("Grade %i\n", c_l_index);
+        if (c_l_index <1)
+        {
+            printf("Before Grade 1\n");
+        }
+        else
+        {
+            printf("Grade %i\n", c_l_index);
+        }
     }
 }
 
