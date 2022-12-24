@@ -6,3 +6,8 @@ int main(void)
 {
     string s = get_string("Text: ");
 }
+
+int count_letters(string text)
+{
+    
+}
