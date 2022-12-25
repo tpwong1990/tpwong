@@ -58,7 +58,7 @@ int count_words(string text)
     {
         if (text[i] == ' ')
         {
-            if ((text[i - 1] == '!' || text[i - 1] == '?' || text[i - 1] == ',' || text[i - 1] == '.' || text[i - 1] == '"' \n
+            if ((text[i - 1] == '!' || text[i - 1] == '?' || text[i - 1] == ',' || text[i - 1] == '.' || text[i - 1] == '"'
                  || text[i - 1] == ':') && i > 1)
             {
             }
@@ -71,7 +71,7 @@ int count_words(string text)
         {
             if (text[i] == '!' || text[i] == '?' || text[i] == ',' || text[i] == '.' || text[i] == '"' || text[i] == ':')
             {
-                if ((text[i - 1] == '!' || text[i - 1] == '?' || text[i - 1] == ',' || text[i - 1] == '.' || text[i - 1] == '"' \n
+                if ((text[i - 1] == '!' || text[i - 1] == '?' || text[i - 1] == ',' || text[i - 1] == '.' || text[i - 1] == '"'
                      || text[i - 1] == ':' || text[i - 1] == ' ') && i > 1)
                 {
                 }
