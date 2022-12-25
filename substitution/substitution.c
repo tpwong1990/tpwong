@@ -75,5 +75,11 @@ int check_char_command(string key)
 
 int check_repeat_char(string key)
 {
-    
+    int i = 0;
+    char temp = key[1];
+    while(key[i] != '\0');
+    {
+        if key
+    }
+
 }
