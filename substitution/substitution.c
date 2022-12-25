@@ -4,7 +4,7 @@
 int main(int argc, string argv[])
 {
     //check command line
-    if (argc != 27)
+    if (argc != 26)
     {
         printf("Key must contain 26 characters.\n");
         return 1;
