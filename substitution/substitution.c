@@ -22,14 +22,15 @@ int main(int argc, string argv[])
             printf("Key must contain 26 characters.\n");
             return 1;
         }
-        if (char_valid == 0)
+        if (char_valid == 1)
         {
-            printf("The key should only cotain alphabetic characters.\n")
+            printf("The key should only cotain alphabetic characters.\n");
             return 1;
         }
         if (char_valid == -1)
         {
-            prinft("The key cannot contain )
+            prinft("The key cannot contain repeated characters.\n");
+            return 1;
         }
     }
 }
@@ -44,4 +45,21 @@ int check_no_char_command(string key)
         i++;
    }
    return l;
+}
+
+int check_char_command(string key)
+{
+    int i = 0;
+    int valid = 0;
+    while(key[i] != '\0')
+    {
+        if (key[i] >= 'a' && key[i] <= 'z') || (key[i] >= 'A' && key[i] <= 'Z')
+        {
+            check_repeat_char(key)
+        }
+        else
+        {
+            return valid = 1;
+        }
+    }
 }
