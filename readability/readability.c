@@ -94,8 +94,8 @@ int count_sent(string text)
 
 int coleman_liau(int l, int w, int s)
 {
-    double ave_l = (double) l / w * 100.0;
-    double ave_s = (double) s / w * 100.0;
+    double ave_l = (double) l / (double) w * 100.0;
+    double ave_s = (double) s / (double) w * 100.0;
     long index = 0.0588 * ave_l - 0.296 * ave_s -15.8;
     int x = round(index);
     return x;
