@@ -71,6 +71,11 @@ int main(int argc, string argv[])
 
     //ask user to input the plaintext
     string plain = get_string("Plaintext: ");
+    int j = 0;
+    While(plain[j] != '\0')
+    {
+        encrypt(plain[j], map);
+    }
 
 
 }
@@ -129,10 +134,23 @@ int check_repeat_char(int no_char, string key)
 char encrypt(char c, int map[])
 {
     char c_out;
-    for (int i = 0; i <=25; i++)
+    int temp;
+    if (c >= 'a') && (c <= 'z')
     {
-        if ((c >= 'a') && (c <= 'z'))
-        {
-            c_out = c - map[i]
+        temp = c - 96;
+        c_out = c - map[temp];
     }
+    else
+    {
+        if (c >= 'A') && (c >= 'Z')
+        {
+            temp = c - 64;
+            c_out = c - map[temp];
+        }
+        else
+        {
+            c_out = c;
+        }
+    }
+    return c_out;
 }
