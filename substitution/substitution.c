@@ -17,9 +17,9 @@ int main(int argc, string argv[])
     {
         //check command line - no. of characters
         int no_char = check_no_char_command(argv[1]);
-        printf("no_char: %i\n", no_char);
+        //printf("no_char: %i\n", no_char);
         int char_valid = check_char_command(argv[1]);
-        printf("valid %i\n", char_valid);
+        //printf("valid %i\n", char_valid);
         int repeat = check_repeat_char(no_char, argv[1]);
         if (no_char != 26)
         {
@@ -65,11 +65,12 @@ int check_char_command(string key)
         }
         else
         {
-            return valid = 1;
+            valid = 1;
             break;
         }
+        i++;
     }
-    return valid = 0;
+    return valid;
 }
 
 int check_repeat_char(int no_char, string key)
