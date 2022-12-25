@@ -35,7 +35,6 @@ int main(int argc, string argv[])
             }
             else
             {
-                return 0;
             }
         }
         else
@@ -44,6 +43,7 @@ int main(int argc, string argv[])
             return 1;
         }
     }
+    //printf("a\n");
 }
 
 int check_no_char_command(string key)
