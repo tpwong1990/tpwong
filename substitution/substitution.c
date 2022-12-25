@@ -71,12 +71,16 @@ int main(int argc, string argv[])
 
     //ask user to input the plaintext
     string plain = get_string("Plaintext: ");
+
+    //do encrypt
     int j = 0;
     char cipher[check_no_char_command(plain)];
+    printf("ciphertext: ");
     while(plain[j] != '\0')
     {
         cipher[j]= encrypt(plain[j], map);
         printf("%c",cipher[j]);
+        j++;
     }
     printf("\n");
 }
