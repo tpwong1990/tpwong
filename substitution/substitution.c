@@ -44,6 +44,13 @@ int main(int argc, string argv[])
         }
     }
     //printf("a\n");
+
+    //convert the key to lowercase
+    int map[25];
+    for(int i = 0; i <= 25; i++)
+    {
+        map[i] = 
+    }
 }
 
 int check_no_char_command(string key)
