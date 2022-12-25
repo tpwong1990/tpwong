@@ -53,14 +53,20 @@ int main(int argc, string argv[])
     {
         key_lower[i] = tolower(s_temp[i]);
     }
+
     //assgin original map
     char ori[25];
     for (int i = 0; i <= 25; i++)
     {
-        ori[i] = 99 + i;
-        printf("%c", ori[i]);
+        ori[i] = 97 + i;
     }
-    printf("\n");
+
+    //mapping the key
+    int map[25];
+    for (int i = 0; i <= 25; i++)
+    {
+        map[i] = key_lower[i] - ori [i];
+    }
 }
 
 int check_no_char_command(string key)
