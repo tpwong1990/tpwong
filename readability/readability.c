@@ -40,7 +40,7 @@ int count_letters(string text)
     int count = 0;
     while (text[i] != '\0')
     {
-        char temp = text[i];
+        //char temp = text[i];
         if ((text[i] >= 'A' && text[i] <= 'Z') || (text[i] >= 'a' && text[i] <= 'z'))
         {
             count++;
