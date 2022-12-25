@@ -6,7 +6,7 @@ int check_no_char_command(string key);
 int main(int argc, string argv[])
 {
     //check command line - no. of command line
-    if (argc != 1)
+    if (argc != 2)
     {
         printf("Usage: ./substitution key\n");
     }
