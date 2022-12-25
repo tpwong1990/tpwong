@@ -3,7 +3,7 @@
 
 int check_no_char_command(string key);
 int check_char_command(string key);
-int check_repeat_char(no_char, string key);
+int check_repeat_char(int no_char, string key);
 
 int main(int argc, string argv[])
 {
@@ -17,8 +17,8 @@ int main(int argc, string argv[])
     {
         //check command line - no. of characters
         int no_char = check_no_char_command(argv[1]);
-        int char_valid = check_char_command(argc[1]);
-        int repeat = check_repeat_char(no_char, argc[1]);
+        int char_valid = check_char_command(argv[1]);
+        int repeat = check_repeat_char(no_char, argv[1]);
         if (no_char != 26)
         {
             printf("Key must contain 26 characters.\n");
@@ -56,31 +56,23 @@ int check_char_command(string key)
 {
     int i = 0;
     int valid = 0;
-    int repeat = check_repeat_char(key);
-    if (repeat = 0)
+    while(key[i] != '\0')
     {
-        while(key[i] != '\0')
+        if ((key[i] >= 'a' && key[i] <= 'z') || (key[i] >= 'A' && key[i] <= 'Z'))
         {
-            if (key[i] >= 'a' && key[i] <= 'z') || (key[i] >= 'A' && key[i] <= 'Z')
-            {
-                return valid = 0;
-            }
-            else
-            {
-                return valid = 1;
-            }
+        }
+        else
+        {
+            return valid = 1;
+            break;
         }
     }
-    else
-    {
-        return valid = -1;
-    }
+    return valid = 0;
 }
 
-int check_repeat_char(no_char, string key)
+int check_repeat_char(int no_char, string key)
 {
-    int i = 0;
-    for (j = 0; j<= no_char; j++)
+    for (int j = 0; j<= no_char; j++)
     {
         char temp = key[j];
         for (int i = 0; i <= no_char; i++)
@@ -94,4 +86,5 @@ int check_repeat_char(no_char, string key)
             }
         }
     }
+    return 0;
 }
