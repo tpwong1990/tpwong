@@ -19,7 +19,7 @@ int main(int argc, string argv[])
         int no_char = check_no_char_command(argv[1]);
         //printf("no_char: %i\n", no_char);
         int char_valid = check_char_command(argv[1]);
-        //printf("valid %i\n", char_valid);
+        printf("valid %i\n", char_valid);
         int repeat = check_repeat_char(no_char, argv[1]);
         if (no_char != 26)
         {
