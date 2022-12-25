@@ -74,16 +74,17 @@ int check_char_command(string key)
 
 int check_repeat_char(int no_char, string key)
 {
-    for (int j = 0; j<= no_char; j++)
+    for (int j = 0; j <= no_char-1; j++)
     {
         char temp = key[j];
-        for (int i = 0; i <= no_char; i++)
+        for (int i = 0; i <= no_char-1; i++)
         {
             if (i != j)
             {
                 if (temp == key[i])
                 {
                     return 1;
+                    break;
                 }
             }
         }
