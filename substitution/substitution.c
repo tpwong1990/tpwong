@@ -72,12 +72,13 @@ int main(int argc, string argv[])
     //ask user to input the plaintext
     string plain = get_string("Plaintext: ");
     int j = 0;
-    While(plain[j] != '\0')
+    char cipher[check_no_char_command(plain)];
+    while(plain[j] != '\0')
     {
-        encrypt(plain[j], map);
+        cipher[j]= encrypt(plain[j], map);
+        printf("%c",cipher[j]);
     }
-
-
+    printf("\n");
 }
 
 int check_no_char_command(string key)
@@ -135,14 +136,14 @@ char encrypt(char c, int map[])
 {
     char c_out;
     int temp;
-    if (c >= 'a') && (c <= 'z')
+    if ((c >= 'a') && (c <= 'z'))
     {
         temp = c - 96;
         c_out = c - map[temp];
     }
     else
     {
-        if (c >= 'A') && (c >= 'Z')
+        if ((c >= 'A') && (c >= 'Z'))
         {
             temp = c - 64;
             c_out = c - map[temp];
