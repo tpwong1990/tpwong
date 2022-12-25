@@ -57,8 +57,10 @@ int main(int argc, string argv[])
     char ori[25];
     for (int i = 0; i <= 25; i++)
     {
-        ori[i] = 9
+        ori[i] = 99 + i;
+        printf("%c", ori[i]);
     }
+    printf("\n");
 }
 
 int check_no_char_command(string key)
