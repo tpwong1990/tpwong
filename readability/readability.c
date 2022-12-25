@@ -78,8 +78,8 @@ int count_words(string text)
                     count++;
                 }
             }
-            i++;
         }
+        i++;
     }
     return count;
 }
