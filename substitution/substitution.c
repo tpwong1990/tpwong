@@ -35,14 +35,14 @@ int main(int argc, string argv[])
             }
             else
             {
+                return 0;
             }
+        }
         else
         {
             printf("The key should only cotain alphabetic characters.\n");
             return 1;
         }
-        }
-    }
 }
 
 int check_no_char_command(string key)
