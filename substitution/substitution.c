@@ -9,15 +9,20 @@ int main(int argc, string argv[])
     if (argc != 2)
     {
         printf("Usage: ./substitution key\n");
+        return 1;
     }
-    //check command line - no. of characters
-    int no_char = check_no_char_command(argv[1]);
-   if (no_char != 26)
-   {
-    printf("Key must contain 26 characters.\n");
-    return 1;
-   }
+    else
+    {
+        //check command line - no. of characters
+        int no_char = check_no_char_command(argv[1]);
+        if (no_char != 26)
+        {
+            printf("Key must contain 26 characters.\n");
+        return 2;
+        }
+    }
 }
+
 int check_no_char_command(string key)
 {
     int i = 0;
