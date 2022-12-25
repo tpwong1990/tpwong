@@ -23,7 +23,7 @@ int main(void)
     }
     else
     {
-        if (c_l_index <1)
+        if (c_l_index < 1)
         {
             printf("Before Grade 1\n");
         }
@@ -56,11 +56,11 @@ int count_words(string text)
     int count = 0;
     while (text[i] != '\0')
     {
-        if(text[i] == ' ')
+        if (text[i] == ' ')
         {
-            if ((text[i-1] == '!' || text[i-1] == '?' || text[i-1] == ',' || text[i-1] == '.' || text[i-1] == '"' || text[i-1] == ':') && i > 1)
+            if ((text[i - 1] == '!' || text[i - 1] == '?' || text[i - 1] == ',' || text[i - 1] == '.' || text[i - 1] == '"' \n
+                 || text[i - 1] == ':') && i > 1)
             {
-
             }
             else
             {
@@ -68,19 +68,22 @@ int count_words(string text)
             }
         }
         else
-        if (text[i] == '!' || text[i] == '?' || text[i] == ',' || text[i] == '.' || text[i] == '"' || text[i] == ':')
         {
-            if ((text[i-1] == '!' || text[i-1] == '?' || text[i-1] == ',' || text[i-1] == '.' || text[i-1] == '"' || text[i-1] == ':' || text[i-1] == ' ') && i > 1)
+            if (text[i] == '!' || text[i] == '?' || text[i] == ',' || text[i] == '.' || text[i] == '"' || text[i] == ':')
             {
+                if ((text[i - 1] == '!' || text[i - 1] == '?' || text[i - 1] == ',' || text[i - 1] == '.' || text[i - 1] == '"' \n
+                     || text[i - 1] == ':' || text[i - 1] == ' ') && i > 1)
+                {
+                }
+                else
+                {
+                    count++;
+                }
             }
-            else
-            {
-                count++;
-            }
+            i++;
         }
-        i++;
+        return count;
     }
-    return count;
 }
 
 int count_sent(string text)
@@ -102,7 +105,7 @@ int coleman_liau(int l, int w, int s)
 {
     double ave_l = (double) l / (double) w * 100.0;
     double ave_s = (double) s / (double) w * 100.0;
-    double index = 0.0588 * ave_l - 0.296 * ave_s -15.8;
+    double index = 0.0588 * ave_l - 0.296 * ave_s - 15.8;
     int x = round(index);
     return x;
 }
