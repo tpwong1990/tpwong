@@ -70,7 +70,13 @@ int count_words(string text)
         else
         if (text[i] == '!' || text[i] == '?' || text[i] == ',' || text[i] == '.' || text[i] == '"' || text[i] == ':')
         {
-            count++;
+            if ((text[i-1] == '!' || text[i-1] == '?' || text[i-1] == ',' || text[i-1] == '.' || text[i-1] == '"' || text[i-1] == ':') && i > 1)
+            {
+            }
+            else
+            {
+                count++;
+            }
         }
         i++;
     }
