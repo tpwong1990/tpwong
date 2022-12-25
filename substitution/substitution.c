@@ -47,13 +47,18 @@ int main(int argc, string argv[])
     //printf("a\n");
 
     //convert the key to lowercase
-    char map[25];
+    char key_lower[25];
     string s_temp = argv[1];
     for(int i = 0; i <= 25; i++)
     {
-        map[i] = tolower(s_temp[i]);
+        key_lower[i] = tolower(s_temp[i]);
     }
-    printf("%s\n", map);
+    //assgin original map
+    char ori[25];
+    for (int i = 0; i <= 25; i++)
+    {
+        ori[i] = 9
+    }
 }
 
 int check_no_char_command(string key)
