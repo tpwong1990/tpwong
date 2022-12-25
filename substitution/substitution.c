@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <ctype.h>
 
 int check_no_char_command(string key);
 int check_char_command(string key);
@@ -49,8 +50,9 @@ int main(int argc, string argv[])
     int map[25];
     for(int i = 0; i <= 25; i++)
     {
-        map[i] = 
+        map[i] = tolower(map[i])
     }
+    printf("%s\n", map
 }
 
 int check_no_char_command(string key)
