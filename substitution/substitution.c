@@ -147,10 +147,10 @@ char encrypt(char c, int map[])
     }
     else
     {
-        if ((c >= 'A') && (c >= 'Z'))
+        if ((c >= 'A') && (c <= 'Z'))
         {
             temp = c - 64;
-            c_out = c - map[temp];
+            c_out = c + map[temp];
         }
         else
         {
