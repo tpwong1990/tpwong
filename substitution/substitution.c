@@ -5,6 +5,7 @@
 int check_no_char_command(string key);
 int check_char_command(string key);
 int check_repeat_char(int no_char, string key);
+char encrypt(char c, int map[]);
 
 int main(int argc, string argv[])
 {
@@ -67,6 +68,11 @@ int main(int argc, string argv[])
     {
         map[i] = key_lower[i] - ori [i];
     }
+
+    //ask user to input the plaintext
+    string plain = get_string("Plaintext: ");
+
+
 }
 
 int check_no_char_command(string key)
@@ -118,4 +124,15 @@ int check_repeat_char(int no_char, string key)
         }
     }
     return 0;
+}
+
+char encrypt(char c, int map[])
+{
+    char c_out;
+    for (int i = 0; i <=25; i++)
+    {
+        if ((c >= 'a') && (c <= 'z'))
+        {
+            c_out = c - map[i]
+    }
 }
