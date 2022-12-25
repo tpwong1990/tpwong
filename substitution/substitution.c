@@ -3,6 +3,7 @@
 
 int check_no_char_command(string key);
 int check_char_command(string key);
+int check_repeat_char(string key);
 
 int main(int argc, string argv[])
 {
@@ -51,15 +52,28 @@ int check_char_command(string key)
 {
     int i = 0;
     int valid = 0;
-    while(key[i] != '\0')
+    int repeat = check_repeat_char(key);
+    if (repeat = 0)
     {
-        if (key[i] >= 'a' && key[i] <= 'z') || (key[i] >= 'A' && key[i] <= 'Z')
+        while(key[i] != '\0')
         {
-            check_repeat_char(key)
-        }
-        else
-        {
-            return valid = 1;
+            if (key[i] >= 'a' && key[i] <= 'z') || (key[i] >= 'A' && key[i] <= 'Z')
+            {
+                return valid = 0;
+            }
+            else
+            {
+                return valid = 1;
+            }
         }
     }
+    else
+    {
+        return valid = -1;
+    }
+}
+
+int check_repeat_char(string key)
+{
+    
 }
