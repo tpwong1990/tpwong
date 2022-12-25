@@ -82,8 +82,8 @@ int count_words(string text)
             }
             i++;
         }
-        return count;
     }
+    return count;
 }
 
 int count_sent(string text)
