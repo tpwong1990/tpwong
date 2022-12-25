@@ -33,6 +33,9 @@ int main(int argc, string argv[])
                 printf("The key cannot cotain repeated characters.\n");
                 return 1;
             }
+            else
+            {
+            }
         else
         {
             printf("The key should only cotain alphabetic characters.\n");
