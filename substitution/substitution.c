@@ -5,7 +5,7 @@
 int check_no_char_command(string key);
 int check_char_command(string key);
 int check_repeat_char(int no_char, string key);
-char encrypt(char c, int map[]);
+char encrypt(char c, char map[][]);
 
 int main(int argc, string argv[])
 {
@@ -55,20 +55,13 @@ int main(int argc, string argv[])
         key_lower[i] = tolower(s_temp[i]);
     }
 
-    //assgin original map
-    char ori[25];
+    // assign mapping
+    char map[25][1];
     for (int i = 0; i <= 25; i++)
     {
-        ori[i] = 97 + i;
+        map[i][1] = key_lower[i];
+        map[i][2] = 97 + i;
     }
-
-    //mapping the key
-    int map[25];
-    for (int i = 0; i <= 25; i++)
-    {
-        map[i] = key_lower[i] - ori [i];
-    }
-
     //ask user to input the plaintext
     string plain = get_string("Plaintext: ");
 
@@ -136,25 +129,34 @@ int check_repeat_char(int no_char, string key)
     return 0;
 }
 
-char encrypt(char c, int map[])
+char encrypt(char c, char map[][])
 {
     char c_out;
-    int temp;
-    if ((c >= 'a') && (c <= 'z'))
+    int i = 0;
+    while
     {
-        temp = c - 96;
-        c_out = c - map[temp];
-    }
-    else
-    {
-        if ((c >= 'A') && (c <= 'Z'))
+        if (c >= 'a') || (c <= 'z')
         {
-            temp = c - 64;
-            c_out = c + map[temp];
+            if (c == map[i][1])
+            {
+                c_out = map[i][2];
+            }
         }
         else
         {
-            c_out = c;
+            if (c >= 'A') || (c <= 'Z')
+            {
+                c = c + 32;
+                if (c== map[i][1])
+                {
+                    c_out = map[i][2];
+                    c_out = c_out - 32;
+                }
+            }
+            else
+            {
+                c_out = c;
+            }
         }
     }
     return c_out;
