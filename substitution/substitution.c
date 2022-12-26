@@ -5,7 +5,7 @@
 int check_no_char_command(string key);
 int check_char_command(string key);
 int check_repeat_char(int no_char, string key);
-char encrypt(char c, char map[][]);
+char encrypt(char c, char key[], char ori[]);
 
 int main(int argc, string argv[])
 {
@@ -56,11 +56,10 @@ int main(int argc, string argv[])
     }
 
     // assign mapping
-    char map[25][1];
+    char ori_map[25];
     for (int i = 0; i <= 25; i++)
     {
-        map[i][1] = key_lower[i];
-        map[i][2] = 97 + i;
+        ori_map[i] = 97 + i;
     }
     //ask user to input the plaintext
     string plain = get_string("Plaintext: ");
@@ -71,7 +70,7 @@ int main(int argc, string argv[])
     printf("ciphertext: ");
     while(plain[j] != '\0')
     {
-        cipher[j]= encrypt(plain[j], map);
+        cipher[j]= encrypt(plain[j], key_lower, ori_map);
         printf("%c",cipher[j]);
         j++;
     }
@@ -129,17 +128,17 @@ int check_repeat_char(int no_char, string key)
     return 0;
 }
 
-char encrypt(char c, char map[][])
+char encrypt(char c, char key[], char ori[])
 {
     char c_out;
     int i = 0;
-    while
+    while (i<=25)
     {
         if (c >= 'a') || (c <= 'z')
         {
-            if (c == map[i][1])
+            if (c == key[i])
             {
-                c_out = map[i][2];
+                c_out = ori[i];
             }
         }
         else
@@ -147,9 +146,9 @@ char encrypt(char c, char map[][])
             if (c >= 'A') || (c <= 'Z')
             {
                 c = c + 32;
-                if (c== map[i][1])
+                if (c== key[i])
                 {
-                    c_out = map[i][2];
+                    c_out = ori[i];
                     c_out = c_out - 32;
                 }
             }
@@ -158,6 +157,7 @@ char encrypt(char c, char map[][])
                 c_out = c;
             }
         }
+        i++;
     }
     return c_out;
 }
