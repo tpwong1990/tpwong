@@ -41,7 +41,7 @@ int compute_score(string word)
 {
     int i = 0;
     int scorce = 0;
-    while (word[i] !='\0')
+    while (word[i] != '\0')
     {
         int temp;
         if (isupper(word[i]))
