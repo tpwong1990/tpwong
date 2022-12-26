@@ -134,7 +134,7 @@ char encrypt(char c, char key[], char ori[])
     int i = 0;
     while (i<=25)
     {
-        if (c >= 'a') || (c <= 'z')
+        if ((c >= 'a') || (c <= 'z'))
         {
             if (c == key[i])
             {
@@ -143,7 +143,7 @@ char encrypt(char c, char key[], char ori[])
         }
         else
         {
-            if (c >= 'A') || (c <= 'Z')
+            if ((c >= 'A') || (c <= 'Z'))
             {
                 c = c + 32;
                 if (c== key[i])
