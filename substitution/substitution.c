@@ -50,7 +50,7 @@ int main(int argc, string argv[])
     //convert the key to lowercase
     char key_lower[25];
     string s_temp = argv[1];
-    for(int i = 0; i <= 25; i++)
+    for (int i = 0; i <= 25; i++)
     {
         key_lower[i] = tolower(s_temp[i]);
     }
@@ -68,10 +68,10 @@ int main(int argc, string argv[])
     int j = 0;
     char cipher[check_no_char_command(plain)];
     printf("ciphertext: ");
-    while(plain[j] != '\0')
+    while (plain[j] != '\0')
     {
-        cipher[j]= encrypt(plain[j], key_lower, ori_map);
-        printf("%c",cipher[j]);
+        cipher[j] = encrypt(plain[j], key_lower, ori_map);
+        printf("%c", cipher[j]);
         j++;
     }
     printf("\n");
@@ -81,19 +81,19 @@ int check_no_char_command(string key)
 {
     int i = 0;
     int l = 0;
-   while(key[i] != '\0')
-   {
+    while (key[i] != '\0')
+    {
         l++;
         i++;
-   }
-   return l;
+    }
+    return l;
 }
 
 int check_char_command(string key)
 {
     int i = 0;
     int valid = 0;
-    while(key[i] != '\0')
+    while (key[i] != '\0')
     {
         if ((key[i] >= 'a' && key[i] <= 'z') || (key[i] >= 'A' && key[i] <= 'Z'))
         {
@@ -110,10 +110,10 @@ int check_char_command(string key)
 
 int check_repeat_char(int no_char, string key)
 {
-    for (int j = 0; j <= no_char-1; j++)
+    for (int j = 0; j <= no_char - 1; j++)
     {
         char temp = key[j];
-        for (int i = 0; i <= no_char-1; i++)
+        for (int i = 0; i <= no_char - 1; i++)
         {
             if (i != j)
             {
@@ -132,7 +132,7 @@ char encrypt(char c, char key[], char ori[])
 {
     char c_out;
     int i = 0;
-    while (i<=25)
+    while (i <= 25)
     {
         if ((c >= 'a') && (c <= 'z'))
         {
@@ -145,7 +145,7 @@ char encrypt(char c, char key[], char ori[])
         {
             if ((c >= 'A') && (c <= 'Z'))
             {
-                if (c == ori[i] - 32 )
+                if (c == ori[i] - 32)
                 {
                     c_out = key[i] - 32;
                 }
