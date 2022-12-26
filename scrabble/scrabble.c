@@ -47,18 +47,17 @@ int compute_score(string word)
         if (isupper(word[i]))
         {
             temp = word[i] - 65;
-            scorce = scorce + arr[temp];
+            scorce = scorce + POINTS[temp];
         }
         else
         {
             if (islower(word[i]))
             {
                 temp = word[i] - 97;
-                scorce = scorce + arr[temp];
+                scorce = scorce + POINTS[temp];
             }
             else
             {
-                scorce = scorce;
             }
         }
         i++;
