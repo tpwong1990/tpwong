@@ -19,7 +19,7 @@ int main(void)
     int score2 = compute_score(word2);
 
     // Print the winner
-    if (score1 > scroe2)
+    if (score1 > score2)
     {
         printf("Player 1 wins!\n");
     }
@@ -40,12 +40,28 @@ int main(void)
 int compute_score(string word)
 {
     int i = 0;
+    int scorce = 0;
     while (word[i] !='\0')
     {
-        int j = 0;
-        Do
+        int temp;
+        if (isupper(word[i]))
         {
-            if (word[i] == point)
+            temp = word[i] - 65;
+            scorce = scorce + arr[temp];
         }
+        else
+        {
+            if (islower(word[i]))
+            {
+                temp = word[i] - 97;
+                scorce = scorce + arr[temp];
+            }
+            else
+            {
+                scorce = scorce;
+            }
+        }
+        i++;
     }
+    return scorce;
 }
