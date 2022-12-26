@@ -145,11 +145,9 @@ char encrypt(char c, char key[], char ori[])
         {
             if ((c >= 'A') && (c <= 'Z'))
             {
-                c = c + 32;
-                if (c== key[i])
+                if (c == key[i] - 32 )
                 {
-                    c_out = ori[i];
-                    c_out = c_out - 32;
+                    c_out = ori[i] - 32;
                 }
             }
             else
