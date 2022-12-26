@@ -80,6 +80,10 @@ bool vote(string name)
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
-    // TODO
+    int temp
+    for (int i = 0; i <= MAX; i++)
+    {
+
+    }
     return;
 }
