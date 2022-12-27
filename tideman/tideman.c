@@ -177,11 +177,11 @@ void sort_pairs(void)
 {
     for (int i = pair_count - 1; i>=0; i--)
     {
-        int min_stre = find_pair_win_stre[i];
+        int min_stre = find_pair_win_stre(i);
         int min_pos = i;
         for (int j = i - 1; j >= 0; j--)
         {
-            int compare_stre = find_pair_win_stre[j];
+            int compare_stre = find_pair_win_stre(j);
             if (min_stre > compare_stre)
             {
                 min_stre = compare_stre;
@@ -198,7 +198,7 @@ void sort_pairs(void)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    for (int i = 0; i < pair_counter; i++)
+    for (int i = 0; i < pair_count; i++)
     {
         if (!cycle_check(winner, loser))
         {
