@@ -33,7 +33,7 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
-int find_pref_win_stre(int can);
+int find_pair_win_stre(int pair_i);
 
 int main(int argc, string argv[])
 {
@@ -195,7 +195,9 @@ void print_winner(void)
     return;
 }
 
-int find_pref_win_stre(int can)
+int find_pref_win_stre(int pair_i);
 {
-    
+    int winner = pairs[pair_i].winner;
+    int loser = pairs[pair_i].loser;
+    return preference[winner][loser];
 }
