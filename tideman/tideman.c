@@ -145,8 +145,8 @@ void add_pairs(void)
         {
             if (preferences[i][j] > 0)
             {
-                pairs[n].winner = i
-                pairs[n].loser = j
+                pairs[i+j-1].winner = i
+                pairs[i+j-1].loser = j
             }
         }
     }
