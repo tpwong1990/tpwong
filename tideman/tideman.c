@@ -34,6 +34,7 @@ void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
 int find_pair_win_stre(int pair_i);
+bool cycle_check(int winner, int loser);
 
 int main(int argc, string argv[])
 {
@@ -199,16 +200,32 @@ void lock_pairs(void)
 {
     for (int i = 0; i < pair_counter; i++)
     {
-        locked[pairs[i].winner][pairs[i].loser] = true;
-    }
-    //check cylces
-    for (int i = 0; i < candidate_count; i++)
-    {
-        if
-    }
+        if (!cycle_check(winner, loser))
+        {
+             locked[pairs[i].winner][pairs[i].loser] = true;
+        }
 
+    }
 }
 
+bool cycle_check(int winner, int loser)
+{
+    if (locked[loser][winner] = true)
+    {
+        return true;
+    }
+    else
+    {
+        for (int i = 0; i < candidate_count; i++)
+        {
+            if (locked[loser][i] == true && cycle_check(winner, i))
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 // Print the winner of the election
 void print_winner(void)
 {
