@@ -200,6 +200,8 @@ void lock_pairs(void)
 {
     for (int i = 0; i < pair_count; i++)
     {
+        int winner = pairs[i].winner;
+        int loser = pairs[i].loser;
         if (!cycle_check(winner, loser))
         {
              locked[pairs[i].winner][pairs[i].loser] = true;
@@ -210,7 +212,7 @@ void lock_pairs(void)
 
 bool cycle_check(int winner, int loser)
 {
-    if (locked[loser][winner] = true)
+    if (locked[loser][winner] == true)
     {
         return true;
     }
@@ -235,7 +237,7 @@ void print_winner(void)
     {
         for (int j = 0; j < candidate_count; i++)
         {
-            if (locked[i][j] == true && lockec[j][i] == false)
+            if (locked[i][j] == true && locked[j][i] == false)
             {
                 printf("%s\n", candidates[i]);
             }
@@ -248,5 +250,5 @@ int find_pair_win_stre(int pair_i)
 {
     int winner = pairs[pair_i].winner;
     int loser = pairs[pair_i].loser;
-    return preference[winner][loser];
+    return preferences[winner][loser];
 }
