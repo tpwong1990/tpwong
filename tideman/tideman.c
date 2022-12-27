@@ -135,17 +135,21 @@ void add_pairs(void)
 {
     // update pair count
     pair_count = candidate_count * (candidate_count - 1) / 2
-    for (int i = 0; i < candidate_count; i++)
+    for (int k; k < pair_count; k++)
     {
-        for (int j = 0; j < candidate_count; j++)
+        for (int i = 0; i < candidate_count; i++)
         {
-            if (preferences[i][j] > 0)
+            for (int j = 0; j < candidate_count; j++)
             {
-                pairs[i+j-1].winner = i
-                pairs[i+j-1].loser = j
+                if (preferences[i][j] > 0)
+                {
+                    pairs[k].winner = i
+                    pairs[k].loser = j
+                }
             }
         }
     }
+
     return;
 }
 
