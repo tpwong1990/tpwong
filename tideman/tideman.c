@@ -177,11 +177,11 @@ void sort_pairs(void)
 {
     for (int i = pair_count - 1; i>=0; i--)
     {
-        int min_stre = find_pre_win_stre[i];
+        int min_stre = find_pair_win_stre[i];
         int min_pos = i;
         for (int j = i - 1; j >= 0; j--)
         {
-            int compare_stre = find_pre_win_stre[j];
+            int compare_stre = find_pair_win_stre[j];
             if (min_stre > compare_stre)
             {
                 min_stre = compare_stre;
@@ -216,6 +216,7 @@ bool cycle_check(int winner, int loser)
     }
     else
     {
+        //check other pair
         for (int i = 0; i < candidate_count; i++)
         {
             if (locked[loser][i] == true && cycle_check(winner, i))
@@ -226,11 +227,20 @@ bool cycle_check(int winner, int loser)
     }
     return false;
 }
+
 // Print the winner of the election
 void print_winner(void)
 {
-    string winner = candidate[]
-    printf("%s\n", winner);
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; i++)
+        {
+            if (locked[i][j] == true && lockec[j][i] == false)
+            {
+                printf("%s\n", candidates[i]);
+            }
+        }
+    }
     return;
 }
 
