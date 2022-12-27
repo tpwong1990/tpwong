@@ -187,8 +187,9 @@ void sort_pairs(void)
                 min_pos = j;
             }
         }
-        pair temp = pairs[i];
-        pairs[min_pos] = pairs[j];
+        pair temp = pairs[min_pos];
+        pairs[min_pos] = pairs[i];
+        pairs[i] = temp;
     }
     return;
 }
