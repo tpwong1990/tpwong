@@ -201,6 +201,11 @@ void lock_pairs(void)
     {
         locked[pairs[i].winner][pairs[i].loser] = true;
     }
+    //check cylces
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if
+    }
 
 }
 
