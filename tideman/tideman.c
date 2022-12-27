@@ -174,9 +174,14 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
+    int min = o;
     for (int i = 0; i < pair_count; i++)
     {
-
+        int stre = find_pref_win_stre(i);
+        if (min < )
+        {
+            min < find_pre_win_stre(i)
+        }
     }
     return;
 }
