@@ -244,7 +244,7 @@ void print_winner(void)
     return;
 }
 
-int find_pair_win_stre(int pair_i);
+int find_pair_win_stre(int pair_i)
 {
     int winner = pairs[pair_i].winner;
     int loser = pairs[pair_i].loser;
