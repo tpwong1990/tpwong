@@ -33,6 +33,7 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
+int find_pref_win_stre(int can);
 
 int main(int argc, string argv[])
 {
@@ -192,4 +193,9 @@ void print_winner(void)
 {
     // TODO
     return;
+}
+
+int find_pref_win_stre(int can)
+{
+    
 }
