@@ -2,10 +2,10 @@ sort1 uses: TODO
 
 How do you know?: TODO
 
-sort2 uses: TODO
+sort2 uses: Merge Sort
 
-How do you know?: TODO
+How do you know?: As from the result of using random50000.txt
 
-sort3 uses: TODO
+sort3 uses:
 
 How do you know?: TODO
