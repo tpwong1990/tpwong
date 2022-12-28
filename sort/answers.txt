@@ -1,11 +1,19 @@
-sort1 uses: TODO
+sort1 uses: Bubble Sort
 
-How do you know?: TODO
+How do you know?: From the result of using reversed50000.txt and sorted50000.txt, the processing time of using sorted.txt is shorter than
+the one with using reversed.txt by using sort1. The upper bound and lower bound processing time of Bubble Sort is O(n^2) and Omega(n),
+which matches with the above case. And the upper bound and lower bound processing time of Selection Sort and Merge Sort are the same.
+So sort1 is using Bubble Sort.
 
 sort2 uses: Merge Sort
 
-How do you know?: As from the result of using random50000.txt
+How do you know?: As from the result of using random50000.txt and reversed50000.txt, sort2 finishes sorting with the shortest time.
+As the function of process time for Merge Sort is O(n * log n), is faster than Selection Sort-O(n^2) and Bubble Sort-O(n^2).
+That mean sort2 is using Merge Sort.
 
-sort3 uses:
+sort3 uses: Selection sort
 
-How do you know?: TODO
+How do you know?: As from the result of using reversed50000.txt and sorted50000.txt, sort3 and sort2 need nearly the same processing time.
+Reversed.txt means the worst case and Sorted.txt means the best case. While both cases show the same processing time. Only Selection
+Sort and Merge Sort would show this result, the upper bound processing time is equal to lower bound processing time. While we know sort2
+is using Merge Sort, so sort3 is using Selection Sort.
