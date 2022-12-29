@@ -48,31 +48,34 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     BYTE dump_G[height][width];
     BYTE dump_B[height][width];
 
-    //Blur the image
-    for (int i = 1; i < height - 1; i++)
+    //Blur the image (handle for height != 0 && height != height)
+    for (int i = 0; i < height ; i++)
     {
-        for (int j = 1; j < width - 1; j++)
+        for (int j = 0; j < width ; j++)
         {
             long temp_R = 0;
             long temp_G = 0;
             long temp_B = 0;
-            //printf("R: %i\n", image[i][j].rgbtRed);
-            //printf("G: %i\n", image[i][j].rgbtGreen);
-            //printf("B: %i\n", image[i][j].rgbtBlue);
-            //average neighboring pixels
-            for (int k = -1; k <= 1; k++)
+            int ave_counter = 0;
+            if (j != 0 && j != width - 1)
             {
-                for (int l = -1; l <= 1; l++)
+                //average neighboring pixels
+                for (int k = -1; k <= 1; k++)
                 {
-                    temp_R = temp_R + image[i + k][j + l].rgbtRed;
-                    temp_G = temp_G + image[i + k][j + l].rgbtGreen;
-                    temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                    for (int l = -1; l <= 1; l++)
+                    {
+                        if (i)
+                        temp_R = temp_R + image[i + k][j + l].rgbtRed;
+                        temp_G = temp_G + image[i + k][j + l].rgbtGreen;
+                        temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                        ave_counter++;
+                    }
                 }
             }
             //assgin the averaged value to image_dump
-            dump_R[i][j] = temp_R / 10;
-            dump_G[i][j] = temp_G / 10;
-            dump_B[i][j] = temp_B / 10;
+            dump_R[i][j] = temp_R / ave_counter;
+            dump_G[i][j] = temp_G / ave_counter;
+            dump_B[i][j] = temp_B / ave_counter;
         }
     }
 
