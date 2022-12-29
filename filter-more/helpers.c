@@ -20,6 +20,21 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            // flip the pixel horizontally
+            BYTE temp_R = image[i][j].rgbtRed;
+            BYTE temp_G = image[i][j].rgbtGreen;
+            BYTE temp_B = image[i][j].rgbtBlue;
+            image[height - i][j].rgbtRed = temp_R;
+            image[height - i][j].rgbtGreen = temp_G;
+            image[height - i][j].rgbtBlue = temp_B;
+            image[]
+
+        }
+    }
     return;
 }
 
