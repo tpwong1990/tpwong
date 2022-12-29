@@ -56,13 +56,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             BYTE temp_R = 0;
             BYTE temp_G = 0;
             BYTE temp_B = 0;
-
+            printf("R: %i\n", image[i][j].rgbtRed);
+            printf("G: %i\n", image[i][j].rgbtGreen);
+            printf("B: %i\n", image[i][j].rgbtBlue);
             //average neighboring pixels
             for (int k = -1; k <= 1; k++)
             {
                 for (int l = -1; l <= 1; l++)
                 {
-                    printf("%i\n", temp_R);
                     temp_R = temp_R + image[i + k][j + l].rgbtRed;
                     temp_G = temp_G + image[i + k][j + l].rgbtGreen;
                     temp_B = temp_B + image[i + k][j + l].rgbtBlue;
