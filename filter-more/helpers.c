@@ -227,6 +227,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             image[k - 1][l - 1].rgbtBlue = sobel (height + 2, width + 2, image_dump, k, l, 'b');
         }
     }
+    free(image_dump);
     return;
 }
 
