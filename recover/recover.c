@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+bool find_jpeg(int x_1, int x_2, int x_3);
+
 int main(int argc, char *argv[])
 {
     //check command line - no. of command line
@@ -20,13 +22,17 @@ int main(int argc, char *argv[])
     }
     //Read file and find JPEG signatures
     const int FAT_size = 512;
+    int block_count = 0
     While ()
     {
         //read first 3 bytes
-        for (int i = 0; i <= 2, i++)
-        {
-
-        }
+        if (find_jpeg(a, b, c) == true)
+        {}
     }
     fclose(inptr);
+}
+
+bool find_jpeg(int x_1, int x_2, int x_3)
+{
+    
 }
