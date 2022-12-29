@@ -85,9 +85,78 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         }
                     }
                     //lower-left corners
-                    if (i == height - 1 && j == width -1)
+                    if (i == height - 1 && j == 0)
                     {
-                        if (k)
+                        if (k != 1 || l != -1)
+                        {
+                            temp_R = temp_R + image[i + k][j + l].rgbtRed;
+                            temp_G = temp_G + image[i + k][j + l].rgbtGreen;
+                            temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                            ave_counter++;
+                        }
+                    }
+                    //lower-right corners
+                    if (i == height - 1 && j == width - 1)
+                    {
+                        if (k != 1 || l != 1)
+                        {
+                            temp_R = temp_R + image[i + k][j + l].rgbtRed;
+                            temp_G = temp_G + image[i + k][j + l].rgbtGreen;
+                            temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                            ave_counter++;
+                        }
+                    }
+                    //upper edge
+                    if (i == 0 && j != 0 && j != width -1)
+                    {
+                        if (k != -1)
+                        {
+                            temp_R = temp_R + image[i + k][j + l].rgbtRed;
+                            temp_G = temp_G + image[i + k][j + l].rgbtGreen;
+                            temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                            ave_counter++;
+                        }
+                    }
+                    //lower edge
+                    if (i == height - 1 && j != 0 && j != width -1)
+                    {
+                        if (k != 1)
+                        {
+                            temp_R = temp_R + image[i + k][j + l].rgbtRed;
+                            temp_G = temp_G + image[i + k][j + l].rgbtGreen;
+                            temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                            ave_counter++;
+                        }
+                    }
+                    //left edge
+                    if (j == 0 && i != 0 && i != height - 1)
+                    {
+                        if (l != -1)
+                        {
+                            temp_R = temp_R + image[i + k][j + l].rgbtRed;
+                            temp_G = temp_G + image[i + k][j + l].rgbtGreen;
+                            temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                            ave_counter++;
+                        }
+                    }
+                    //right edge
+                    if (j == width - 1 && i != 0 && i != heigth - 1)
+                    {
+                        if (l != 1)
+                        {
+                            temp_R = temp_R + image[i + k][j + l].rgbtRed;
+                            temp_G = temp_G + image[i + k][j + l].rgbtGreen;
+                            temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                            ave_counter++;
+                        }
+                    }
+                    //middle
+                    if ((i > 0 && i < height -1) && (j > 0 && j < width - 1))
+                    {
+                        temp_R = temp_R + image[i + k][j + l].rgbtRed;
+                        temp_G = temp_G + image[i + k][j + l].rgbtGreen;
+                        temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                        ave_counter++;
                     }
                 }
             }
