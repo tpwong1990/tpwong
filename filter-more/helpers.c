@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int cur_y, char c);
+int sobel(int height, int width, RGBTRIPLE image[height][width], int cur_x, int cur_y, char c);
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -78,7 +78,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         }
                     }
                     // up-right corners
-                    if (i == 0 && j == width -1)
+                    if (i == 0 && j == width - 1)
                     {
                         if (((k == 1 && l == 0) || (k == 1 && l == -1)) || ((k == 0 && l == 0) || (k == 0 && l == -1)))
                         {
@@ -111,7 +111,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         }
                     }
                     //upper edge
-                    if (i == 0 && j != 0 && j != width -1)
+                    if (i == 0 && j != 0 && j != width - 1)
                     {
                         if (k != -1)
                         {
@@ -122,7 +122,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         }
                     }
                     //lower edge
-                    if (i == height - 1 && j != 0 && j != width -1)
+                    if (i == height - 1 && j != 0 && j != width - 1)
                     {
                         if (k != 1)
                         {
@@ -155,7 +155,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         }
                     }
                     //middle
-                    if ((i > 0 && i < height -1) && (j > 0 && j < width - 1))
+                    if ((i > 0 && i < height - 1) && (j > 0 && j < width - 1))
                     {
                         temp_R = temp_R + image[i + k][j + l].rgbtRed;
                         temp_G = temp_G + image[i + k][j + l].rgbtGreen;
@@ -188,7 +188,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     // Allocate memory for image with total height from (-1 to height) and width from (-1 to width)
-    RGBTRIPLE(*image_dump)[width+2] = calloc(height + 2, (width + 2)* sizeof(RGBTRIPLE));
+    RGBTRIPLE(*image_dump)[width + 2] = calloc(height + 2, (width + 2) * sizeof(RGBTRIPLE));
 
     //Assign black value to the edge of the image_dump
     for (int l = 0; l <= width + 1; l++)
@@ -210,9 +210,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         image_dump[k][width + 1].rgbtBlue = 0;
     }
     // put the ori image into image_dump
-    for(int k = 1; k <= height; k++)
+    for (int k = 1; k <= height; k++)
     {
-        for(int l = 1; l <= width; l++)
+        for (int l = 1; l <= width; l++)
         {
             image_dump[k][l] = image[k - 1][l - 1];
         }
@@ -222,30 +222,32 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int l = 1; l <= width; l++)
         {
-            image[k - 1][l - 1].rgbtRed = sobel (height + 2, width + 2, image_dump, k, l, 'r');
-            image[k - 1][l - 1].rgbtGreen = sobel (height + 2, width + 2, image_dump, k, l, 'g');
-            image[k - 1][l - 1].rgbtBlue = sobel (height + 2, width + 2, image_dump, k, l, 'b');
+            image[k - 1][l - 1].rgbtRed = sobel(height + 2, width + 2, image_dump, k, l, 'r');
+            image[k - 1][l - 1].rgbtGreen = sobel(height + 2, width + 2, image_dump, k, l, 'g');
+            image[k - 1][l - 1].rgbtBlue = sobel(height + 2, width + 2, image_dump, k, l, 'b');
         }
     }
     free(image_dump);
     return;
 }
 
-int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int cur_y, char c)
+int sobel(int height, int width, RGBTRIPLE image[height][width], int cur_x, int cur_y, char c)
 {
     //assign Gx kernels
-    const int GX[3][3] = {
-                            {-1, 0, 1},
-                            {-2, 0, 2},
-                            {-1, 0, 1}
-                         };
+    const int GX[3][3] =
+    {
+        {-1, 0, 1},
+        {-2, 0, 2},
+        {-1, 0, 1}
+    };
 
     //assgin Gy kernels
-    const int GY[3][3] = {
-                            {-1, -2, -1},
-                            {0, 0, 0},
-                            {1, 2 ,1}
-                         };
+    const int GY[3][3] =
+    {
+        {-1, -2, -1},
+        {0, 0, 0},
+        {1, 2, 1}
+    };
     long temp_Rx = 0;
     long temp_Gx = 0;
     long temp_Bx = 0;
@@ -256,21 +258,21 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
     {
         for (int j = -1; j <= 1; j++)
         {
-                if (c == 'r')
-                {
-                    temp_Rx = temp_Rx + GX[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtRed;
-                    temp_Ry = temp_Ry + GY[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtRed;
-                }
-                if (c == 'g')
-                {
-                    temp_Gx = temp_Gx + GX[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtGreen;
-                    temp_Gy = temp_Gy + GY[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtGreen;
-                }
-                if (c == 'b')
-                {
-                    temp_Bx = temp_Bx + GX[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtBlue;
-                    temp_By = temp_By + GY[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtBlue;
-                }
+            if (c == 'r')
+            {
+                temp_Rx = temp_Rx + GX[i + 1][j + 1] * image[cur_x + i][cur_y + j].rgbtRed;
+                temp_Ry = temp_Ry + GY[i + 1][j + 1] * image[cur_x + i][cur_y + j].rgbtRed;
+            }
+            if (c == 'g')
+            {
+                temp_Gx = temp_Gx + GX[i + 1][j + 1] * image[cur_x + i][cur_y + j].rgbtGreen;
+                temp_Gy = temp_Gy + GY[i + 1][j + 1] * image[cur_x + i][cur_y + j].rgbtGreen;
+            }
+            if (c == 'b')
+            {
+                temp_Bx = temp_Bx + GX[i + 1][j + 1] * image[cur_x + i][cur_y + j].rgbtBlue;
+                temp_By = temp_By + GY[i + 1][j + 1] * image[cur_x + i][cur_y + j].rgbtBlue;
+            }
         }
     }
     double result;
