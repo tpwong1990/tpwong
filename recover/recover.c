@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-bool find_jpeg(int x_1, int x_2, int x_3);
+typedef uint8_t BYTE;
+bool find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3);
 
 int main(int argc, char *argv[])
 {
