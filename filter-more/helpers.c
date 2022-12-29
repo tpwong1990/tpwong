@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int sobel (int height, int width, RGBTRIPLE image[height][width], char c);
+int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int cur_y, char c);
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -221,9 +221,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int l = 1; l <= width; l++)
         {
-            image[k - 1][l - 1].rgbtRed = sobel (height + 2, width + 2, image_dump, k, l, "r");
-            image[k - 1][l - 1].rgbtGreen = sobel (height + 2, width + 2, image_dump, k, l, "g");
-            image[k - 1][l - 1].rgbtBlue = sobel (height + 2, width + 2, image_dump, k, l, "b");
+            image[k - 1][l - 1].rgbtRed = sobel (height + 2, width + 2, image_dump, k, l, 'r');
+            image[k - 1][l - 1].rgbtGreen = sobel (height + 2, width + 2, image_dump, k, l, 'g');
+            image[k - 1][l - 1].rgbtBlue = sobel (height + 2, width + 2, image_dump, k, l, 'b');
         }
     }
     return;
@@ -271,9 +271,10 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
                 }
         }
     }
+    int result;
     if (c == 'r')
     {
-        int result = round(sqrt(temp_Rx * temp_Rx + temp_Ry * temp_Ry));
+        result = round(sqrt(temp_Rx * temp_Rx + temp_Ry * temp_Ry));
         if (result > 255)
         {
             result = 255;
@@ -281,7 +282,7 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
     }
     if (c == 'g')
     {
-        int result = round(sqrt(temp_Gx * temp_Gx + temp_Gy * temp_Gy));
+        result = round(sqrt(temp_Gx * temp_Gx + temp_Gy * temp_Gy));
         if (result > 255)
         {
             result = 255;
@@ -289,7 +290,7 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
     }
     if (c == 'b')
     {
-        int result = round(sqrt(temp_Bx * temp_Bx + temp_By * temp_By));
+        result = round(sqrt(temp_Bx * temp_Bx + temp_By * temp_By));
         if (result > 255)
         {
             result = 255;
