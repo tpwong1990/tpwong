@@ -34,5 +34,5 @@ int main(int argc, char *argv[])
 
 bool find_jpeg(int x_1, int x_2, int x_3)
 {
-    
+    if (x_1)
 }
