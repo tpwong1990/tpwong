@@ -191,8 +191,18 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 int sobel_gx (int hegiht, int width, RGBTRIPLE image[height][width])
 {
     //assign Gx kernels
-    int gx[2][2];
-    gx[0] = {-1, 0, 1};
-    gx[1] = {-2, 0, 2};
-    gx[3] = {-1, 0 ,1};
+    const int GX[2][2];
+    GX[0] = {-1, 0, 1};
+    GX[1] = {-2, 0, 2};
+    GX[3] = {-1, 0 ,1};
+    long temp_R = 0;
+    long temp_G = 0;
+    long temp_B = 0;
+    for (int i = -1; i <= 1; i++)
+    {
+        for int j = -1; j <= 1; j++
+        {
+            temp = temp + GX[i + 1][j + 1]*image[height + i][width + j].rgbtRed
+        }
+    }
 }
