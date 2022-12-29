@@ -202,7 +202,9 @@ int sobel_gx (int hegiht, int width, RGBTRIPLE image[height][width])
     {
         for int j = -1; j <= 1; j++
         {
-            temp = temp + GX[i + 1][j + 1]*image[height + i][width + j].rgbtRed
+            temp_R = temp_R + GX[i + 1][j + 1]*image[height + i][width + j].rgbtRed;
+            temp_G = temp_G + GX[i + 1][j + 1]*image[height + i][width + j].rgbtGreen;
+            temp_B = temp_B + GX[i + 1][j + 1]*image[height + i][width + j].rgbtBlue;
         }
     }
 }
