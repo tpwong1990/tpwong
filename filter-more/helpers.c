@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int sobel (int hegiht, int width, RGBTRIPLE image[height][width]);
+int sobel (int height, int width, RGBTRIPLE image[height][width]);
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
