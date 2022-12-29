@@ -1,6 +1,8 @@
 #include "helpers.h"
 #include <stdio.h>
 
+int sobel_gx (int hegiht, int width, RGBTRIPLE image[height][width]);
+
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -184,4 +186,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     return;
+}
+
+int sobel_gx (int hegiht, int width, RGBTRIPLE image[height][width])
+{
+    //assign Gx kernels
+    int gx[2][2];
+    gx[0] = {-1, 0, 1};
+    gx[1] = {-2, 0, 2};
+    gx[3] = {-1, 0 ,1};
 }
