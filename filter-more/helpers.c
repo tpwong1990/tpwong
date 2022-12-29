@@ -222,21 +222,18 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 int sobel (int height, int width, RGBTRIPLE image[height][width])
 {
     //assign Gx kernels
-    int GX[2][2];
-    GX[0][0] = -1;
-    GX[0][1] = 0;
-    GX[0][2] = -1;
-    GX[1][0] = -2;
-    GX[1][1] = 0;
-    GX[1][2] = 2;
-    GX[2][0] = -1;
-    GX[2][1] = 0;
-    GX[2][2] = 1;
+    const int GX[2][2] = {
+                            {-1, 0, 1},
+                            {-2, 0, 2},
+                            {-1, 0, 1}
+                         };
+
     //assgin Gy kernels
-    int GY[2][2];
-    GY[0] = {-1, -2, -1};
-    GY[1] = {0, 0, 0};
-    GY[3] = {1, 2 ,1};
+    const int GY[2][2] = {
+                            {-1, -2, -1},
+                            {0, 0, 0},
+                            {1, 2 ,1}
+                         };
     long temp_Rx = 0;
     long temp_Gx = 0;
     long temp_Bx = 0;
