@@ -1,4 +1,5 @@
 #include "helpers.h"
+#include <stdio.h>
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -60,6 +61,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int l = -1; l <= 1; l++)
                 {
+                    printf("i: %i j: %i\n", i, j);
+                    printf("k: %i l: %i\n", k, l);
                     temp_R = temp_R + image[i + k][j + l].rgbtRed;
                     temp_G = temp_G + image[i + k][j + l].rgbtGreen;
                     temp_B = temp_B + image[i + k][j + l].rgbtBlue;
