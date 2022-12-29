@@ -87,7 +87,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     //lower-left corners
                     if (i == height - 1 && j == 0)
                     {
-                        if (k == -1 && l == 0) || (k == -1 && l == 1) || (k == 0 && l)
+                        if (k == -1 && l == 0) || (k == -1 && l == 1) || (k == 0 && l == 0) || (k == 0 && l == 1)
                         {
                             temp_R = temp_R + image[i + k][j + l].rgbtRed;
                             temp_G = temp_G + image[i + k][j + l].rgbtGreen;
