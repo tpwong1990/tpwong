@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     //Read file and find JPEG signatures
     const int FAT_size = 512;
     int block_count = 0
-    While ()
+    while (fread(buffer, 1, BLOCK_SIZE, raw_file) == FAT_size)
     {
         //read first 3 bytes
         if (find_jpeg(a, b, c) == true)
