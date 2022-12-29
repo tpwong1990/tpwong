@@ -273,7 +273,7 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
     }
     if (c == 'r')
     {
-        int result = rount(sqrt(temp_Rx * temp_Rx + temp_Ry * temp_Ry));
+        int result = round(sqrt(temp_Rx * temp_Rx + temp_Ry * temp_Ry));
         if (result > 255)
         {
             result = 255;
@@ -281,7 +281,7 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
     }
     if (c == 'g')
     {
-        int result = rount(sqrt(temp_Gx * temp_Gx + temp_Gy * temp_Gy));
+        int result = round(sqrt(temp_Gx * temp_Gx + temp_Gy * temp_Gy));
         if (result > 255)
         {
             result = 255;
@@ -289,7 +289,7 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
     }
     if (c == 'b')
     {
-        int result = rount(sqrt(temp_Bx * temp_Bx + temp_By * temp_By));
+        int result = round(sqrt(temp_Bx * temp_Bx + temp_By * temp_By));
         if (result > 255)
         {
             result = 255;
