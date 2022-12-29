@@ -18,6 +18,15 @@ int main(int argc, char *argv[])
         printf("Could not open %s.\n", image_name);
         return 1;
     }
-    //Read file and find JPEG 
+    //Read file and find JPEG signatures
+    const int FAT_size = 512;
+    While ()
+    {
+        //read first 3 bytes
+        for (int i = 0; i <= 2, i++)
+        {
+
+        }
+    }
     fclose(inptr);
 }
