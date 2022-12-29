@@ -64,9 +64,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 }
             }
             //assgin the averaged value to image_dump
-            image_dump[i][j].rgbtRed = temp_R / 9;
-            image_dump[i][j].rgbtGreen = temp_G / 9;
-            image_dump[i][j].rgbtBlue = temp_B / 9;
+            image_dump[i][j].rgbtRed = temp_R / 10;
+            image_dump[i][j].rgbtGreen = temp_G / 10;
+            image_dump[i][j].rgbtBlue = temp_B / 10;
         }
     }
 
