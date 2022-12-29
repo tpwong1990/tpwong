@@ -160,11 +160,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     }
                 }
             }
-        }
             //assgin the averaged value to image_dump
             dump_R[i][j] = temp_R / ave_counter;
             dump_G[i][j] = temp_G / ave_counter;
             dump_B[i][j] = temp_B / ave_counter;
+        }
     }
 
     // paste image_dump to image
