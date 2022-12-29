@@ -57,9 +57,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width ; j++)
         {
-            long temp_R = 0;
-            long temp_G = 0;
-            long temp_B = 0;
+            double temp_R = 0;
+            double temp_G = 0;
+            double temp_B = 0;
             int ave_counter = 0;
             //average neighboring pixels
             for (int k = -1; k <= 1; k++)
@@ -165,9 +165,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 }
             }
             //assgin the averaged value to image_dump
-            dump_R[i][j] = round(temp_R / ave_counter);
-            dump_G[i][j] = round(temp_G / ave_counter);
-            dump_B[i][j] = round(temp_B / ave_counter);
+            dump_R[i][j] = round(temp_R / (double) ave_counter);
+            dump_G[i][j] = round(temp_G / (double) ave_counter);
+            dump_B[i][j] = round(temp_B / (double) ave_counter);
         }
     }
 
