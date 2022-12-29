@@ -264,7 +264,36 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
                     temp_Gx = temp_Gx + GX[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtGreen;
                     temp_Gy = temp_Gy + GY[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtGreen;
                 }
+                if (c == 'b')
+                {
+                    temp_Bx = temp_Bx + GX[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtBlue;
+                    temp_By = temp_By + GY[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtBlue;
+                }
         }
     }
-    return 0;
+    if (c == 'r')
+    {
+        int result = rount(sqrt(temp_Rx * temp_Rx + temp_Ry * temp_Ry));
+        if (result > 255)
+        {
+            result = 255;
+        }
+    }
+    if (c == 'g')
+    {
+        int result = rount(sqrt(temp_Gx * temp_Gx + temp_Gy * temp_Gy));
+        if (result > 255)
+        {
+            result = 255;
+        }
+    }
+    if (c == 'b')
+    {
+        int result = rount(sqrt(temp_Bx * temp_Bx + temp_By * temp_By));
+        if (result > 255)
+        {
+            result = 255;
+        }
+    }
+    return result;
 }
