@@ -1,6 +1,7 @@
 #include "helpers.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int cur_y, char c);
 
@@ -271,10 +272,10 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
                 }
         }
     }
-    int result;
+    double result;
     if (c == 'r')
     {
-        result = round(sqrt(temp_Rx * temp_Rx + temp_Ry * temp_Ry));
+        result = sqrt(temp_Rx * temp_Rx + temp_Ry * temp_Ry);
         if (result > 255)
         {
             result = 255;
@@ -282,7 +283,7 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
     }
     if (c == 'g')
     {
-        result = round(sqrt(temp_Gx * temp_Gx + temp_Gy * temp_Gy));
+        result = sqrt(temp_Gx * temp_Gx + temp_Gy * temp_Gy);
         if (result > 255)
         {
             result = 255;
@@ -290,11 +291,11 @@ int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int
     }
     if (c == 'b')
     {
-        result = round(sqrt(temp_Bx * temp_Bx + temp_By * temp_By));
+        result = sqrt(temp_Bx * temp_Bx + temp_By * temp_By);
         if (result > 255)
         {
             result = 255;
         }
     }
-    return result;
+    return round(result);
 }
