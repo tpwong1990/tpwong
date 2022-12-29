@@ -1,5 +1,6 @@
 #include "helpers.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int sobel (int hegiht, int width, RGBTRIPLE image[height][width]);
 
@@ -215,7 +216,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     return;
 }
 
-int sobel (int hegiht, int width, RGBTRIPLE image[height][width])
+int sobel (int height, int width, RGBTRIPLE image[height][width])
 {
     //assign Gx kernels
     const int GX[2][2];
@@ -236,33 +237,10 @@ int sobel (int hegiht, int width, RGBTRIPLE image[height][width])
     int dump_R = 0;
     int dump_G = 0;
     int dump_B = 0;
-    for (int k = -1; i <= 1; i++)
-    {
-        for (int l = -1; j <= 1; j++)
-        {
-            //upper-left corners
-            if (height == 0 && width == 0)
-            {
-                if (((k == 0 && l == 0) || (k == 0 && l == 1)) || ((k == 1 && l == 0) || (k == 1 && l == 1)))
-                {
-                    dump_R = image[height + k][width + l].rgbtRed;
-                    dump_G = image[height + k][width + l].rgbtGreen;
-                    dump_B = image[height + k][width + l].rgbtBlue;
-                }
-                else
-                {
-                    dump_R = 0;
-                    dump_G = 0;
-                    dump_B = 0;
-                }
-
-            }
             temp_Rx = temp_Rx + GX[k + 1][l + 1]*dump_R;
             temp_Gx = temp_Gx + GX[k + 1][l + 1]*dump_G;
             temp_Bx = temp_Bx + GX[k + 1][l + 1]*dump_B;
             temp_Ry = temp_Ry + GY[k + 1][l + 1]*dump_R;
             temp_Gy = temp_Gy + GY[k + 1][l + 1]*dump_G;
             temp_By = temp_By + GY[k + 1][l + 1]*dump_B;
-        }
-    }
 }
