@@ -190,12 +190,15 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     RGBTRIPLE(*image_dump)[width+2] = calloc(height + 2, (width + 2)* sizeof(RGBTRIPLE));
 
     //Assign black value to the edge of the image_dump
-    image_dump[0].rgbtRed = 0;
-    image_dump[0].rgbtGreen = 0;
-    image_dump[0].rgbtBlue = 0;
-    image_dump[height + 1].rgbtRed = 0;
-    image_dump[height + 1].rgbtGreen = 0;
-    image_dump[height + 1].rgbtBlue = 0;
+    for (int l = 0; l <= width + 1; l++)
+    {
+        image_dump[0][l].rgbtRed = 0;
+        image_dump[0][l].rgbtGreen = 0;
+        image_dump[0][l].rgbtBlue = 0;
+        image_dump[height + 1][l].rgbtRed = 0;
+        image_dump[height + 1][l].rgbtGreen = 0;
+        image_dump[height + 1][l].rgbtBlue = 0;
+    }
     for (int k = 0; k <= height + 1; k++)
     {
         image_dump[k][0].rgbtRed = 0;
@@ -219,12 +222,18 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 int sobel (int height, int width, RGBTRIPLE image[height][width])
 {
     //assign Gx kernels
-    const int GX[2][2];
-    GX[0] = {-1, 0, 1};
-    GX[1] = {-2, 0, 2};
-    GX[3] = {-1, 0 ,1};
+    int GX[2][2];
+    GX[0][0] = -1;
+    GX[0][1] = 0;
+    GX[0][2] = -1;
+    GX[1][0] = -2;
+    GX[1][1] = 0;
+    GX[1][2] = 2;
+    GX[2][0] = -1;
+    GX[2][1] = 0;
+    GX[2][2] = 1;
     //assgin Gy kernels
-    const int GY[2][2];
+    int GY[2][2];
     GY[0] = {-1, -2, -1};
     GY[1] = {0, 0, 0};
     GY[3] = {1, 2 ,1};
