@@ -53,12 +53,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 1; j < width - 1; j++)
         {
-            BYTE temp_R;
-            BYTE temp_G;
-            BYTE temp_B;
-            temp_R = 0;
-            temp_G = 0;
-            temp_B = 0;
+            BYTE temp_R = 0;
+            BYTE temp_G = 0;
+            BYTE temp_B = 0;
 
             //average neighboring pixels
             for (int k = -1; k <= 1; k++)
