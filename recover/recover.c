@@ -9,4 +9,5 @@ int main(int argc, char *argv[])
         printf("Usage: ./name of a forensic image\n");
         return 1;
     }
+    char *for_image = argv[optind];
 }
