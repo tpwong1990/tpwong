@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int sobel (int height, int width, RGBTRIPLE image[height][width]);
+int sobel (int height, int width, RGBTRIPLE image[height][width], char c);
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -216,20 +216,30 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             image_dump[k][l] = image[k - 1][l - 1];
         }
     }
+    // calucate the edge value
+    for (int k = 1; k <= height; k++)
+    {
+        for (int l = 1; l <= width; l++)
+        {
+            image[k - 1][l - 1].rgbtRed = sobel (height + 2, width + 2, image_dump, k, l, "r");
+            image[k - 1][l - 1].rgbtGreen = sobel (height + 2, width + 2, image_dump, k, l, "g");
+            image[k - 1][l - 1].rgbtBlue = sobel (height + 2, width + 2, image_dump, k, l, "b");
+        }
+    }
     return;
 }
 
-int sobel (int height, int width, RGBTRIPLE image[height][width])
+int sobel (int height, int width, RGBTRIPLE image[height][width], int cur_x, int cur_y, char c)
 {
     //assign Gx kernels
-    const int GX[2][2] = {
+    const int GX[3][3] = {
                             {-1, 0, 1},
                             {-2, 0, 2},
                             {-1, 0, 1}
                          };
 
     //assgin Gy kernels
-    const int GY[2][2] = {
+    const int GY[3][3] = {
                             {-1, -2, -1},
                             {0, 0, 0},
                             {1, 2 ,1}
@@ -240,13 +250,21 @@ int sobel (int height, int width, RGBTRIPLE image[height][width])
     long temp_Ry = 0;
     long temp_Gy = 0;
     long temp_By = 0;
-    int dump_R = 0;
-    int dump_G = 0;
-    int dump_B = 0;
-            temp_Rx = temp_Rx + GX[k + 1][l + 1]*dump_R;
-            temp_Gx = temp_Gx + GX[k + 1][l + 1]*dump_G;
-            temp_Bx = temp_Bx + GX[k + 1][l + 1]*dump_B;
-            temp_Ry = temp_Ry + GY[k + 1][l + 1]*dump_R;
-            temp_Gy = temp_Gy + GY[k + 1][l + 1]*dump_G;
-            temp_By = temp_By + GY[k + 1][l + 1]*dump_B;
+    for (int i = -1; i <= 1; i++)
+    {
+        for (int j = -1; j <= 1; j++)
+        {
+                if (c == 'r')
+                {
+                    temp_Rx = temp_Rx + GX[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtRed;
+                    temp_Ry = temp_Ry + GY[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtRed;
+                }
+                if (c == 'g')
+                {
+                    temp_Gx = temp_Gx + GX[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtGreen;
+                    temp_Gy = temp_Gy + GY[i + 1][j + 1]*image[cur_x + i][cur_y + j].rgbtGreen;
+                }
+        }
+    }
+    return 0;
 }
