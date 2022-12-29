@@ -85,7 +85,10 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         }
                     }
                     //lower-left corners
-                    if (i == 0 && j == width -1)
+                    if (i == height - 1 && j == width -1)
+                    {
+                        if (k)
+                    }
                 }
             }
         }
