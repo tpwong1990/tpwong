@@ -1,5 +1,4 @@
 #include "helpers.h"
-#include <stdlib.h>
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -43,8 +42,11 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    //allocate dump image memory
-    RGBTRIPLE(*image_dump)[width] = calloc(height, width * sizeof(RGBTRIPLE));
+    //allocate dump image 2d array
+    BYTE dump_R[height][width];
+    BYTE dump_G[height][width];
+    BYTE dump_B[height][width];
+
     //Blur the image
     for (int i = 1; i < height - 1; i++)
     {
@@ -64,9 +66,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 }
             }
             //assgin the averaged value to image_dump
-            image_dump[i][j].rgbtRed = temp_R / 10;
-            image_dump[i][j].rgbtGreen = temp_G / 10;
-            image_dump[i][j].rgbtBlue = temp_B / 10;
+            dump_R[i][j] = temp_R / 10;
+            dump_G[i][j] = temp_G / 10;
+            dump_B[i][j] = temp_B / 10;
         }
     }
 
@@ -75,9 +77,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 1; j < width - 1; j++)
         {
-            image[i][j].rgbtRed = image_dump[i][j].rgbtRed;
-            image[i][j].rgbtGreen = image_dump[i][j].rgbtGreen;
-            image[i][j].rgbtBlue = image_dump[i][j].rgbtBlue;
+            image[i][j].rgbtRed = dump_R[i][j];
+            image[i][j].rgbtGreen = dump_G[i][j];
+            image[i][j].rgbtBlue = dump_B[i][j];
         }
     }
     return;
