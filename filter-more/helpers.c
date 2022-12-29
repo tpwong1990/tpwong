@@ -1,7 +1,7 @@
 #include "helpers.h"
 #include <stdio.h>
 
-int sobel_gx (int hegiht, int width, RGBTRIPLE image[height][width]);
+int sobel (int hegiht, int width, RGBTRIPLE image[height][width]);
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -185,26 +185,66 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 // Detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
+    // Allocate memory for image with total height from (-1 to height) and width from (-1 to width)
+    RGBTRIPLE(*image_dump)[width+2] = calloc(height + 2, (width + 2)* sizeof(RGBTRIPLE));
+
+    //Assign black value to the edge of the image_dump
+    image_dump[0].rgbtRed = 0;
+    image_dump[0].rgbtGreen = 0;
+    image_dump[0].rgbtBlue = 0;
+    image_dump[heigth + 1].rgbtRed = 0;
+    image_dump[heigth + 1].rgbt = 0;
     return;
 }
 
-int sobel_gx (int hegiht, int width, RGBTRIPLE image[height][width])
+int sobel (int hegiht, int width, RGBTRIPLE image[height][width])
 {
     //assign Gx kernels
     const int GX[2][2];
     GX[0] = {-1, 0, 1};
     GX[1] = {-2, 0, 2};
     GX[3] = {-1, 0 ,1};
-    long temp_R = 0;
-    long temp_G = 0;
-    long temp_B = 0;
-    for (int i = -1; i <= 1; i++)
+    //assgin Gy kernels
+    const int GY[2][2];
+    GY[0] = {-1, -2, -1};
+    GY[1] = {0, 0, 0};
+    GY[3] = {1, 2 ,1};
+    long temp_Rx = 0;
+    long temp_Gx = 0;
+    long temp_Bx = 0;
+    long temp_Ry = 0;
+    long temp_Gy = 0;
+    long temp_By = 0;
+    int dump_R = 0;
+    int dump_G = 0;
+    int dump_B = 0;
+    for (int k = -1; i <= 1; i++)
     {
-        for int j = -1; j <= 1; j++
+        for (int l = -1; j <= 1; j++)
         {
-            temp_R = temp_R + GX[i + 1][j + 1]*image[height + i][width + j].rgbtRed;
-            temp_G = temp_G + GX[i + 1][j + 1]*image[height + i][width + j].rgbtGreen;
-            temp_B = temp_B + GX[i + 1][j + 1]*image[height + i][width + j].rgbtBlue;
+            //upper-left corners
+            if (height == 0 && width == 0)
+            {
+                if (((k == 0 && l == 0) || (k == 0 && l == 1)) || ((k == 1 && l == 0) || (k == 1 && l == 1)))
+                {
+                    dump_R = image[height + k][width + l].rgbtRed;
+                    dump_G = image[height + k][width + l].rgbtGreen;
+                    dump_B = image[height + k][width + l].rgbtBlue;
+                }
+                else
+                {
+                    dump_R = 0;
+                    dump_G = 0;
+                    dump_B = 0;
+                }
+
+            }
+            temp_Rx = temp_Rx + GX[k + 1][l + 1]*dump_R;
+            temp_Gx = temp_Gx + GX[k + 1][l + 1]*dump_G;
+            temp_Bx = temp_Bx + GX[k + 1][l + 1]*dump_B;
+            temp_Ry = temp_Ry + GY[k + 1][l + 1]*dump_R;
+            temp_Gy = temp_Gy + GY[k + 1][l + 1]*dump_G;
+            temp_By = temp_By + GY[k + 1][l + 1]*dump_B;
         }
     }
 }
