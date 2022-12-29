@@ -57,26 +57,42 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             long temp_G = 0;
             long temp_B = 0;
             int ave_counter = 0;
-            if (j != 0 && j != width - 1)
+            //average neighboring pixels
+            for (int k = -1; k <= 1; k++)
             {
-                //average neighboring pixels
-                for (int k = -1; k <= 1; k++)
+                for (int l = -1; l <= 1; l++)
                 {
-                    for (int l = -1; l <= 1; l++)
+                    // up-left corners
+                    if (i == 0 && j == 0)
                     {
-                        if (i)
-                        temp_R = temp_R + image[i + k][j + l].rgbtRed;
-                        temp_G = temp_G + image[i + k][j + l].rgbtGreen;
-                        temp_B = temp_B + image[i + k][j + l].rgbtBlue;
-                        ave_counter++;
+                        if (k != -1 || l != -1)
+                        {
+                            temp_R = temp_R + image[i + k][j + l].rgbtRed;
+                            temp_G = temp_G + image[i + k][j + l].rgbtGreen;
+                            temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                            ave_counter++;
+                        }
                     }
+                    // up-right corners
+                    if (i == 0 && j == width -1)
+                    {
+                        if (k != -1 || l != 1)
+                        {
+                            temp_R = temp_R + image[i + k][j + l].rgbtRed;
+                            temp_G = temp_G + image[i + k][j + l].rgbtGreen;
+                            temp_B = temp_B + image[i + k][j + l].rgbtBlue;
+                            ave_counter++;
+                        }
+                    }
+                    //lower-left corners
+                    if (i == 0 && j == width -1)
                 }
             }
+        }
             //assgin the averaged value to image_dump
             dump_R[i][j] = temp_R / ave_counter;
             dump_G[i][j] = temp_G / ave_counter;
             dump_B[i][j] = temp_B / ave_counter;
-        }
     }
 
     // paste image_dump to image
