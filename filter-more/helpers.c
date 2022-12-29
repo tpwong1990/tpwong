@@ -170,9 +170,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     }
 
     // paste image_dump to image
-    for (int i = 1; i < height - 1; i++)
+    for (int i = 0; i < height; i++)
     {
-        for (int j = 1; j < width - 1; j++)
+        for (int j = 0; j < width; j++)
         {
             image[i][j].rgbtRed = dump_R[i][j];
             image[i][j].rgbtGreen = dump_G[i][j];
@@ -192,8 +192,26 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     image_dump[0].rgbtRed = 0;
     image_dump[0].rgbtGreen = 0;
     image_dump[0].rgbtBlue = 0;
-    image_dump[heigth + 1].rgbtRed = 0;
-    image_dump[heigth + 1].rgbt = 0;
+    image_dump[height + 1].rgbtRed = 0;
+    image_dump[height + 1].rgbtGreen = 0;
+    image_dump[height + 1].rgbtBlue = 0;
+    for (int k = 0; k <= height + 1; k++)
+    {
+        image_dump[k][0].rgbtRed = 0;
+        image_dump[k][0].rgbtGreen = 0;
+        image_dump[k][0].rgbtBlue = 0;
+        image_dump[k][width + 1].rgbtRed = 0;
+        image_dump[k][width + 1].rgbtGreen = 0;
+        image_dump[k][width + 1].rgbtBlue = 0;
+    }
+    // put the ori image into image_dump
+    for(int k = 1; k <= height; k++)
+    {
+        for(int l = 1; l <= width; l++)
+        {
+            image_dump[k][l] = image[k - 1][l - 1];
+        }
+    }
     return;
 }
 
