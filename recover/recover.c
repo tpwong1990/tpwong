@@ -25,11 +25,12 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    int block_count = 0;
     int jpeg_count = 0;
     int writing_status = 0;
+
     //allocate memory for buffer
     BYTE *buffer = malloc(FAT_size);
+
     //Read file and find JPEG signatures
     while (fread(buffer, 1, FAT_size, image_in) == FAT_size)
     {
@@ -42,6 +43,7 @@ int main(int argc, char *argv[])
             writing_status = 1;
         }
         else
+        {
             if ((jpeg_found == 1) && writing_status == 1)
             {
                 jpeg_count++;
@@ -56,8 +58,7 @@ int main(int argc, char *argv[])
                     writing_status = 1;
                 }
             }
-
-        block_count++;
+        }
     }
     free(buffer);
     fclose(image_in);
