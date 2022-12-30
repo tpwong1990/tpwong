@@ -22,7 +22,6 @@ int main(int argc, char *argv[])
         return 1;
     }
     //record the size of input image
-    long size_image_in = sizeof(*image_in);
     //Read file and find JPEG signatures
     const int FAT_size = 512;
     int block_count = 0;
@@ -82,7 +81,7 @@ int main(int argc, char *argv[])
 
 int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
 {
-    if ((x_1 == 255 && x_2 == 216 && x_3 == 255) && (x_4 >= 224 && x_4 <= 239))
+    if ((x_1 ==  && x_2 == 216 && x_3 == 255) && (x_4 >= 224 && x_4 <= 239))
     {
         return 0;
     }
