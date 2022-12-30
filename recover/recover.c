@@ -22,21 +22,19 @@ int main(int argc, char *argv[])
         printf("Could not open %s.\n", image_name);
         return 1;
     }
-    //record the size of input image
-    //Read file and find JPEG signatures
+
     const int FAT_size = 512;
     int block_count = 0;
     int jpeg_count = 0;
-    //while (status == 1)
-    //{}
-        int read_count = 0;
-        //allocate memory for buffer
-        BYTE *buffer = malloc(512);
-        int status = 0;
+    int writing_status = 0;
+
+    //allocate memory for buffer
+    BYTE *buffer = malloc(512);
+    //Read file and find JPEG signatures
     while (fread(buffer, 1, FAT_size, &image_in[block_count * FAT_size]) == FAT_size)
     {
         //check if it is jpeg
-        if (find_jpeg(buffer[0], buffer[1], buffer[2], buffer[3]) == 0)
+        if (find_jpeg(buffer[0], buffer[1], buffer[2], buffer[3]) == 0) || (writing_status == 1)
         {
             jpeg_count++;
             //continue to read
@@ -47,15 +45,15 @@ int main(int argc, char *argv[])
 
             //write data to fout
             fwrite(buffer, 1, FAT_size, image_out);
+            writing_status = 1;
         }
         else
         {
             free(buffer);
-            break;
-            return 1;
         }
+        block_count++;
     }
-    block_count++;
+
 
 
 
