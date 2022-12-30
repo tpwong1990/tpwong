@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     BYTE2 sample[1];
     while (fread(sample, sizeof(BYTE2), 1, input) != 0)
     {
-        sample[0] = round(sample[0] * factor);
+        sample[0] = sample[0] * factor;
         fwrite(sample, sizeof(BYTE2), 1, output);
     }
     // Close files
