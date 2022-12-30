@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     {
         int jpeg_found = find_jpeg(buffer[0], buffer[1], buffer[2], buffer[3]);
         //check if it is jpeg
-        if ((jpeg_found == 0) && (writing_status == 0))
+        if ((jpeg_found == 1) && (writing_status == 0))
         {
             jpeg_count++;
             //open file for jpeg
@@ -48,8 +48,21 @@ int main(int argc, char *argv[])
             writing_status = 1;
             fclose(image_out);
         }
-        if (jpeg_found == 1 && (writing_status == 1))
+        if (jpeg_found == 0 && (writing_status == 1))
         {
+            string fout = NULL;
+            sprintf(fout, "03%i.jpg", jpeg_count - 1);
+            FILE *image_out = fopen(fout, "a");
+
+            //write data to fout
+            fwrite(buffer, 1, FAT_size, image_out);
+            writing_status = 1;
+            fclose(image_out);
+        }
+        if ((jpeg_found == 1) && (writing_status == 1))
+        {
+            jpeg_count++;
+            //open file for jpeg
             string fout = NULL;
             sprintf(fout, "03%i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "w");
@@ -57,10 +70,10 @@ int main(int argc, char *argv[])
             //write data to fout
             fwrite(buffer, 1, FAT_size, image_out);
             writing_status = 1;
+            fclose(image_out);
         }
         block_count++;
     }
-    fclose(image_out);
     fclose(image_in);
     free(buffer);
 }
@@ -69,10 +82,10 @@ int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
 {
     if ((x_1 == 0xff && x_2 == 0xd8 && x_3 == 0xff) && ((x_4 & 0xf0) == 0xe0))
     {
-        return 0;
+        return 1;
     }
     else
     {
-        return 1;
+        return 0;
     }
 }
