@@ -27,7 +27,9 @@ int main(int argc, char *argv[])
     int block_count = 0;
     BYTE temp;
     int read_count = 0;
-    while (fread(temp, 1, FAT_size, image_in) == FAT_size)
+    //allocate memory for buffer
+    *buffer = malloc(512);
+    while (fread(buffer, 1, FAT_size, image_in) == FAT_size)
     {
         read_count++;
         if (read_count == 1)
