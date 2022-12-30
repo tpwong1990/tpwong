@@ -71,8 +71,6 @@ int main(int argc, char *argv[])
             writing_status = 1;
             fclose(image_out);
         }
-        printf("jpg count: %i\n", jpeg_count);
-        printf("block count: %i\n", block_count);
         block_count++;
     }
     fclose(image_in);
