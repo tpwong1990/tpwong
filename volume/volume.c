@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef uint8_t BYTE;
 typedef int16_t BYTE2;
@@ -45,8 +46,9 @@ int main(int argc, char *argv[])
     BYTE2 sample[1];
     while (fread(sample, 1, 1, input) != 0)
     {
-        sample[0] = sample[0] * factor;
-        //printf("%li\n", temp_l);
+        long temp_l = round(sample[0] * factor);
+        printf("%li\n", temp_l);
+        sample[0] = temp_l;
         fwrite(sample, 1, 1, output);
     }
     // Close files
