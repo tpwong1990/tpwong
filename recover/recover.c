@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 typedef uint8_t BYTE;
-bool find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3);
+bool find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4);
 
 int main(int argc, char *argv[])
 {
@@ -41,11 +42,21 @@ int main(int argc, char *argv[])
         {
             BYTE temp_3rd = temp;
         }
-        //read first 3 bytes
-        if (find_jpeg(temp_1st, temp_2nd, temp_3rd) == true)
+        if (read_count == 4)
         {
+            BYTE temp_4th = temp;
+        }
+        //read first 4 bytes
+        if (find_jpeg(temp_1st, temp_2nd, temp_3rd, temp_4th) == true)
+        {
+            //continue to read
             //allocate memory for image
-            *image_out = malloc();
+            *image_out = malloc(512);
+            //store the first 4 bytes to memory
+            image_out[0] = temp_1st;
+            image_out[1] = temp_2nd;
+            image_out[2] = temp_3rd;
+            image_out[3] = temp_4th;
         }
         else
         {
@@ -57,9 +68,9 @@ int main(int argc, char *argv[])
     fclose(inptr);
 }
 
-bool find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3)
+bool find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
 {
-    if (x_1 == 255 && x_2 == 216 && x_3 == 255)
+    if ((x_1 == 255 && x_2 == 216 && x_3 == 255) && (x_4 >= 224 && x_4 <= 239))
     {
         return true;
     }
