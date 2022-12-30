@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
         return 1;
     }
     char *image_name = argv[1];
-
     //open file
     FILE *image_in = fopen(image_name, "r");
     if (image_in == NULL)
@@ -22,11 +21,13 @@ int main(int argc, char *argv[])
         printf("Could not open %s.\n", image_name);
         return 1;
     }
+    //record the size of input image
+    long size_image_in = sizeof(image_in);
     //Read file and find JPEG signatures
     const int FAT_size = 512;
     int block_count = 0;
-    while (status == 1)
-    {}
+    //while (status == 1)
+    //{}
         int read_count = 0;
         //allocate memory for buffer
         BYTE *buffer = malloc(512);
