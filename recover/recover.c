@@ -38,18 +38,16 @@ int main(int argc, char *argv[])
         if (jpeg_found == 1)
         {
             jpeg_count++;
-            //extract_image(jpeg_count, buffer);
-            //open file for jpeg
             char *fout = malloc(8);
             sprintf(fout, "%03i.jpg", jpeg_count - 1);
-            FILE *image_out = fopen(fout, "w");
+            FILE *image_out = fopen(fout, "a");
+            if (image_out != NULL)
+            {
+                fwrite(buffer, 1, FAT_size, image_out);
+            }
+            free(fout);
+            fclose(image_out);
         }
-        if (image_out != NULL)
-        {
-            fwrite(buffer, 1, FAT_size, image_out);
-        }
-        free(fout);
-        fclose(image_out);
         block_count++;
     }
     free(buffer);
