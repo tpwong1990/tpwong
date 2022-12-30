@@ -42,13 +42,25 @@ int main(int argc, char *argv[])
             BYTE temp_3rd = temp;
         }
         //read first 3 bytes
-        if (find_jpeg(a, b, c) == true)
+        if (find_jpeg(temp_1st, temp_2nd, temp_3rd) == true)
         {}
+        else
+        {
+            return 1;
+        }
+
     }
     fclose(inptr);
 }
 
-bool find_jpeg(int x_1, int x_2, int x_3)
+bool find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3)
 {
-    if (x_1)
+    if (x_1 == 255 && x_2 == 216 && x_3 == 255)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
