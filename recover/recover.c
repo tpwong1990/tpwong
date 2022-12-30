@@ -4,6 +4,7 @@
 
 typedef uint8_t BYTE;
 int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4);
+void extract_image(void);
 
 int main(int argc, char *argv[])
 {
