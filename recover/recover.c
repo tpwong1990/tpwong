@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
         return 1;
     }
     //record the size of input image
-    long size_image_in = sizeof(*image_in);
+    long size_image_in = sizeof(&image_in);
     //Read file and find JPEG signatures
     const int FAT_size = 512;
     int block_count = 0;
