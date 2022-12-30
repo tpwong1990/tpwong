@@ -41,9 +41,12 @@ int main(int argc, char *argv[])
             jpeg_count++;
             //continue to read
             //open file for jpeg
-            string fout;
-            sprintf(fout, "03%i.jpg", jpeg_count);
+            string fout = NULL;
+            sprintf(fout, "03%i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "w");
+
+            //write data to fout
+            fwrite(buffer, 1, FAT_size, image_out);
         }
         else
         {
