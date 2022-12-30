@@ -45,7 +45,6 @@ int main(int argc, char *argv[])
     BYTE2 sample[1];
     while (fread(sample, 1, 1, input) != 0)
     {
-        printf("%i\n", sample);
         fwrite(sample, 1, 1, output);
     }
     // Close files
