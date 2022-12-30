@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     int block_count = 0;
     int jpeg_count = 0;
-
+    int writing_status = 0;
     //allocate memory for buffer
     BYTE *buffer = malloc(FAT_size);
     //Read file and find JPEG signatures
@@ -35,20 +35,43 @@ int main(int argc, char *argv[])
     {
         int jpeg_found = find_jpeg(buffer[0], buffer[1], buffer[2], buffer[3]);
         //check if it is jpeg
-        if (jpeg_found == 1)
+        if ((jpeg_found == 1) && writing_status == 0)
         {
             jpeg_count++;
             char *fout = malloc(8);
             sprintf(fout, "%03i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "a");
-
-        }
-        if (image_out != NULL)
-        {
             fwrite(buffer, 1, FAT_size, image_out);
+            free(fout);
+            fclose(image_out);
+            writing_status = 1;
         }
-        free(fout);
-        fclose(image_out);
+        else
+            if ((jpeg_found == 1) && writing_status == 1)
+            {
+                jpeg_count++;
+                char *fout = malloc(8);
+                sprintf(fout, "%03i.jpg", jpeg_count - 1);
+                FILE *image_out = fopen(fout, "a");
+                fwrite(buffer, 1, FAT_size, image_out);
+                free(fout);
+                fclose(image_out);
+                writing_status = 1;
+            }
+            else
+            {
+                if ((jpeg_found == 0) && writing_status == 1)
+                {
+                    char *fout = malloc(8);
+                    sprintf(fout, "%03i.jpg", jpeg_count - 1);
+                    FILE *image_out = fopen(fout, "a");
+                    fwrite(buffer, 1, FAT_size, image_out);
+                    free(fout);
+                    fclose(image_out);
+                    writing_status = 1;
+                }
+            }
+
         block_count++;
     }
     free(buffer);
