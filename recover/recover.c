@@ -25,40 +25,24 @@ int main(int argc, char *argv[])
     //Read file and find JPEG signatures
     const int FAT_size = 512;
     int block_count = 0;
+    int jpeg_count = 0;
     //while (status == 1)
     //{}
         int read_count = 0;
         //allocate memory for buffer
         BYTE *buffer = malloc(512);
-        BYTE temp_1st;
-        BYTE temp_2nd;
-        BYTE temp_3rd;
-        BYTE temp_4th;
         int status = 0;
     while (fread(buffer, 1, FAT_size, &image_in[block_count * FAT_size]) == FAT_size)
     {
-        read_count++;
-        if (read_count == 1)
+        //check if it is jpeg
+        if (find_jpeg(buffer[0], buffer[1], buffer[2], buffer[3]) == 0)
         {
-            temp_1st = buffer[0];
-        }
-        if (read_count == 2)
-        {
-            temp_2nd = buffer[1];
-        }
-        if (read_count == 3)
-        {
-            temp_3rd = buffer[2];
-        }
-        if (read_count == 4)
-        {
-            temp_4th = buffer[3];
-        }
-        //read first 4 bytes
-        if (find_jpeg(temp_1st, temp_2nd, temp_3rd, temp_4th) == 0)
-        {
-            status = 1;
+            jpeg_count++;
             //continue to read
+            //open file for jpeg
+            char *fout;
+            sprintf(*fout, "03%i.jpg", jpeg_count);
+            FILE *image_out = fopen(*fout, "w");
         }
         else
         {
@@ -81,7 +65,7 @@ int main(int argc, char *argv[])
 
 int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
 {
-    if ((x_1 ==  && x_2 == 216 && x_3 == 255) && (x_4 >= 224 && x_4 <= 239))
+    if ((x_1 == 0xff && x_2 == 0xd8 && x_3 == 0xff) && ((x_4 & 0xf0) == 0xe0))
     {
         return 0;
     }
