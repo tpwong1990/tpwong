@@ -29,9 +29,9 @@ int main(int argc, char *argv[])
     int writing_status = 0;
 
     //allocate memory for buffer
-    BYTE *buffer = malloc(512);
+    BYTE *buffer = malloc(FAT_size);
     //Read file and find JPEG signatures
-    while (fread(buffer, 1, FAT_size, &image_in[block_count * FAT_size]) == FAT_size)
+    while (fread(buffer, 1, FAT_size, image_in) == FAT_size)
     {
         int jpeg_found = find_jpeg(buffer[0], buffer[1], buffer[2], buffer[3]);
         //check if it is jpeg
@@ -72,6 +72,8 @@ int main(int argc, char *argv[])
             writing_status = 1;
             fclose(image_out);
         }
+        printf("jpg count: %i\n", jpeg_count);
+        printf("block count: %i\n", block_count);
         block_count++;
     }
     fclose(image_in);
