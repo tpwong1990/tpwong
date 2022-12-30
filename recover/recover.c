@@ -26,8 +26,7 @@ int main(int argc, char *argv[])
     const int FAT_size = 512;
     int block_count = 0;
 
-    while()
-    {
+
         int read_count = 0;
         //allocate memory for buffer
         BYTE *buffer = malloc(512);
@@ -35,7 +34,7 @@ int main(int argc, char *argv[])
         BYTE temp_2nd;
         BYTE temp_3rd;
         BYTE temp_4th;
-    while (fread(buffer, 1, FAT_size, image_in) == FAT_size)
+    while (fread(buffer, 1, FAT_size, image_in[block_count * FAT_size]) == FAT_size)
     {
         read_count++;
         if (read_count == 1)
@@ -66,7 +65,6 @@ int main(int argc, char *argv[])
             return 1;
         }
 
-    }
     }
     fclose(image_in);
 }
