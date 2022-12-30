@@ -44,10 +44,10 @@ int main(int argc, char *argv[])
 
     //Read samples from input file and write updated data to output file
     BYTE2 sample[1];
-    while (fread(sample, 1, 1, input) != 0)
+    while (fread(sample, sizeof(BYTE2), 1, input) != 0)
     {
         sample[0] = round(sample[0] * factor);
-        fwrite(sample, 1, 1, output);
+        fwrite(sample, sizeof(BYTE2), 1, output);
     }
     // Close files
     fclose(input);
