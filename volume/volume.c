@@ -45,8 +45,8 @@ int main(int argc, char *argv[])
     BYTE2 sample[1];
     while (fread(sample, 1, 1, input) != 0)
     {
-        long temp_l = (long) sample[0];
-        printf("%l/n", temp_l);
+        sample[0] = sample[0] * factor;
+        //printf("%li\n", temp_l);
         fwrite(sample, 1, 1, output);
     }
     // Close files
