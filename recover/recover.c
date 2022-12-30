@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 typedef uint8_t BYTE;
-bool find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4);
+int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4);
 
 int main(int argc, char *argv[])
 {
@@ -24,9 +24,9 @@ int main(int argc, char *argv[])
     }
     //Read file and find JPEG signatures
     const int FAT_size = 512;
-    int block_count = 0
+    int block_count = 0;
     BYTE temp;
-    read_count = 0;
+    int read_count = 0;
     while (fread(temp, 1, FAT_size, image_in) == FAT_size)
     {
         read_count++;
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
             BYTE temp_4th = temp;
         }
         //read first 4 bytes
-        if (find_jpeg(temp_1st, temp_2nd, temp_3rd, temp_4th) == true)
+        if (find_jpeg(temp_1st, temp_2nd, temp_3rd, temp_4th) == 0)
         {
             //continue to read
             //allocate memory for image
@@ -68,14 +68,14 @@ int main(int argc, char *argv[])
     fclose(inptr);
 }
 
-bool find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
+int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
 {
     if ((x_1 == 255 && x_2 == 216 && x_3 == 255) && (x_4 >= 224 && x_4 <= 239))
     {
-        return true;
+        return 0;
     }
     else
     {
-        return false;
+        return 1;
     }
 }
