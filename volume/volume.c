@@ -45,8 +45,7 @@ int main(int argc, char *argv[])
     BYTE2 sample[1];
     while (fread(sample, 1, 1, input) != 0)
     {
-        
-        fwrite(sample * factor, 1, 1, output);
+        fwrite(sample, 1, 1, output);
     }
     // Close files
     fclose(input);
