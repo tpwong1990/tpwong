@@ -64,6 +64,7 @@ int main(int argc, char *argv[])
     }
     fclose(image_out);
     fclose(image_in);
+    free(buffer);
 }
 
 int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
