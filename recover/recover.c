@@ -43,20 +43,17 @@ int main(int argc, char *argv[])
             char *fout = malloc(8);
             sprintf(fout, "%03i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "w");
-
-            //write data to fout
-
-            fclose(image_out);
-            writing_status = 1;
         }
         if (image_out != NULL)
         {
             fwrite(buffer, 1, FAT_size, image_out);
         }
+        free(fout);
+        fclose(image_out);
         block_count++;
     }
-    fclose(image_in);
     free(buffer);
+    fclose(image_in);
 }
 
 int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
