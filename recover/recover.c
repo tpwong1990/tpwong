@@ -4,7 +4,7 @@
 
 typedef uint8_t BYTE;
 int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4);
-void extract_image(void);
+void extract_image(int count);
 
 int main(int argc, char *argv[])
 {
@@ -38,39 +38,16 @@ int main(int argc, char *argv[])
         if ((jpeg_found == 1) && (writing_status == 0))
         {
             jpeg_count++;
-            //open file for jpeg
-            char fout[8];
-            sprintf(fout, "%03i.jpg", jpeg_count - 1);
-            FILE *image_out = fopen(fout, "w");
-
-            //write data to fout
-            fwrite(buffer, 1, FAT_size, image_out);
-            writing_status = 1;
-            fclose(image_out);
+            extract_image(jpeg_count);
         }
         if (jpeg_found == 0 && (writing_status == 1))
         {
-             char fout[8];
-            sprintf(fout, "%03i.jpg", jpeg_count - 1);
-            FILE *image_out = fopen(fout, "a");
-
-            //write data to fout
-            fwrite(buffer, 1, FAT_size, image_out);
-            writing_status = 1;
-            fclose(image_out);
+            extract_image(jpeg_count);
         }
         if ((jpeg_found == 1) && (writing_status == 1))
         {
             jpeg_count++;
-            //open file for jpeg
-             char fout[8];
-            sprintf(fout, "%03i.jpg", jpeg_count - 1);
-            FILE *image_out = fopen(fout, "w");
-
-            //write data to fout
-            fwrite(buffer, 1, FAT_size, image_out);
-            writing_status = 1;
-            fclose(image_out);
+            extract_image(jpeg_count);
         }
         block_count++;
     }
@@ -88,4 +65,17 @@ int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
     {
         return 0;
     }
+}
+
+void extract_image(int count)
+{
+    //open file for jpeg
+    char fout[8];
+    sprintf(fout, "%03i.jpg", count - 1);
+    FILE *image_out = fopen(fout, "w");
+
+    //write data to fout
+    fwrite(buffer, 1, FAT_size, image_out);
+    writing_status = 1;
+    fclose(image_out);
 }
