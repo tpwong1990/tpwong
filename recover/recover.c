@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
             jpeg_count++;
             //open file for jpeg
              char fout[8];
-            sprintf(fout, "03%i.jpg", jpeg_count - 1);
+            sprintf(fout, ".3%i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "w");
 
             //write data to fout
