@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <cs50.h>
 
 typedef uint8_t BYTE;
 int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4);
@@ -40,9 +41,9 @@ int main(int argc, char *argv[])
             jpeg_count++;
             //continue to read
             //open file for jpeg
-            char *fout;
-            sprintf(*fout, "03%i.jpg", jpeg_count);
-            FILE *image_out = fopen(*fout, "w");
+            string fout;
+            sprintf(fout, "03%i.jpg", jpeg_count);
+            FILE *image_out = fopen(fout, "w");
         }
         else
         {
