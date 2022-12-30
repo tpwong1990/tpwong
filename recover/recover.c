@@ -46,12 +46,10 @@ int main(int argc, char *argv[])
             //write data to fout
             fwrite(buffer, 1, FAT_size, image_out);
             writing_status = 1;
-        }
-        if (jpeg_found == 0 && (writing_status == 1))
-        {
             fclose(image_out);
-            jpeg_count++;
-            //open file for jpeg
+        }
+        if (jpeg_found == 1 && (writing_status == 1))
+        {
             string fout = NULL;
             sprintf(fout, "03%i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "w");
