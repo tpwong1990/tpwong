@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
         {
             jpeg_count++;
             //open file for jpeg
-            char *fout[8] = NULL;
+            char fout[8];
             sprintf(fout, "03%i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "w");
 
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
         }
         if (jpeg_found == 0 && (writing_status == 1))
         {
-             char *fout[8] = NULL;
+             char fout[8];
             sprintf(fout, "03%i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "a");
 
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
         {
             jpeg_count++;
             //open file for jpeg
-             char *fout[8] = NULL;
+             char fout[8];
             sprintf(fout, "03%i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "w");
 
