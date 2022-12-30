@@ -25,8 +25,8 @@ int main(int argc, char *argv[])
     //Read file and find JPEG signatures
     const int FAT_size = 512;
     int block_count = 0;
-
-
+    while (status == 1)
+    {}
         int read_count = 0;
         //allocate memory for buffer
         BYTE *buffer = malloc(512);
@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
         BYTE temp_2nd;
         BYTE temp_3rd;
         BYTE temp_4th;
+        int status = 0;
     while (fread(buffer, 1, FAT_size, &image_in[block_count * FAT_size]) == FAT_size)
     {
         read_count++;
@@ -56,6 +57,7 @@ int main(int argc, char *argv[])
         //read first 4 bytes
         if (find_jpeg(temp_1st, temp_2nd, temp_3rd, temp_4th) == 0)
         {
+            status = 1;
             //continue to read
         }
         else
@@ -64,8 +66,16 @@ int main(int argc, char *argv[])
             break;
             return 1;
         }
-
     }
+    block_count++;
+
+
+
+
+
+
+
+
     fclose(image_in);
 }
 
