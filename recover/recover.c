@@ -43,9 +43,12 @@ int main(int argc, char *argv[])
         }
         //read first 3 bytes
         if (find_jpeg(temp_1st, temp_2nd, temp_3rd) == true)
-        {}
+        {
+            
+        }
         else
         {
+            break;
             return 1;
         }
 
