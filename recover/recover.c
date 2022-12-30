@@ -38,7 +38,15 @@ int main(int argc, char *argv[])
         if ((jpeg_found == 1) && (writing_status == 0))
         {
             jpeg_count++;
-            extract_image(jpeg_count, buffer);
+            //extract_image(jpeg_count, buffer);
+            //open file for jpeg
+            char fout[8];
+            sprintf(fout, "%03i.jpg", count - 1);
+            FILE *image_out = fopen(fout, "w");
+
+            //write data to fout
+            fwrite(temp, 1, FAT_size, image_out);
+            fclose(image_out);
             writing_status = 1;
         }
         else
@@ -46,14 +54,30 @@ int main(int argc, char *argv[])
             if ((jpeg_found == 1) && (writing_status == 1))
             {
                 jpeg_count++;
-                extract_image(jpeg_count, buffer);
+                //extract_image(jpeg_count, buffer);
+                //open file for jpeg
+                char fout[8];
+                sprintf(fout, "%03i.jpg", count - 1);
+                FILE *image_out = fopen(fout, "w");
+
+                //write data to fout
+                fwrite(temp, 1, FAT_size, image_out);
+                fclose(image_out);
                 writing_status = 1;
             }
             else
             {
                 if (jpeg_found == 0 && (writing_status == 1))
                 {
-                    extract_image(jpeg_count, buffer);
+                    //extract_image(jpeg_count, buffer);
+                    //open file for jpeg
+                    char fout[8];
+                    sprintf(fout, "%03i.jpg", count - 1);
+                    FILE *image_out = fopen(fout, "w");
+
+                    //write data to fout
+                    fwrite(temp, 1, FAT_size, image_out);
+                    fclose(image_out);
                     writing_status = 1;
                 }
             }
