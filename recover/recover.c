@@ -29,36 +29,33 @@ int main(int argc, char *argv[])
     int read_count = 0;
     //allocate memory for buffer
     BYTE *buffer = malloc(512);
+    BYTE temp_1st;
+    BYTE temp_2nd;
+    BYTE temp_3rd;
+    BYTE temp_4th;
     while (fread(buffer, 1, FAT_size, image_in) == FAT_size)
     {
         read_count++;
         if (read_count == 1)
         {
-            BYTE temp_1st = temp;
+            temp_1st = buffer[0];
         }
         if (read_count == 2)
         {
-            BYTE temp_2nd = temp;
+            temp_2nd = buffer[1];
         }
         if (read_count == 3)
         {
-            BYTE temp_3rd = temp;
+            temp_3rd = buffer[2];
         }
         if (read_count == 4)
         {
-            BYTE temp_4th = temp;
+            temp_4th = buffer[3];
         }
         //read first 4 bytes
         if (find_jpeg(temp_1st, temp_2nd, temp_3rd, temp_4th) == 0)
         {
             //continue to read
-            //allocate memory for image
-            *image_out = malloc(512);
-            //store the first 4 bytes to memory
-            image_out[0] = temp_1st;
-            image_out[1] = temp_2nd;
-            image_out[2] = temp_3rd;
-            image_out[3] = temp_4th;
         }
         else
         {
@@ -67,7 +64,7 @@ int main(int argc, char *argv[])
         }
 
     }
-    fclose(inptr);
+    fclose(image_in);
 }
 
 int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
