@@ -25,8 +25,22 @@ int main(int argc, char *argv[])
     const int FAT_size = 512;
     int block_count = 0
     BYTE temp;
+    read_count = 0;
     while (fread(temp, 1, FAT_size, image_in) == FAT_size)
     {
+        read_count++;
+        if (read_count == 1)
+        {
+            BYTE temp_1st = temp;
+        }
+        if (read_count == 2)
+        {
+            BYTE temp_2nd = temp;
+        }
+        if (read_count == 3)
+        {
+            BYTE temp_3rd = temp;
+        }
         //read first 3 bytes
         if (find_jpeg(a, b, c) == true)
         {}
