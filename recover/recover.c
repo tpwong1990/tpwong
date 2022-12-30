@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 typedef uint8_t BYTE;
+const int FAT_size = 512;
 int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4);
 void extract_image(int count, BYTE temp[FAT_size]);
 
@@ -23,7 +24,6 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    const int FAT_size = 512;
     int block_count = 0;
     int jpeg_count = 0;
     int writing_status = 0;
@@ -39,15 +39,18 @@ int main(int argc, char *argv[])
         {
             jpeg_count++;
             extract_image(jpeg_count, buffer);
+            writing_status = 1;
         }
         if (jpeg_found == 0 && (writing_status == 1))
         {
             extract_image(jpeg_count, buffer);
+            writing_status = 1;
         }
         if ((jpeg_found == 1) && (writing_status == 1))
         {
             jpeg_count++;
             extract_image(jpeg_count, buffer);
+            writing_status = 1;
         }
         block_count++;
     }
@@ -76,6 +79,5 @@ void extract_image(int count, BYTE temp[FAT_size])
 
     //write data to fout
     fwrite(temp, 1, FAT_size, image_out);
-    writing_status = 1;
     fclose(image_out);
 }
