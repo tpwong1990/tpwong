@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
         BYTE temp_2nd;
         BYTE temp_3rd;
         BYTE temp_4th;
-    while (fread(buffer, 1, FAT_size, image_in[block_count * FAT_size]) == FAT_size)
+    while (fread(buffer, 1, FAT_size, &image_in[block_count * FAT_size]) == FAT_size)
     {
         read_count++;
         if (read_count == 1)
