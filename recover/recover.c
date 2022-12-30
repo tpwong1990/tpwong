@@ -38,24 +38,14 @@ int main(int argc, char *argv[])
         if ((jpeg_found == 1) && writing_status == 0)
         {
             jpeg_count++;
-            char *fout = malloc(8);
-            sprintf(fout, "%03i.jpg", jpeg_count - 1);
-            FILE *image_out = fopen(fout, "a");
-            fwrite(buffer, 1, FAT_size, image_out);
-            free(fout);
-            fclose(image_out);
+            extract_image(jpeg_count, buffer);
             writing_status = 1;
         }
         else
             if ((jpeg_found == 1) && writing_status == 1)
             {
                 jpeg_count++;
-                char *fout = malloc(8);
-                sprintf(fout, "%03i.jpg", jpeg_count - 1);
-                FILE *image_out = fopen(fout, "a");
-                fwrite(buffer, 1, FAT_size, image_out);
-                free(fout);
-                fclose(image_out);
+                extract_image(jpeg_count, buffer);
                 writing_status = 1;
             }
             else
@@ -63,11 +53,7 @@ int main(int argc, char *argv[])
                 if ((jpeg_found == 0) && writing_status == 1)
                 {
                     char *fout = malloc(8);
-                    sprintf(fout, "%03i.jpg", jpeg_count - 1);
-                    FILE *image_out = fopen(fout, "a");
-                    fwrite(buffer, 1, FAT_size, image_out);
-                    free(fout);
-                    fclose(image_out);
+                    extract_image(jpeg_count, buffer);
                     writing_status = 1;
                 }
             }
@@ -93,11 +79,12 @@ int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
 void extract_image(int count, BYTE temp[FAT_size])
 {
     //open file for jpeg
-    char fout[8];
+    char *fout = malloc(8);
     sprintf(fout, "%03i.jpg", count - 1);
-    FILE *image_out = fopen(fout, "w");
+    FILE *image_out = fopen(fout, "a");
 
     //write data to fout
     fwrite(temp, 1, FAT_size, image_out);
+    free(fout);
     fclose(image_out);
 }
