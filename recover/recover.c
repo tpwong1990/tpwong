@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
 
     int block_count = 0;
     int jpeg_count = 0;
-    int writing_status = 0;
 
     //allocate memory for buffer
     BYTE *buffer = malloc(FAT_size);
@@ -36,12 +35,12 @@ int main(int argc, char *argv[])
     {
         int jpeg_found = find_jpeg(buffer[0], buffer[1], buffer[2], buffer[3]);
         //check if it is jpeg
-        if ((jpeg_found == 1) && (writing_status == 0))
+        if (jpeg_found == 1)
         {
             jpeg_count++;
             //extract_image(jpeg_count, buffer);
             //open file for jpeg
-            char fout[8];
+            char *fout = malloc(8);
             sprintf(fout, "%03i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "w");
 
@@ -57,7 +56,7 @@ int main(int argc, char *argv[])
                 jpeg_count++;
                 //extract_image(jpeg_count, buffer);
                 //open file for jpeg
-                char fout[8];
+                char *fout = malloc(8);
                 sprintf(fout, "%03i.jpg", jpeg_count - 1);
                 FILE *image_out = fopen(fout, "w");
 
@@ -72,7 +71,7 @@ int main(int argc, char *argv[])
                 {
                     //extract_image(jpeg_count, buffer);
                     //open file for jpeg
-                    char fout[8];
+                    char *fout = malloc(8);
                     sprintf(fout, "%03i.jpg", jpeg_count - 1);
                     FILE *image_out = fopen(fout, "w");
 
