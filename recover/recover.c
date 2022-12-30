@@ -52,7 +52,6 @@ int main(int argc, char *argv[])
             {
                 if ((jpeg_found == 0) && writing_status == 1)
                 {
-                    char *fout = malloc(8);
                     extract_image(jpeg_count, buffer);
                     writing_status = 1;
                 }
