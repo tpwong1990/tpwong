@@ -41,16 +41,22 @@ int main(int argc, char *argv[])
             extract_image(jpeg_count, buffer);
             writing_status = 1;
         }
-        if (jpeg_found == 0 && (writing_status == 1))
+        else
         {
-            extract_image(jpeg_count, buffer);
-            writing_status = 1;
-        }
-        if ((jpeg_found == 1) && (writing_status == 1))
-        {
-            jpeg_count++;
-            extract_image(jpeg_count, buffer);
-            writing_status = 1;
+            if ((jpeg_found == 1) && (writing_status == 1))
+            {
+                jpeg_count++;
+                extract_image(jpeg_count, buffer);
+                writing_status = 1;
+            }
+            else
+            {
+                if (jpeg_found == 0 && (writing_status == 1))
+                {
+                    extract_image(jpeg_count, buffer);
+                    writing_status = 1;
+                }
+            }
         }
         block_count++;
     }
