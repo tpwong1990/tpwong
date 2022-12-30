@@ -41,11 +41,11 @@ int main(int argc, char *argv[])
             //extract_image(jpeg_count, buffer);
             //open file for jpeg
             char fout[8];
-            sprintf(fout, "%03i.jpg", count - 1);
+            sprintf(fout, "%03i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "w");
 
             //write data to fout
-            fwrite(temp, 1, FAT_size, image_out);
+            fwrite(buffer, 1, FAT_size, image_out);
             fclose(image_out);
             writing_status = 1;
         }
@@ -57,11 +57,11 @@ int main(int argc, char *argv[])
                 //extract_image(jpeg_count, buffer);
                 //open file for jpeg
                 char fout[8];
-                sprintf(fout, "%03i.jpg", count - 1);
+                sprintf(fout, "%03i.jpg", jpeg_count - 1);
                 FILE *image_out = fopen(fout, "w");
 
                 //write data to fout
-                fwrite(temp, 1, FAT_size, image_out);
+                fwrite(buffer, 1, FAT_size, image_out);
                 fclose(image_out);
                 writing_status = 1;
             }
@@ -72,11 +72,11 @@ int main(int argc, char *argv[])
                     //extract_image(jpeg_count, buffer);
                     //open file for jpeg
                     char fout[8];
-                    sprintf(fout, "%03i.jpg", count - 1);
+                    sprintf(fout, "%03i.jpg", jpeg_count - 1);
                     FILE *image_out = fopen(fout, "w");
 
                     //write data to fout
-                    fwrite(temp, 1, FAT_size, image_out);
+                    fwrite(buffer, 1, FAT_size, image_out);
                     fclose(image_out);
                     writing_status = 1;
                 }
