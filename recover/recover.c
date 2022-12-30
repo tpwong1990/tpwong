@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
         if (find_jpeg(temp_1st, temp_2nd, temp_3rd) == true)
         {
             //allocate memory for image
-            *image_out = mallo(height, width * sizeof(RGBTRIPLE));
+            *image_out = malloc();
         }
         else
         {
