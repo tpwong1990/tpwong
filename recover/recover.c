@@ -33,11 +33,11 @@ int main(int argc, char *argv[])
     //Read file and find JPEG signatures
     while (fread(buffer, 1, FAT_size, &image_in[block_count * FAT_size]) == FAT_size)
     {
+        int jpeg_found = find_jpeg(buffer[0], buffer[1], buffer[2], buffer[3]);
         //check if it is jpeg
-        if (find_jpeg(buffer[0], buffer[1], buffer[2], buffer[3]) == 0) || (writing_status == 1)
+        if ((jpeg_found == 0) && (writing_status == 0))
         {
             jpeg_count++;
-            //continue to read
             //open file for jpeg
             string fout = NULL;
             sprintf(fout, "03%i.jpg", jpeg_count - 1);
@@ -47,21 +47,22 @@ int main(int argc, char *argv[])
             fwrite(buffer, 1, FAT_size, image_out);
             writing_status = 1;
         }
-        else
+        if (jpeg_found == 0 && (writing_status == 1))
         {
-            free(buffer);
+            fclose(image_out);
+            jpeg_count++;
+            //open file for jpeg
+            string fout = NULL;
+            sprintf(fout, "03%i.jpg", jpeg_count - 1);
+            FILE *image_out = fopen(fout, "w");
+
+            //write data to fout
+            fwrite(buffer, 1, FAT_size, image_out);
+            writing_status = 1;
         }
         block_count++;
     }
-
-
-
-
-
-
-
-
-
+    fclose(image_out);
     fclose(image_in);
 }
 
