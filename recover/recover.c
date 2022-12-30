@@ -4,7 +4,7 @@
 
 typedef uint8_t BYTE;
 int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4);
-void extract_image(int count);
+void extract_image(int count, BYTE temp[FAT_size]);
 
 int main(int argc, char *argv[])
 {
@@ -38,16 +38,16 @@ int main(int argc, char *argv[])
         if ((jpeg_found == 1) && (writing_status == 0))
         {
             jpeg_count++;
-            extract_image(jpeg_count);
+            extract_image(jpeg_count, buffer);
         }
         if (jpeg_found == 0 && (writing_status == 1))
         {
-            extract_image(jpeg_count);
+            extract_image(jpeg_count, buffer);
         }
         if ((jpeg_found == 1) && (writing_status == 1))
         {
             jpeg_count++;
-            extract_image(jpeg_count);
+            extract_image(jpeg_count, buffer);
         }
         block_count++;
     }
@@ -67,7 +67,7 @@ int find_jpeg(BYTE x_1, BYTE x_2, BYTE x_3, BYTE x_4)
     }
 }
 
-void extract_image(int count)
+void extract_image(int count, BYTE temp[FAT_size])
 {
     //open file for jpeg
     char fout[8];
@@ -75,7 +75,7 @@ void extract_image(int count)
     FILE *image_out = fopen(fout, "w");
 
     //write data to fout
-    fwrite(buffer, 1, FAT_size, image_out);
+    fwrite(temp, 1, FAT_size, image_out);
     writing_status = 1;
     fclose(image_out);
 }
