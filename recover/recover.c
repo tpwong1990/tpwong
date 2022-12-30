@@ -41,13 +41,14 @@ int main(int argc, char *argv[])
             char *fout = malloc(8);
             sprintf(fout, "%03i.jpg", jpeg_count - 1);
             FILE *image_out = fopen(fout, "a");
-            if (image_out != NULL)
-            {
-                fwrite(buffer, 1, FAT_size, image_out);
-            }
-            free(fout);
-            fclose(image_out);
+
         }
+        if (image_out != NULL)
+        {
+            fwrite(buffer, 1, FAT_size, image_out);
+        }
+        free(fout);
+        fclose(image_out);
         block_count++;
     }
     free(buffer);
