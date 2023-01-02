@@ -34,7 +34,7 @@ unsigned int hash(const char *word)
     //check the length of the word
     int word_l = sizeof(word);
     // returnt the number
-    return (first_l - 1)*45 + word_l;
+    return (first_l - 1)*45 + word_l - 1;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
