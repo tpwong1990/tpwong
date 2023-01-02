@@ -30,7 +30,8 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     //check the first letter
-    word[0]
+    int first_l = 0;
+    tolower(world[0]);
     return toupper(word[0]) - 'A';
 }
 
