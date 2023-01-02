@@ -87,8 +87,8 @@ void free_family(person *p)
         person *temp = malloc(sizeof(person));
         temp = p;
         free_family(p);
-        
-
+        p->parents[0] = temp->parents[0];
+        p->paretns[1] = temp->parents[1];
         // TODO: Free child
     }
 }
