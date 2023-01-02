@@ -52,6 +52,7 @@ bool load(const char *dictionary)
         return false;
     }
     char *d_word;
+    int d_word_count;
     while (fscanf(dic, "%s", d_word) != EOF)
     {
         //allocate memory
@@ -66,11 +67,11 @@ bool load(const char *dictionary)
 
         //link the node to hash table
         n->next = table[hash_table_i];
-        table[hash_table_i]->next = n;
+        table[hash_table_i] = n;
         free(n);
     }
-
-    return false;
+    fclose(dic);
+    return true;
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
