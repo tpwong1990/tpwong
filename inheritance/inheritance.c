@@ -90,6 +90,7 @@ void free_family(person *p)
         free_family(p->parents[1]);
         p->parents[0] = temp->parents[0];
         p->parents[1] = temp->parents[1];
+        free(temp);
         // TODO: Free child
         free(p);
     }
