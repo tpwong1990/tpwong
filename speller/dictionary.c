@@ -43,7 +43,25 @@ bool load(const char *dictionary)
     {
         return false;
     }
+    char d_word[LENGTH + 1];
+    char c;
+    int word_l = 0;
+    while (fread(&c, sizeof(char), 1, dic))
+    {
+        world_l++;
+        //check the end of the word
+        if (c == '/n')
+        {
+            //load the word to dic
+            world_l = 0;
 
+        }
+        else
+        {
+            d_word[world_l - 1] = c;
+        }
+
+    }
 
     return false;
 }
