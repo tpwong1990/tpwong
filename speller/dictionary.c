@@ -62,11 +62,12 @@ bool load(const char *dictionary)
         strcpy(n->word, d_word);
 
         //hash the word
-        int hast_table_i = hash(d_word);
+        int hash_table_i = hash(d_word);
 
         //link the node to hash table
-        table[hast_table_i]->next = n;
-
+        n->next = table[hash_table_i];
+        table[hash_table_i]->next = n;
+        free(n);
     }
 
     return false;
