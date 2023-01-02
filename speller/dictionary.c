@@ -30,9 +30,11 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     //check the first letter
-    int first_l = 0;
-    tolower(world[0]);
-    return toupper(word[0]) - 'A';
+    int first_l = tolower(word[0]) - 96;
+    //check the length of the word
+    int word_l = sizeof(word);
+
+    return (first_l - 1)*45 + word_l;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
