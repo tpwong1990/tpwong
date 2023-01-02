@@ -33,7 +33,7 @@ unsigned int hash(const char *word)
     int first_l = tolower(word[0]) - 96;
     //check the length of the word
     int word_l = sizeof(word);
-
+    // returnt the number
     return (first_l - 1)*45 + word_l;
 }
 
