@@ -40,6 +40,8 @@ int main(void)
 person *create_family(int generations)
 {
     // TODO: Allocate memory for new person
+    person *parent0 = malloc(sizeof(person));
+    person *parent1 = malloc(sizeof(person));
 
     // If there are still generations left to create
     if (generations > 1)
