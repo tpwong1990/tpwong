@@ -51,23 +51,18 @@ bool load(const char *dictionary)
     {
         return false;
     }
-    char d_word[LENGTH + 1];
-    char c;
-    int word_l = 0;
-    while (fscan(&c, sizeof(char), 1, dic))
+    char *d_word;
+    while (fscanf(dic, "%s", d_word) != EOF)
     {
-        world_l++;
-        //check the end of the word
-        if (c == '/n')
-        {
-            //load the word to dic
-            world_l = 0;
+        //hash the word
+        int hast_table_i = hash(d_word);
 
-        }
-        else
-        {
-            d_word[world_l - 1] = c;
-        }
+        //allocate memory
+        node *n = malloc(sizeof(node));
+        n->next = NULL;
+
+        //copy word from dic to table
+        strcpy(table[hast_table_i]->word, d_word);
 
     }
 
