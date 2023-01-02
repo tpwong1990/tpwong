@@ -71,7 +71,8 @@ This video was recorded when the course was still using CS50 IDE for writing cod
 
 {% endalert %}
 
-{% video https://video.cs50.io/9p7ddI3ozTY %}
+
+{% video https://www.youtube.com/watch?v=9p7ddI3ozTY %}
 
 ### Hints
 
@@ -83,7 +84,7 @@ This video was recorded when the course was still using CS50 IDE for writing cod
 
 {% spoiler "Not sure how to solve?" %}
 
-{% video https://video.cs50.io/H7LULatPwcQ %}
+{% video https://www.youtube.com/watch?v=H7LULatPwcQ %}
 
 {% endspoiler %}
 
