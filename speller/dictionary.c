@@ -54,15 +54,18 @@ bool load(const char *dictionary)
     char *d_word;
     while (fscanf(dic, "%s", d_word) != EOF)
     {
-        //hash the word
-        int hast_table_i = hash(d_word);
-
         //allocate memory
         node *n = malloc(sizeof(node));
         n->next = NULL;
 
         //copy word from dic to table
-        strcpy(table[hast_table_i]->word, d_word);
+        strcpy(n->word, d_word);
+
+        //hash the word
+        int hast_table_i = hash(d_word);
+
+        //link the node to hash table
+        table[hast_table_i]->next = n;
 
     }
 
