@@ -37,7 +37,6 @@ unsigned int hash(const char *word)
     {
         word_l++;
     }
-
     // returnt the number
     return (first_l - 1)*45 + word_l - 1;
 }
@@ -55,7 +54,7 @@ bool load(const char *dictionary)
     char d_word[LENGTH + 1];
     char c;
     int word_l = 0;
-    while (fread(&c, sizeof(char), 1, dic))
+    while (fscan(&c, sizeof(char), 1, dic))
     {
         world_l++;
         //check the end of the word
