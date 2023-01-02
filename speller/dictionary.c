@@ -5,6 +5,8 @@
 
 #include "dictionary.h"
 
+int d_word_count = 0;
+
 // Represents a node in a hash table
 typedef struct node
 {
@@ -67,7 +69,7 @@ bool load(const char *dictionary)
         //link the node to hash table
         n->next = table[hash_table_i];
         table[hash_table_i] = n;
-        d_workd_count++;
+        d_word_count++;
         free(n);
     }
     fclose(dic);
@@ -77,8 +79,7 @@ bool load(const char *dictionary)
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
 unsigned int size(void)
 {
-    // TODO
-    return 0;
+    return d_word_count;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false
