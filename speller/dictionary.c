@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 #include <stdbool.h>
-
+#include <stdio.h>
 #include "dictionary.h"
 
 int d_word_count = 0;
@@ -47,7 +47,7 @@ unsigned int hash(const char *word)
 bool load(const char *dictionary)
 {
     //open file
-    FILE *dic = fopen(dictionary, "r");
+    FLIE *dic = fopen(dictionary, "r");
     //check if the file is valid
     if (dictionary == NULL)
     {
