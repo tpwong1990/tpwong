@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "dictionary.h"
 
 int d_word_count = 0;
@@ -47,13 +49,13 @@ unsigned int hash(const char *word)
 bool load(const char *dictionary)
 {
     //open file
-    FLIE *dic = fopen(dictionary, "r");
+    FILE *dic = fopen(dictionary, "r");
     //check if the file is valid
     if (dictionary == NULL)
     {
         return false;
     }
-    char *d_word;
+    char *d_word = NULL;
     while (fscanf(dic, "%s", d_word) != EOF)
     {
         //allocate memory
