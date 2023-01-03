@@ -26,9 +26,6 @@ node *table[N];
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    // make the word to lowercase
-    char *word_tmp = tolower(*word);
-
     //get hash index from the word
     unsigned int h_i = hash(const char *word);
 
@@ -36,7 +33,7 @@ bool check(const char *word)
     node *n = table[h_i];
     while (n->next == NULL)
     {
-        if (strcmp(word_tmp, n->word) == 0)
+        if (strcasecmp(word, n->word) == 0)
         {
             free(n);
             return true;
