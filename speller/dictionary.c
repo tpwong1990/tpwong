@@ -28,7 +28,12 @@ char* get_word_from_hash(node *h_table[N], int hash_i);
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    // TODO
+    // make the word to lowercase
+    char *word_tmp = tolower(word);
+
+    //get hash index from the word
+    
+
     return false;
 }
 
