@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include "dictionary.h"
 
 int d_word_count = 0;
@@ -27,7 +28,7 @@ node *table[N];
 bool check(const char *word)
 {
     //get hash index from the word
-    unsigned int h_i = hash(const char *word);
+    unsigned int h_i = hash(word);
 
     //check the word is in the dic or not
     node *n = table[h_i];
@@ -77,7 +78,7 @@ bool load(const char *dictionary)
     while (fscanf(dic, "%s", d_word) != EOF)
     {
         //allocate memory
-        node *n =
+        node *n = malloc(sizeof(node));
         n->next = NULL;
 
         //copy word from dic to table
