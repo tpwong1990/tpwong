@@ -32,7 +32,7 @@ bool check(const char *word)
 
     //check the word is in the dic or not
     node *n = table[h_i];
-    while (n->next == NULL)
+    while (n != NULL)
     {
         if (strcasecmp(word, n->word) == 0)
         {
