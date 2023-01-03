@@ -59,8 +59,7 @@ int main(int argc, char *argv[])
         unload();
         return 1;
     }
-    unsigned int z = size();
-    printf("%i\n", z);
+
     // Prepare to report misspellings
     printf("\nMISSPELLED WORDS\n\n");
 
