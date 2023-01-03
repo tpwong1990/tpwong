@@ -36,12 +36,14 @@ bool check(const char *word)
 
     //check the word is in the dic or not
     int found = 0;
+    node *n = malloc(sizeof(node));
+    n->next = NULL;
     while (found == 1)
     {
         node *n = malloc(sizeof(node));
-        n = table[hash_i];
-        word_d = n->word;
-        if (strcmp(word_temp, word_d) == 0)
+        n->next = NULL;
+        n->word = table[hash_i]->word;
+        if (strcmp(word_temp, n->word) == 0)
         {
             found = 1;
             free(n);
@@ -50,7 +52,7 @@ bool check(const char *word)
         else
         {
             //point to next
-            n =
+            n->next = table[hash_i]->next;
         }
     }
 
