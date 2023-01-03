@@ -88,7 +88,7 @@ bool load(const char *dictionary)
     while (fscanf(dic, "%s", d_word) != EOF)
     {
         //allocate memory
-        node *n = malloc(sizeof(node));
+        node *n =
         n->next = NULL;
 
         //copy word from dic to table
@@ -120,7 +120,23 @@ bool unload(void)
     return false;
 }
 
-char* get_word_from_hash(node *h_table[N], int hash_i)
+bool check_word_from_hash(node *dic, char* word)
 {
-    return h_table[hash_i]->word;
+    node *n = malloc(sizeof(node));
+    
+    if (dic->next = NULL)
+    {
+        return false;
+    }
+    else
+    {
+        if(strcmp(word, n->word) == 0)
+        {
+            return true;
+        }
+        else
+        {
+            check_word_from_hash(n, word);
+        }
+    }
 }
