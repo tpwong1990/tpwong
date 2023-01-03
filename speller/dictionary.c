@@ -110,25 +110,19 @@ bool unload(void)
 
     for (int i = 0; i < N; i++)
     {
-        if !(table[i]->word = '\0')
+        node *n = malloc(sizeof(node));
+        n = table[i];
+        while (n != NULL)
         {
-            node *n = malloc(sizeof(node));
-            n = table[i];
-            while (n != NULL)
-            {
-                node *temp = n;
-                n = n->next;
-                free(temp);
-            }
-            free(n);
+            node *temp = n;
+            n = n->next;
+            free(temp);
+        }
+        free(n);
+        if (n == NULL && i == N -1)
+        {
+            return true;
         }
     }
-    if (n = NULL && i == N -1)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return false;
 }
