@@ -74,7 +74,7 @@ bool load(const char *dictionary)
     {
         return false;
     }
-    char *d_word = NULL;
+    char d_word[LENGTH + 1];
     while (fscanf(dic, "%s", d_word) != EOF)
     {
         //allocate memory
