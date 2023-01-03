@@ -116,6 +116,7 @@ bool unload(void)
             n = table[i];
             while (!(n->next == NUll))
             {
+                free(n);
                 n->next = n;
             }
             free(n);
