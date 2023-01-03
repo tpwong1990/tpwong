@@ -8,7 +8,6 @@
 #include "dictionary.h"
 
 int d_word_count = 0;
-char* get_word_from_hash(node *h_table[N], int hash_i);
 
 // Represents a node in a hash table
 typedef struct node
@@ -23,6 +22,8 @@ const unsigned int N = 1170;
 
 // Hash table
 node *table[N];
+
+char* get_word_from_hash(node *h_table[N], int hash_i);
 
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
