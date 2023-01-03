@@ -45,7 +45,6 @@ bool check(const char *word)
             n = n->next;
         }
     }
-    free(n);
     return false;
 }
 
