@@ -35,17 +35,22 @@ bool check(const char *word)
     unsigned int h_i = hash(const char *word);
 
     //check the word is in the dic or not
-    while //get_word_from_hash != '\0')
+    int found = 0;
+    while (found == 1)
     {
-        //char* word_d = from dic
+        node *n = malloc(sizeof(node));
+        n = table[hash_i];
+        word_d = n->word;
         if (strcmp(word_temp, word_d) == 0)
         {
+            found = 1;
+            free(n);
             return true;
-            break;
         }
         else
         {
             //point to next
+            n =
         }
     }
 
