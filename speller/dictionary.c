@@ -114,7 +114,11 @@ bool unload(void)
         {
             node *n = malloc(sizeof(node));
             n = table[i];
-            n = n->next;
+            while (!(n->next == NUll))
+            {
+                n->next = n;
+            }
+            free(n);
         }
     }
     return false;
