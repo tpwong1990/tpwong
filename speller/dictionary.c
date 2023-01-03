@@ -27,7 +27,7 @@ node *table[N];
 bool check(const char *word)
 {
     // make the word to lowercase
-    char *word_tmp = tolower(word);
+    char *word_tmp = tolower(*word);
 
     //get hash index from the word
     unsigned int h_i = hash(const char *word);
