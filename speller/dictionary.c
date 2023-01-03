@@ -8,7 +8,7 @@
 #include "dictionary.h"
 
 int d_word_count = 0;
-string get_next_word(node *h_table[N], int hash_i);
+char* get_word_from_hash(node *h_table[N], int hash_i);
 
 // Represents a node in a hash table
 typedef struct node
@@ -92,7 +92,7 @@ bool unload(void)
     return false;
 }
 
-string get_next_word(node *h_table[N], int hash_i)
+char* get_word_from_hash(node *h_table[N], int hash_i)
 {
-
+    return h_table[hash_i]->word;
 }
