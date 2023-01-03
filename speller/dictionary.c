@@ -32,7 +32,22 @@ bool check(const char *word)
     char *word_tmp = tolower(word);
 
     //get hash index from the word
-    
+    unsigned int h_i = hash(const char *word);
+
+    //check the word is in the dic or not
+    while //get_word_from_hash != '\0')
+    {
+        //char* word_d = from dic
+        if (strcmp(word_temp, word_d) == 0)
+        {
+            return true;
+            break;
+        }
+        else
+        {
+            //point to next
+        }
+    }
 
     return false;
 }
