@@ -8,6 +8,7 @@
 #include "dictionary.h"
 
 int d_word_count = 0;
+void printloaddicresult(void);
 
 // Represents a node in a hash table
 typedef struct node
@@ -89,4 +90,20 @@ bool unload(void)
 {
     // TODO
     return false;
+}
+
+void printloaddicresult(void)
+{
+    int word_count = 0;
+    for (int i = 0; i < N; i++)
+    {
+        if (table[i]->word != '\0')
+        {
+            word_count++;
+            if (table[i]->next != NULL)
+            {
+                
+            }
+        }
+    }
 }
