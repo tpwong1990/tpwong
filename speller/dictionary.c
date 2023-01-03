@@ -23,8 +23,6 @@ const unsigned int N = 1170;
 // Hash table
 node *table[N];
 
-char* get_word_from_hash(node *h_table[N], int hash_i);
-
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
@@ -35,27 +33,21 @@ bool check(const char *word)
     unsigned int h_i = hash(const char *word);
 
     //check the word is in the dic or not
-    int found = 0;
-    node *n = malloc(sizeof(node));
-    n->next = NULL;
-    while (found == 1)
+    node *n = table[h_i];
+    while (n->next == NULL)
     {
-        node *n = malloc(sizeof(node));
-        n->next = NULL;
-        n->word = table[hash_i]->word;
-        if (strcmp(word_temp, n->word) == 0)
+        if (strcmp(word_tmp, n->word) == 0)
         {
-            found = 1;
             free(n);
             return true;
         }
         else
         {
-            //point to next
-            n->next = table[hash_i]->next;
+            //point to next word;
+            n = n->next;
         }
     }
-
+    free(n);
     return false;
 }
 
@@ -118,28 +110,4 @@ bool unload(void)
 {
     // TODO
     return false;
-}
-
-bool check_word_from_hash(node *dic, char* word)
-{
-    node *n = malloc(sizeof(node));
-    n = dic;
-    if (n->next = NULL)
-    {
-        free(n);
-        return false;
-    }
-    else
-    {
-        if(strcmp(word, n->word) == 0)
-        {
-            free(n);
-            return true;
-        }
-        else
-        {
-            n->next = n;
-            check_word_from_hash(n, word);
-        }
-    }
 }
