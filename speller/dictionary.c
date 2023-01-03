@@ -123,19 +123,22 @@ bool unload(void)
 bool check_word_from_hash(node *dic, char* word)
 {
     node *n = malloc(sizeof(node));
-    
-    if (dic->next = NULL)
+    n = dic;
+    if (n->next = NULL)
     {
+        free(n);
         return false;
     }
     else
     {
         if(strcmp(word, n->word) == 0)
         {
+            free(n);
             return true;
         }
         else
         {
+            n->next = n;
             check_word_from_hash(n, word);
         }
     }
