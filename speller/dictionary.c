@@ -107,11 +107,14 @@ unsigned int size(void)
 bool unload(void)
 {
     // loop the whole tabel and check it is nothing or not
+
     for (int i = 0; i < N; i++)
     {
         if !(table[i]->word = '\0')
         {
-            
+            node *n = malloc(sizeof(node));
+            n = table[i];
+            n = n->next;
         }
     }
     return false;
