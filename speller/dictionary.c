@@ -106,6 +106,13 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    // TODO
+    // loop the whole tabel and check it is nothing or not
+    for (int i = 0; i < N; i++)
+    {
+        if !(table[i]->word = '\0')
+        {
+            
+        }
+    }
     return false;
 }
