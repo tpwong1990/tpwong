@@ -78,7 +78,6 @@ bool load(const char *dictionary)
     {
         //allocate memory
         node *n = malloc(sizeof(node));
-        n->next = NULL;
 
         //copy word from dic to table
         strcpy(n->word, d_word);
