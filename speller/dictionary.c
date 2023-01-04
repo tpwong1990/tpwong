@@ -58,8 +58,8 @@ unsigned int hash(const char *word)
     {
         word_l++;
     }
-    // returnt the number
-    return (first_l - 1)*45 + word_l - 1;
+    // return the number
+    return (first_l - 1) * 45 + word_l - 1;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
