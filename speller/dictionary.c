@@ -116,6 +116,7 @@ bool unload(void)
         }
         if (n == NULL && i == N -1)
         {
+            free(n);
             return true;
         }
     }
