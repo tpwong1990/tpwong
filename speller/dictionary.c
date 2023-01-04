@@ -119,5 +119,6 @@ bool unload(void)
             return true;
         }
     }
+    free(table[N]);
     return false;
 }
