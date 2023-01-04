@@ -1,3 +1,4 @@
+
 ---
 files: [dictionary.c]
 url: https://cdn.cs50.net/2022/fall/psets/5/speller/README.md
@@ -302,7 +303,7 @@ If you'd like to put your code to the test against classmates' code (just for fu
 
 {% spoiler "Submit to Big Board" %}
 
-First, run `update50`. When prompted, click **rebuild now**. 
+First, run `update50`. When prompted, click **rebuild now**.
 
 After rebuilding your codespace, execute the below to submit your work to the Big Board.
 
