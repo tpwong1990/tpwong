@@ -48,8 +48,7 @@ int main(int argc, char *argv[])
     }
 
     // Calculate time to load dictionary
-    time_load = calculate(&before, &after);
-    printf("Dic loaded. Time = %f\n", time_load);
+
     // Try to open text
     char *text = (argc == 3) ? argv[2] : argv[1];
     FILE *file = fopen(text, "r");

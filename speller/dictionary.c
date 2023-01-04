@@ -90,7 +90,6 @@ bool load(const char *dictionary)
         n->next = table[hash_table_i];
         table[hash_table_i] = n;
         d_word_count++;
-        free(n);
     }
     fclose(dic);
     return true;
