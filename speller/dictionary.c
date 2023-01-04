@@ -106,8 +106,7 @@ bool unload(void)
 
     for (int i = 0; i < N; i++)
     {
-        node *n = malloc(sizeof(node));
-        n = table[i];
+        node *n = table[i];
         while (n != NULL)
         {
             node *temp = n;
