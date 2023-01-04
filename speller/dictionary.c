@@ -115,7 +115,6 @@ bool unload(void)
             n = n->next;
             free(temp);
         }
-        free(n);
         if (n == NULL && i == N -1)
         {
             return true;
