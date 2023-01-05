@@ -19,7 +19,7 @@ def main():
 
     f = open(sys.argv[1], "r")
     reader = csv.DictReader(f)
-    for row in reader:
+    for item in reader:
         add row in teams
 
     counts = {}
