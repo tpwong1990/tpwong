@@ -20,7 +20,7 @@ def main():
     f = open(sys.argv[1], "r")
     reader = csv.DictReader(f)
     for row in reader:
-        
+        add row
 
 
     counts = {}
