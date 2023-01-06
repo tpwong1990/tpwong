@@ -15,9 +15,10 @@ def main():
         list_of_column = []
         for row in reader:
             list_of_column.append(row)
+            print(list_of_column[0])
             break
         reader = csv.DictReader(f)
-        for row in reader:
+        for n in reader:
             database.append(n)
 
     # TODO: Read DNA sequence file into a variable
