@@ -7,5 +7,8 @@ def main():
 
 def letter_count(s):
     count = 0
+    s = s.lower()
     for i in range(len(s)):
-        if (s(i) >= "A" and s(i) <= 'Z') or 
+        if (s(i) >= "a" and s(i) <= 'a'):
+            count += 1
+    return count
