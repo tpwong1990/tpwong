@@ -15,6 +15,7 @@ def main():
         list_of_column = []
         for row in reader:
             list_of_column.append(row)
+            break
         reader = csv.DictReader(f)
         for row in reader:
             database.append(n)
