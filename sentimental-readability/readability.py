@@ -35,10 +35,11 @@ def words_count(s):
                 count += 1
         else:
             if (s[i] == '!' or s[i] == '?' or s[i] == ',' or s[i] == '.' or s[i] == '"' or s[i] == ':'):
-                # dump action
-                dump = 1
-            else:
-                count += 1
+                if ((s[i - 1] == '!' or s[i - 1] == '?' or s[i - 1] == ',' or text[i - 1] == '.' or text[i - 1] == '"' or text[i - 1] == ':' or text[i - 1] == ' ') and i > 1):
+                    # dump action
+                    dump = 1
+                else:
+                    count += 1
     return count
 
 
