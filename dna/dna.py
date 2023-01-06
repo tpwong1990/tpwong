@@ -47,6 +47,13 @@ def main():
             if tested_c != database_c:
                 found = 0
                 break
+        if found == 1:
+            break
+
+    if found == 1:
+        print(database[i][0])
+    else:
+        print("No match")
 
     return
 
