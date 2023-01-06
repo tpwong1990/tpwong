@@ -31,6 +31,12 @@ def words_count(s):
 def sent_count(s):
     count = 0
     for i in (range(len(s))):
-        
+        if (((s[i] == '!' or s[i] == '?') or s[i] == '.')):
+            count += 1
+    return count
+
+def coleman_liau(l, w, s):
+    
+
 
 
