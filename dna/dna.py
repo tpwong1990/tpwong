@@ -40,11 +40,14 @@ def main():
 
     # TODO: Check database for matching profiles
     for i in range(len(database)):
-        found = 0
+        found = 1
         for j in range(1, header_l, 1):
-            print(database[i])
             tested_c = tested[list_header[0][j]]
-            database_c = database[i][list_header[0][j]]
+            database_c = int(database[i][list_header[0][j]])
+            if tested_c != database_c:
+                found = 0
+                break
+
     return
 
 
