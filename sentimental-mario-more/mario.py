@@ -1,3 +1,3 @@
 import cs50
 #  Get height
-height = get_int()
+height = cs50.get_int("a")
