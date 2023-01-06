@@ -50,8 +50,8 @@ def sent_count(s):
     return count
 
 def coleman_liau(l, w, s):
-    ave_l = (float(l) / float (w)) * 100.0
-    ave_s = (float(s) / float (w) )* 100.0
+    ave_l = float(l) / float (w) * 100.0
+    ave_s = float(s) / float (w) * 100.0
     index = 0.0588 * ave_l - 0.296 * ave_s - 15.8
     x = round(index)
     return x
