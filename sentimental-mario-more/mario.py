@@ -6,3 +6,6 @@ while True:
         break
 
 # print the pyramids
+
+for i in range(height):
+    print("#")
