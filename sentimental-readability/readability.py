@@ -31,7 +31,7 @@ def words_count(s):
     for i in range(len(s)):
         c = s[i]
         if s[i] == ' ':
-            if (s[i - i] in check_set1 and i > 1):
+            if (s[i - 1] in check_set1 and i > 1):
                 # dump action
                 dump = 1
             else:
