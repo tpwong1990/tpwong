@@ -1,3 +1,6 @@
 import cs50
 #  Get height
-height = cs50.get_int("a")
+while True:
+    height = cs50.get_int("Height: ")
+    if height >= 1 and height <= 8:
+        break
