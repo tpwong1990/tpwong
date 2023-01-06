@@ -24,7 +24,6 @@ def type_check(no):
     valid = Luhn_check(no)
     no_length = len(no)
     first2_digit = no[0] + no[1]
-    print(first2_digit)
     if valid == 1:
         if no_length == 15 and (first2_digit == "34" or first2_digit == "37"):
             type = 1
@@ -37,19 +36,16 @@ def type_check(no):
 def Luhn_check(no):
     digit_temp = 0
     length = len(no)
-    for i in range(, 2):
-        print("*2: ", no[i - 1])
-        tmp = int(no[i - 1]) * 2
+    for i in range(1, length, 2):
+        tmp = int(no[length - 1]) * 2
         if tmp < 10:
             digit_temp = digit_temp + tmp
         else:
             tmp1 = int(tmp / 10)
             tmp2 = tmp % 10
             digit_temp = digit_temp + tmp1 + tmp2
-    for i in range(2, length + 1, 2):
-        print("*1: ", no[i - 1])
-        digit_temp = digit_temp + int(no[i - 1])
-    print(digit_temp)
+    for i in range(0, length, 2):
+        digit_temp = digit_temp + int(no[length - i - 1])
     if digit_temp % 10 == 0:
         result = 1
     else:
