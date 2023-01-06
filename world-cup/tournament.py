@@ -22,12 +22,9 @@ def main():
             n["rating"] = int(n["rating"])
             teams.append(n)
 
-    #for n in range(len(teams)):
-        #print(teams[0]["team"])
-
     counts = {}
     # TODO: Simulate N tournaments and keep track of win counts
-    #assign 0 to all temas first
+    # assign 0 to all temas first
     for n in range(len(teams)):
         counts.update({teams[n]["team"]: 0})
 
@@ -36,8 +33,6 @@ def main():
         tour_winner = simulate_tournament(teams)
         if tour_winner in counts:
             counts.update({tour_winner: counts[tour_winner] + 1})
-
-
 
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
