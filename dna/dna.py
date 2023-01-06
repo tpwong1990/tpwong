@@ -44,7 +44,7 @@ def main():
         for j in range(1, header_l, 1):
             print(database[i])
             tested_c = tested[list_header[0][j]]
-            database_c = database[i][list_header[0][i]]
+            database_c = database[i][list_header[0][j]]
     return
 
 
