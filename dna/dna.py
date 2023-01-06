@@ -39,7 +39,8 @@ def main():
 
     # TODO: Check database for matching profiles
     for i in range(len(database)):
-        for 
+        if database[i] == tested:
+            print(database[i][0])
     return
 
 
