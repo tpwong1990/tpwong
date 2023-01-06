@@ -24,6 +24,7 @@ def type_check(no):
     valid = Luhn_check(no)
     no_length = len(no)
     first2_digit = no[0] + no[1]
+    print(first2_digit)
     if valid == 1:
         if no_length == 15 and (first2_digit == "34" or first2_digit == "37"):
             type = 1
