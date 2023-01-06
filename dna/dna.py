@@ -11,7 +11,7 @@ def main():
     # TODO: Read database file into a variable
     database = []
     with open(sys.argv[1]) as f:
-        reader = csv.reader(f, delimiter = ',')
+        reader = csv.reader(f, delimiter=',')
         list_header = []
         for row in reader:
             list_header.append(row)
