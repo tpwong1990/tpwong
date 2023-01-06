@@ -45,7 +45,7 @@ def Luhn_check(no):
             tmp2 = tmp % 10
             digit_temp = digit_temp + tmp1 + tmp2
     for i in range(2, length + 1, 2):
-        digit_temp = digit_temp + int(no(i - 1))
+        digit_temp = digit_temp + int(no[i - 1])
     if digit_temp % 10 == 0:
         result = 1
     else:
