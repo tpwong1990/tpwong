@@ -37,7 +37,7 @@ def Luhn_check(no):
     digit_temp = 0
     length = len(no)
     for i in range(1, length, 2):
-        tmp = int(no[length - 1]) * 2
+        tmp = int(no[length - i - 1]) * 2
         if tmp < 10:
             digit_temp = digit_temp + tmp
         else:
@@ -51,10 +51,5 @@ def Luhn_check(no):
     else:
         result = 0
     return result
-
-
-
-
-
 
 main()
