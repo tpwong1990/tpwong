@@ -51,7 +51,7 @@ def main():
             break
 
     if found == 1:
-        print(database[i][0])
+        print(database[i]['name'])
     else:
         print("No match")
 
