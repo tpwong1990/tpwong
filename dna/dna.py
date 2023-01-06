@@ -20,6 +20,7 @@ def main():
         reader = csv.DictReader(f)
         for n in reader:
             database.append(n)
+    print(database[0])
 
     # TODO: Read DNA sequence file into a variable
     g = open(sys.argv[2], "r")
@@ -35,10 +36,11 @@ def main():
         repeat_c = longest_match(dna_seq, target_seq)
         tmp = {target_seq: repeat_c}
         tested.update(tmp)
-
+    print(tested)
 
     # TODO: Check database for matching profiles
     for i in range(len(database)):
+        found = 0
         if database[i] == tested:
             print(database[i][0])
     return
