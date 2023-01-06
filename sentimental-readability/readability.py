@@ -37,7 +37,7 @@ def words_count(s):
                 count += 1
         else:
             if s[i] in check_set1:
-                if (s[i-1] in check_set2 and i > 1):
+                if (s[i - 1] in check_set2 and i > 1):
                     # dump action
                     dump = 1
                 else:
