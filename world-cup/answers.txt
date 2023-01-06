@@ -1,15 +1,20 @@
 Times:
 
-10 simulations: TODO (record time using 0m0.000s format)
-100 simulations: TODO (record time using 0m0.000s format)
-1000 simulations: TODO (record time using 0m0.000s format)
-10000 simulations: TODO (record time using 0m0.000s format)
-100000 simulations: TODO (record time using 0m0.000s format)
-1000000 simulations: TODO (record time using 0m0.000s format)
+10 simulations: 0m0.058s
+100 simulations: 0m0.028s
+1000 simulations: 0m0.037s
+10000 simulations: 0m0.104s
+100000 simulations: 0m0.760s
+1000000 simulations: 0m7.265s
 
 Questions:
 
-Which predictions, if any, proved incorrect as you increased the number of simulations?: TODO
+Which predictions, if any, proved incorrect as you increased the number of simulations?:
+For smaller number of simulation (e.g. N = 10), the teams with lower rating (e.g. Japan) has higher
+winning chance than the teams with higher rating (e.g. France). When the number of simulation become
+higher, it would not happen again.
 
 Suppose you're charged a fee for each second of compute time your program uses.
-After how many simulations would you call the predictions "good enough"?: TODO
+After how many simulations would you call the predictions "good enough"?:
+I would say 1000 simulations would be good enough. As the simulation results from N = 10000 and N = 100000
+are simialr to the one with N = 1000
