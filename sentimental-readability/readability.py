@@ -30,14 +30,14 @@ def words_count(s):
     check_set2 = ['!', '?', ',', '.', '"', ':', ' ']
     for i in range(len(s)):
         if s[i] == ' ':
-            if s[i - i] in check_set1 and i > 1:
+            if (s[i - i] in check_set1 and i > 1):
                 # dump action
                 dump = 1
             else:
                 count += 1
         else:
             if s[i] in check_set1:
-                if s[i-1] in check_set2 and i > 1:
+                if (s[i-1] in check_set2 and i > 1):
                     # dump action
                     dump = 1
                 else:
