@@ -26,16 +26,18 @@ def letters_count(s):
 
 def words_count(s):
     count = 0
+    check_set1 = ['!', '?', ',', '.', '"', ':']
+    check_set2 = ['!', '?', ',', '.', '"', ':', ' ']
     for i in range(len(s)):
         if s[i] == ' ':
-            if ((s[i - 1] == '!' or s[i - 1] == '?' or s[i - 1] == ',' or s[i - 1] == '.' or s[i - 1] == '"' or s[i - 1] == ':') and i > 1):
+            if s[i - i] in check_set1 and i > 1:
                 # dump action
                 dump = 1
             else:
                 count += 1
         else:
-            if (s[i] == '!' or s[i] == '?' or s[i] == ',' or s[i] == '.' or s[i] == '"' or s[i] == ':'):
-                if ((s[i - 1] == '!' or s[i - 1] == '?' or s[i - 1] == ',' or text[i - 1] == '.' or text[i - 1] == '"' or text[i - 1] == ':' or text[i - 1] == ' ') and i > 1):
+            if s[i] in check_set1:
+                if s[i-1] in check_set2 and i > 1:
                     # dump action
                     dump = 1
                 else:
