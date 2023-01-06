@@ -15,6 +15,7 @@ def main():
     if card_type == 0:
         print("INVALID")
 
+
 def type_check(no):
     # 0 = Invalid
     # 1 = AE
@@ -32,6 +33,7 @@ def type_check(no):
         if (int(first2_digit) >= 40 and int(first2_digit) <= 49) and (no_length == 13 or no_length == 16):
             type = 3
     return type
+
 
 def Luhn_check(no):
     digit_temp = 0
@@ -51,5 +53,6 @@ def Luhn_check(no):
     else:
         result = 0
     return result
+
 
 main()
