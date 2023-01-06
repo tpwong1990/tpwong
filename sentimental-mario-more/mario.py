@@ -12,5 +12,5 @@ for i in range(height):
     print("#" * (i + 1), end = '')
     print("  ", end = '')
     print("#" * (i + 1), end = '')
-    print(" " * (height - i - 1), end = '')
+    print(" " * (height - i - 2), end = '')
     print()
