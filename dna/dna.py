@@ -23,9 +23,11 @@ def main():
      g = open(sys.argv[2], 'r')
         for line in g
             dna_seq = line
+    g.close
 
     # TODO: Find longest match of each STR in DNA sequence
-
+    for i in len(list_of_column):
+        tmp = 1
 
 
     # TODO: Check database for matching profiles
