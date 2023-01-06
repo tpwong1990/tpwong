@@ -8,4 +8,9 @@ while True:
 # print the pyramids
 
 for i in range(height):
-    print("#")
+    print(" " * (height - i + 1), end = '')
+    print("#" * (i + 1), end = '')
+    print("  ", end = '')
+    print("#" * (i + 1), end = '')
+    print(" " * (height - i + 1), end = '')
+    print()
