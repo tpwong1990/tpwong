@@ -19,7 +19,7 @@ def letters_count(s):
     count = 0
     s = s.lower()
     for i in range(len(s)):
-        if (s[i] >= "a" and s[i] <= 'a'):
+        if (s[i] >= "a" and s[i] <= 'z'):
             count += 1
     return count
 
