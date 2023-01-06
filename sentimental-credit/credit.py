@@ -35,7 +35,7 @@ def type_check(no):
 
 def Luhn_check(no):
     digit_temp = 0
-    for i in range(len(no) + 1, 2):
+    for i in range(0, len(no) + 1, 2):
         tmp = int(no[i]) * 2
         if tmp < 10:
             digit_temp = digit_temp + tmp
