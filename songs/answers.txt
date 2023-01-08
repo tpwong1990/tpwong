@@ -1,2 +1,5 @@
 I will calucalate the avearge of energy, valence and tempo of the songs to characterize the audio aura.
 
+Some listeners may have large diversity on what songs they have listened to. So the average value of the energy, valence and tempo may not
+be a good indicator to show what the listeners like. During characterizing the audio aura, the standard deviation of those value should
+also be considered. 
