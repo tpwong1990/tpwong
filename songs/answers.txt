@@ -1,1 +1,2 @@
-I will calucalate the avearge of energy and 
+I will calucalate the avearge of energy, valence and tempo of the songs to characterize the audio aura.
+
