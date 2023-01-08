@@ -1,0 +1,1 @@
+SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2021 AND month = 7 AND day = 29 AND hour = 8;

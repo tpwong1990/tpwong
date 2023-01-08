@@ -12,4 +12,4 @@ SELECT name, passport_number FROM people JOIN bank_accounts ON id = bank_account
 SELECT hour, minute, city FROM flights JOIN airports ON origin_airport_id = airports.id WHERE year = 2021 AND month = 7 AND day = 29;
 -- to check the early flight details on 29 July 2021 based on the transcript of witnesses (Raymond)
 SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2021 AND month = 7 AND day = 29 AND hour = 8;
--- get 
+-- get the passport no who take the first fligt on 29 July 2021 which the leave fiftyville
