@@ -1,1 +1,1 @@
-SELECT id FROM people WHERE name = "Kevin Bacon" AND birth = 1958;
+ SELECT movie_id FROM stars JOIN people ON person_id = people.id WHERE people.name ="Kevin Bacon" AND people.birth = 1958; 
