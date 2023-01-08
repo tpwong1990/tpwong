@@ -1,1 +1,1 @@
-sqlite> SELECT name FROM songs where name LIKE "%feat.%";
+SELECT name FROM songs where name LIKE "%feat.%";
