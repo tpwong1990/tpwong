@@ -20,6 +20,8 @@ SELECT name FROM people WHERE phone_number IN (SELECT caller FROM phone_calls WH
 SELECT name FROM people WHERE phone_number IN (SELECT caller FROM phone_calls WHERE year = 2021 AND month = 7 AND day = 28 and duration <= 60) AND name IN (SELECT name FROM people JOIN bank_accounts ON id = bank_accounts.person_id WHERE account_number IN (SELECT account_number FROM atm_transactions WHERE year = 2021 AND month = 7 AND day = 28 AND atm_location = "Leggett Street" AND transaction_type = "withdraw") AND license_plate IN (SELECT license_plate FROM bakery_security_logs WHERE year = 2021 AND month = 7 AND day = 28 AND activity = "exit" AND hour = 10 AND (minute >= 15 AND minute <= 25)) AND passport_number IN (SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2021 AND month = 7 AND day = 29 AND hour = 8));
 -- (10th) combine the result from 9th sql and 8th sql, only one person name in the list which is Bruce, who is the thief.
 SELECT phone_number FROM people WHERE name = "Bruce";
--- get Bruce's phone number
+-- (11th )get Bruce's phone number
+SELECT receiver FROM phone_calls WHERE caller = (SELECT phone_number FROM people WHERE name = "Bruce") AND year = 2021 AND month = 7 AND day = 28 AND duration <= 60;
+-- (12th)
 SELECT city FROM flights JOIN airports ON destination_airport_id = airports.id WHERE year = 2021 AND month = 7 AND day = 29 AND hour = 8;
 -- (13th) base the 6th sql result, the thief escape to New York City
