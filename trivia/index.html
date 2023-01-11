@@ -58,11 +58,13 @@
             };
 
             document.querySelector('.check').addEventListener('click', function(){
-                console.log("test");
                 let q2_answer = document.querySelector('#q2_input');
+                let lower_answer = q2_answer.tolowercase();
                 if (q2_answer.value === 'silver'){
+                    q2_answer.style.backgroundColor = 'green';
                     document.querySelector('#feedback_q2').innerHTML = 'Correct';
                 } else {
+                    q2_answer.style.backgroundColor = 'red';
                     document.querySelector('#feedback_q2').innerHTML = 'Incorrect';
                 }
             });
