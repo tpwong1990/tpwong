@@ -57,12 +57,11 @@
                 })
             }
             let q2_answer = document.querySelector('.check')
+            let lower_answer = q2_answer.toLowerCase()
             q2_answer.addEventListener('click', function(){
-                if q2_answer.value === "silver" then{
-
+                if lower_answer.value === "silver" then{
+                    document.querySelector('#feedback_q2').innerHTML = 'Correct';
                 }
             }
-
-
     </script>
 </html>
