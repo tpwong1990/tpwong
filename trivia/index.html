@@ -38,7 +38,7 @@
                 <input type="text" id = "q2_input"></input>
                 <button type="button" class = "check">Check</button>
 
-                <p id="feedback_q2"></p>
+                <p id = "feedback_q2"></p>
             </div>
         </div>
     </body>
@@ -62,6 +62,9 @@
                 let lower_answer = q2_answer.toLowerCase();
                 if (lower_answer.value === "silver"){
                     document.querySelector('#feedback_q2').innerHTML = 'Correct';
+                }
+                else {
+                    document.querySelector('#feedback_q2').innerHTML = 'Incorrect';
                 }
             });
     </script>
