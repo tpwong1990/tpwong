@@ -60,10 +60,9 @@
             document.querySelector('.check').addEventListener('click', function(){
                 let q2_answer = document.querySelector('#q2_input');
                 let lower_answer = q2_answer.toLowerCase();
-                if (lower_answer.value === "silver"){
+                if (lower_answer.value === 'silver'){
                     document.querySelector('#feedback_q2').innerHTML = 'Correct';
-                }
-                else {
+                } else {
                     document.querySelector('#feedback_q2').innerHTML = 'Incorrect';
                 }
             });
