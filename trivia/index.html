@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+
+                <hr>
+
+                <h3>What is the only letter not to appear on the periodic table?</h3>
+
+                <br>
+
+                <button type="button" class = "incorrect">B</button>
+                <button type="button" class = "correct">J</button>
+                <button type="button" class = "incorrect">O</button>
+                <button type="button" class = "incorrect">X</button>
+
+                <p id="feedback_q1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+
+                <hr>
+
+                <h3>What metal is the best conductor of electricity?</h3>
+                <input type="text" id = "q2_input"></input>
+                <button type="button" class = "check">Check</button>
+
+                <p id="feedback_q2"></p>
+            </div>
+        </div>
+    </body>
+    <script>
+            let correct = document.querySelector('.correct');
+            correct.addEventListener('click', function(){
+                correct.style.backgroundColor = 'green';
+                document.querySelector('#feedback_q1').innerHTML = 'Correct';
+            })
+
+            let incorrect = document.querySelectorAll('.incorrect');
+            for (let i = 0; i<incorrect.length; i++){
+                incorrect[i].addEventListener('click', function(){
+                    incorrect[i].style.backgroundColor = 'red';
+                    document.querySelector('#feedback_q1').innerHTML = 'Incorrect';
+                })
+            }
+            let q2_answer = document.querySelector('.check')
+            q2_answer.addEventListener('click', function(){
+                if q2_answer.value === "silver" then{
+
+                }
+            }
+
+
+    </script>
+</html>
