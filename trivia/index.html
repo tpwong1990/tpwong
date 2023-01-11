@@ -35,7 +35,7 @@
                 <hr>
 
                 <h3>What metal is the best conductor of electricity?</h3>
-                <input type="text"></input>
+                <input type="text" id = "q2_input"></input>
                 <button type="button" class = "check">Check</button>
 
                 <p id = "feedback_q2"></p>
@@ -58,15 +58,15 @@
             };
 
             document.querySelector('.check').addEventListener('click', function(){
-                let q2_answer = document.querySelector('input');
-                let string1 = String(q2_answer);
+                let q2_answer = document.querySelector('#q2_input');
+                let string1 = String(q2_answer.value);
                 let lower = string1.toLowerCase();
-                console.log(JSON.parse(JSON.stringify(q2_answer)));
-                if (lower.value === 'silver'){
-                    input.style.backgroundColor = 'green';
+                console.log(lower);
+                if (lower === 'silver'){
+                    q2_answer.style.backgroundColor = 'green';
                     document.querySelector('#feedback_q2').innerHTML = 'Correct';
                 } else {
-                    input.style.backgroundColor = 'red';
+                    q2_answer.style.backgroundColor = 'red';
                     document.querySelector('#feedback_q2').innerHTML = 'Incorrect';
                 }
             });
