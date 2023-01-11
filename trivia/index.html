@@ -47,7 +47,7 @@
             correct.addEventListener('click', function(){
                 correct.style.backgroundColor = 'green';
                 document.querySelector('#feedback_q1').innerHTML = 'Correct';
-            };)
+            });
 
             let incorrect = document.querySelectorAll('.incorrect');
             for (let i = 0; i<incorrect.length; i++){
@@ -55,13 +55,13 @@
                     incorrect[i].style.backgroundColor = 'red';
                     document.querySelector('#feedback_q1').innerHTML = 'Incorrect';
                 })
-            }
+            };
             let q2_answer = document.querySelector('#q2_input');
             let lower_answer = q2_answer.toLowerCase();
             q2_answer.addEventListener('click', function(){
                 if lower_answer.value === "silver" then{
                     document.querySelector('#feedback_q2').innerHTML = 'Correct';
                 }
-            }
+            });
     </script>
 </html>
