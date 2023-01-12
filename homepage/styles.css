@@ -12,10 +12,14 @@ body {
     position: relative;
 }
 
+.email{
+    text-align: center;
+ }
+
 .center_button {
     margin: 0;
     position: absolute;
-    transform: translate(120%,0);
+    transform: translate(150%,0);
 }
 .center_button_hobby {
     margin-top: 0px;
