@@ -9,10 +9,17 @@
         <h1 class = 'header'>My hobby</h1>
         <br>
         <div class = "center_button">
-            <button type="button" class="btn btn-success" id = "life">Back</button>
+            <button type="button" class="btn btn-success" id = "Back">Back</button>
         </div>
         <p>
             <h2>I have two hobbies. One is model building and the other is astrophotography.</h2>
         </p>
     </body>
+    <script>
+        document.querySelector('#back').addEventListener('click', function(){
+            let link = document.URL.substr(0,document.URL.lastIndexOf('/'));
+            link = link.concat("/index.html");
+            window.location.href = link;
+        });
+    </script>
 </html>

@@ -28,10 +28,9 @@
     </body>
     <script>
         document.querySelector('#hobby').addEventListener('click', function(){
-            console.log("t");
             let link = document.URL.substr(0,document.URL.lastIndexOf('/'));
             link = link.concat("/hobby.html");
-            <a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
+            window.location.href = link;
         });
     </script>
 </html>
