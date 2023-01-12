@@ -40,11 +40,6 @@ body {
     color: #FCF900;
     text-align: center;
 }
-
-.nu_image {
-    width = "100";
-}
-
 .nu_image {
     display: flex;
     align-items: center;
@@ -52,6 +47,17 @@ body {
   }
 
 .nu_image2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.exia_image2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.exia_image {
     display: flex;
     align-items: center;
     justify-content: center;
