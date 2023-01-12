@@ -13,13 +13,25 @@
         </div>
         <br>
         <p>
-            <h2>I have two hobbies. One is model building and the other is astrophotography.</h2>
+            <h2>I have two hobbies. One is model building and the other is astrophotography.</h2><br>
+            <h2>I would like to share some of my work to you.</h2>
         </p>
+        <div class = "hyper_link_button">
+            <div class = "center_button_hobby2">
+                <button type="button" class="btn btn-primary" id = "Gunpla">Model building</button>
+                <button type="button" class="btn btn-secondary" id = "Astro">Astrophotography</button>
+            </div>
+        </div>
     </body>
     <script>
         document.querySelector('#back').addEventListener('click', function(){
             let link = document.URL.substr(0,document.URL.lastIndexOf('/'));
             link = link.concat("/index.html");
+            window.location.href = link;
+        });
+        document.querySelector('#Gunpla').addEventListener('click', function(){
+            let link = document.URL.substr(0,document.URL.lastIndexOf('/'));
+            link = link.concat("/gunpla.html");
             window.location.href = link;
         });
     </script>
