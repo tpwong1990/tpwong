@@ -32,7 +32,11 @@ body {
     position: absolute;
     left: 45%
 }
-.Nu_Gundam{
+.Nu_Gundam {
     color: #FCF900;
     text-align: center;
+}
+
+.nu_image {
+    width = "100";
 }
