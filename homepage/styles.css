@@ -66,3 +66,9 @@ body {
     align-items: center;
     justify-content: center;
   }
+
+.Astro1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
