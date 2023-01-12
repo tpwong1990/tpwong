@@ -18,7 +18,7 @@ body {
     transform: translate(120%,0);
 }
 .center_button_hobby {
-    margin: 0;
+    margin-top: 0px;
     position: absolute;
-    transform: translate(120%,0);
+    transform: translate(200%,0);
 }
