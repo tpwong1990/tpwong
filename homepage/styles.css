@@ -20,5 +20,5 @@ body {
 .center_button_hobby {
     margin-top: 0px;
     position: absolute;
-    transform: translate(200%,0);
+    left: 48%
 }
