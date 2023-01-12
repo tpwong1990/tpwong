@@ -7,3 +7,7 @@ body {
     color: #FCF900;
     text-align: center;
 }
+
+.container {
+    position: relative;
+}
