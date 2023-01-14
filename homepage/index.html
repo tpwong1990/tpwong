@@ -33,5 +33,15 @@
             link = link.concat("/hobby.html");
             window.location.href = link;
         });
+        document.querySelector('#music').addEventListener('click', function(){
+            let link = document.URL.substr(0,document.URL.lastIndexOf('/'));
+            link = link.concat("/music.html");
+            window.location.href = link;
+        });
+        document.querySelector('#life').addEventListener('click', function(){
+            let link = document.URL.substr(0,document.URL.lastIndexOf('/'));
+            link = link.concat("/life.html");
+            window.location.href = link;
+        });
     </script>
 </html>
