@@ -19,7 +19,7 @@ body {
 .center_button {
     margin: 0;
     position: absolute;
-    transform: translate(150%,0);
+    transform: translate(220%,0);
 }
 .center_button_hobby {
     margin-top: 0px;

@@ -16,13 +16,12 @@
             <h2> and I am learning software programming through the harvard CS50.</h2><br>
         </p>
         <p>
-            <h2>I want to introduce myself by sharing my hobbies, my favourite music and life in UK.</h2>
+            <h2>I want to introduce myself by sharing my hobbies and my favourite music.</h2>
         </p>
         <div class = "hyper_link_button">
             <div class = "center_button">
                 <button type="button" class="btn btn-primary" id = "hobby">My Hobby</button>
                 <button type="button" class="btn btn-secondary" id = "music">My favourite music</button>
-                <button type="button" class="btn btn-success" id = "life">Life in UK</button>
             </div>
         </div>
 
@@ -36,11 +35,6 @@
         document.querySelector('#music').addEventListener('click', function(){
             let link = document.URL.substr(0,document.URL.lastIndexOf('/'));
             link = link.concat("/music.html");
-            window.location.href = link;
-        });
-        document.querySelector('#life').addEventListener('click', function(){
-            let link = document.URL.substr(0,document.URL.lastIndexOf('/'));
-            link = link.concat("/life.html");
             window.location.href = link;
         });
     </script>
