@@ -6,6 +6,18 @@
         <title>My favourite music</title>
     </head>
     <body>
+        <h1 class = 'header'>My favourite music</h1>
+        <br>
+        <div class = "center_button_hobby">
+            <button type="button" class="btn btn-success" id = "Back">Back</button>
+        </div>
 
     </body>
+    <script>
+        document.querySelector('#back').addEventListener('click', function(){
+            let link = document.URL.substr(0,document.URL.lastIndexOf('/'));
+            link = link.concat("/index.html");
+            window.location.href = link;
+        });
+    </script>
 </html>
