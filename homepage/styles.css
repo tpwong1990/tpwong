@@ -21,19 +21,16 @@ body {
     justify-content: center;
 }
 .center_button_hobby {
-    margin-top: 0px;
-    position: absolute;
-    left: 48%
+    display: flex;
+    justify-content: center;
 }
 .center_button_hobby2 {
-    margin-top: 0px;
-    position: absolute;
-    left: 46%
+    display: flex;
+    justify-content: center;
 }
 .center_button_hobby3 {
-    margin-top: 0px;
-    position: absolute;
-    left: 45%
+    display: flex;
+    justify-content: center;
 }
 .Nu_Gundam {
     color: #FCF900;
