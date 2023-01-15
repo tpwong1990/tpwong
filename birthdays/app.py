@@ -37,7 +37,7 @@ def index():
         month = request.form.get("month")
         day = request.form.get("day")
         # data validation
-
+        if not name or (month < 0 or month > 12 or day < 0)
         # add data to the database
         db.execute("INSERT INTO birthdays (name, month, day) VALUES(?, ?, ?)", name, month, day)
 
