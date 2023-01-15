@@ -37,16 +37,11 @@ def index():
         month = request.form.get("month")
         day = request.form.get("day")
         # data validation
+        big_month = [1, 3, 5, 7, 8, 10, 12]
+        small_month = [4, 6, 9, 11]
         if name:
-            if (month > 0 and month <13):
-                if (month == 2):
-                    if (day > 0 and day <29):
-
-                    else:
-                        # not add
-                elif (day>0 and day < 31)
-
-
+            if month in big_month:
+                if
         else:
             return render_template("index.html")
 
