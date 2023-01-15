@@ -115,6 +115,8 @@ def quote():
 def register():
     """Register user"""
     return render_template("register.html")
+    user_name = request.form.get("username")
+    user_pw = request.form.get("password")
     #return apology("TODO")
 
 
