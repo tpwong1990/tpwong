@@ -41,7 +41,6 @@ def index():
         # add data to the database
         db.execute("INSERT INTO birthdays (name, month, day) VALUES(?, ?, ?)", name, month, day)
 
-
         return render_template("index.html")
 
 
