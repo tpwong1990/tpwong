@@ -29,7 +29,12 @@ def index():
         name = request.form.get("name")
         month = request.form.get("month")
         day = request.form.get("day")
-        int_day = int(day)
+        try:
+            int(day)
+        except ValueError:
+            return redirect("/")
+        else: int_day = int(day)
+
         # data validation
         day31_month = ["1", "3", "5", "7", "8", "10", "12"]
         day30_month = ["4", "6", "9", "11"]
