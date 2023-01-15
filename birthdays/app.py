@@ -44,12 +44,10 @@ def index():
             # empty name
             return redirect("/")
 
-        return redirect("/")
-
     else:
 
         # TODO: Display the entries in the database on index.html
         birthdays = db.execute("SELECT name, month, day FROM birthdays")
-            return render_template("index.html", birthday=birthdays)
+        return render_template("index.html", birthday=birthdays)
 
 
