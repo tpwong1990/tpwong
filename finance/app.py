@@ -114,10 +114,14 @@ def quote():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
-    return render_template("register.html")
-    user_name = request.form.get("username")
-    user_pw = request.form.get("password")
-    #return apology("TODO")
+    if request.method == "GET":
+        return render_template("register.html")
+    elif request.method == "POST":
+        user_name = request.form.get("username")
+        user_pw = request.form.get("password")
+        
+    else:
+        return apology("TODO")
 
 
 @app.route("/sell", methods=["GET", "POST"])
