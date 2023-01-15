@@ -42,6 +42,7 @@ def index():
                 #return redirect("/")
         #else:
             # empty name
+            return render_template("index.html")
             #return redirect("/")
 
     else:
