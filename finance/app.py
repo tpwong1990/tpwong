@@ -119,7 +119,8 @@ def register():
     elif request.method == "POST":
         user_name = request.form.get("username")
         user_pw = request.form.get("password")
-        
+        db.execute("INSERT INTO users (username, hash) VALUES(?, ?, ?)", name, month, day)
+
     else:
         return apology("TODO")
 
