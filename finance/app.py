@@ -136,7 +136,7 @@ def register():
         else:
             # add user data to database
             db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", user_name, user_hash)
-            return redirect("/")
+            return render_template("login.html")
     else:
         return apology("TODO")
 
