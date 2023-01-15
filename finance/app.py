@@ -126,8 +126,8 @@ def register():
             #return apology("Username already exist")
         #else:
             # add user data to database
-            db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", user_name, user_pw)
-            return apology("TODO")
+            #db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", user_name, user_pw)
+            return redirect("/")
     else:
         return apology("TODO")
 
