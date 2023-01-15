@@ -35,7 +35,7 @@ def index():
         #if name:
             #if (month in day31_month and (day > 0 and day < 32)) or (month in day30_month and (day > 0 and day < 31)) or (month == 2 and (day > 0 and day < 30)):
                 # correct day format
-                 db.execute("INSERT INTO birthdays (name, month, day) VALUES(?, ?, ?)", name, month, day)
+                 #db.execute("INSERT INTO birthdays (name, month, day) VALUES(?, ?, ?)", name, month, day)
                  return redirect("/")
             #else:
                 # incorrect day format
