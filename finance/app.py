@@ -120,7 +120,7 @@ def register():
         user_name = request.form.get("username")
         user_pw = request.form.get("password")
         user_hash = generate_password_hash(user_pw)
-        db.execute("INSERT INTO users (username) VALUES(?, ?)", user_name, user_hash)
+        db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", user_name, user_hash)
         return redirect("/")
     else:
         return apology("TODO")
