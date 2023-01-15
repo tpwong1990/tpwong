@@ -39,7 +39,7 @@ def index():
         # data validation
 
         # add data to the database
-        db.execute("INSERT INTO registrants (name, month, day) VALUES(?, ?, ?)", name, )
+        db.execute("INSERT INTO registrants (name, month, day) VALUES(?, ?, ?)", name, month, day)
 
 
         return render_template("index.html")
