@@ -33,7 +33,14 @@ def index():
     else:
 
         # TODO: Display the entries in the database on index.html
-        
+        name = request.form.get("name")
+        month = request.form.get("month")
+        day = request.form.get("day")
+        # data validation
+
+        # add data to the database
+        db.execute("INSERT INTO registrants (name, month, day) VALUES(?, ?, ?)", name, )
+
 
         return render_template("index.html")
 
