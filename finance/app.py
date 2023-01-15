@@ -120,7 +120,7 @@ def register():
         user_name = request.form.get("username")
         user_pw = request.form.get("password")
         # check if the username is exist or not
-        exist = db.execute("SELECT * FROM users WHERE username = ?", user_name)
+        #exist = db.execute("SELECT * FROM users WHERE username = ?", user_name)
         #if exist:
             # return error
             #return apology("Username already exist")
