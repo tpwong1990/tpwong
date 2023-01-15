@@ -36,35 +36,20 @@ def index():
             if (month in day31_month and (day > 0 and day < 32)) or (month in day30_month and (day > 0 and day < 31)) or (month == 2 and (day > 0 and day < 30)):
                 # correct day format
                  db.execute("INSERT INTO birthdays (name, month, day) VALUES(?, ?, ?)", name, month, day)
-                 return render_template("index.html")
+                 return redirect("/")
             else:
                 # incorrect day format
-                return render_template("index.html")
+                return redirect("/")
         else:
             # empty name
-            return render_template("index.html")
+            return redirect("/")
 
         return redirect("/")
 
     else:
 
         # TODO: Display the entries in the database on index.html
-        name = request.form.get("name")
-        month = request.form.get("month")
-        day = request.form.get("day")
-        # data validation
-        day31_month = [1, 3, 5, 7, 8, 10, 12]
-        day30_month = [4, 6, 9, 11]
-        if name:
-            if (month in day31_month and (day > 0 and day < 32)) or (month in day30_month and (day > 0 and day < 31)) or (month == 2 and (day > 0 and day < 30)):
-                # correct day format
-                 db.execute("INSERT INTO birthdays (name, month, day) VALUES(?, ?, ?)", name, month, day)
-                 return render_template("index.html")
-            else:
-                # incorrect day format
-                return render_template("index.html")
-        else:
-            # empty name
+      
             return render_template("index.html")
 
 
