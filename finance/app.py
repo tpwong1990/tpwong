@@ -121,12 +121,13 @@ def register():
         user_pw = request.form.get("password")
         # check if the username is exist or not
         exist = db.execute("SELECT * FROM users WHERE username = ?", user_name)
-        if exist:
+        #if exist:
             # return error
-            return apology("Username already exist")
-        else:
+            #return apology("Username already exist")
+        #else:
             # add user data to database
             db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", user_name, user_pw)
+            return render_template("login.html")
     else:
         return apology("TODO")
 
