@@ -122,11 +122,11 @@ def register():
         # check if the username is exist or not
         exist = db.execute("SELECT * FROM users WHERE username = user_name")
         if exist:
-            
+            # return error
             return apology("Username already exist")
         else:
+            # add user data to database
             db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", user_name, user_pw)
-
     else:
         return apology("TODO")
 
