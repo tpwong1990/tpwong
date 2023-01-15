@@ -121,11 +121,11 @@ def register():
         user_pw = request.form.get("password")
         user_pw_con = request.form.get("confirmation")
         # check if the pw match with pw_con
-        if !(user_name):
+        if not user_name:
             return apology("The username is empty")
-        if !(user_pw):
+        if not user_pw:
             return apology("The password is empty")
-        if !(user_pw == user_pw_con):
+        if not (user_pw == user_pw_con):
             return apology("The passwords does not match")
         user_hash = generate_password_hash(user_pw)
         # check if the username is exist or not
