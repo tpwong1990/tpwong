@@ -36,7 +36,12 @@
                     <tbody>
                         <!-- TODO: Loop through the database entries to display them in this table -->
                         {% for name in birthdays%}
-                        <tr></tr>
+                        <tr>
+                            <td>{% birthdays["name"] %}</td>
+                            <td>{% birthdays["month"] %}</td>
+                            <td>{% birthdays["day"] %}</td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
