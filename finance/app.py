@@ -1,4 +1,5 @@
 import os
+import datetime
 
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
@@ -82,8 +83,8 @@ def buy():
                     db.execute("UPDATE portofolio SET shares = ? WHERE id = ? AND symbol = ?", new_share, session["user_id"], symbol)
                 # update history
                 price = usd(cost)
-                share_1 = 
-                time =
+                share_1 =
+                time = datetime.datetime.now()
                 db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUE(?, ?, ?, ?, ?)")
                 return redirect("/")
             else:
