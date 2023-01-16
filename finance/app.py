@@ -54,7 +54,6 @@ def index():
         total_usd = usd(total)
         porfolio_total = porfolio_total + total
         full.append({"symbol":stock["symbol"], "name":stock["name"], "shares":stock["shares"], "price":price, "total":total_usd})
-    if not cash:
         porfolio_total = porfolio_total + cash[0]["cash"]
     porfolio_total = usd(porfolio_total)
     return render_template("index.html", portfolio=full, cash=usd(cash[0]["cash"]), total=porfolio_total)
@@ -244,7 +243,7 @@ def sell():
                 price_usd = usd(price)
                 time = datetime.datetime.now()
                 new_share = stock_share[0]["shares"] - share_sell
-                share_1 = "-".join(str(share_sell))
+                share_1 = str("-".join(str(share_sell)))
                 # update portfolio
                 if new_share == 0:
                     db.execute("DELETE FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
