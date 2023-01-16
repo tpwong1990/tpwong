@@ -76,7 +76,7 @@ def buy():
                 # check if the current stock exist in portfolio or not
                 portfolio = db.execute("SELECT shares FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
                 if not portfolio:
-                    db.execute("INSERT INTO portfolio (user_id, symbol, shares) VALUE(?, ?, ?)", session["user_id"], symbol, shares)
+                    db.execute("INSERT INTO portfolio (user_id, symbol, shares) VALUES (?, ?, ?)", session["user_id"], symbol, shares)
                 else:
                     current_share = portfolio[0]["shares"]
                     new_share = current_share + shares
@@ -85,7 +85,7 @@ def buy():
                 price = usd(cost)
                 share_1 = "+".join(str(shares))
                 time = datetime.datetime.now()
-                db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUE(?, ?, ?, ?, ?)", session["user_id"], symbol, share_1, price, time)
+                db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, share_1, price, time)
                 return redirect("/")
             else:
             # cannot buy
