@@ -47,9 +47,9 @@ def index():
     # get current price of each stock and generate new list
     full = []
     for stock in portfolio:
-        result = lookup(stock.symbol)
+        result = lookup(stock["symbol"])
         price = usd(result["price"])
-        full.append({"symbol":stock.symbol}, {"name":stock.name}, {"share":stock.shares}, {"price":price})
+        full.append([{"symbol":stock["symbol"]}, {"name":stock["name"]}, {"share":stock["shares"]}, {"price":price}])
     return render_template("index.html", portfolio=full, cash=cash)
     # return apology("TODO")
 
