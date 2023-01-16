@@ -44,6 +44,12 @@ def index():
     # get portfolio and cash
     cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
     portfolio = db.execute("SELECT symbol, shares, name FROM portfolio WHERE user_id = ?", session["user_id"])
+    # get current price of each stock and generate new list
+    full = []
+    for stock in portfolio:
+        result = lookup(stock.symbol)
+        price = usd(result["price"])
+        full = 
     if not portfolio:
         portfolio = []
     return render_template("index.html", portfolio=portfolio, cash=cash)
