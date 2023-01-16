@@ -71,6 +71,7 @@ def buy():
             if current_cash[0]["cash"] >= cost:
                 # can buy
                 cash_temp = current_cash[0]["cash"] - cost
+                # update portfolio
                 # check if the current stock exist in portfolio or not
                 portfolio = db.execute("SELECT shares FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
                 if not portfolio:
@@ -78,7 +79,12 @@ def buy():
                 else:
                     current_share = portfolio[0]["shares"]
                     new_share = current_share + shares
-                    db.execute("UPDATE portofolio SET shares")
+                    db.execute("UPDATE portofolio SET shares = ? WHERE id = ? AND symbol = ?", new_share, session["user_id"], symbol)
+                # update history
+                price = usd(cost)
+                share_1 = 
+                time =
+                db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUE(?, ?, ?, ?, ?)")
                 return redirect("/")
             else:
             # cannot buy
