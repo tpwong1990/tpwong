@@ -40,7 +40,12 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    return render_template("index.html")
+    # get portfolio and cash
+    cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
+    portfolio = db.execute("SELECT symbol, shares FROM portfolio WHERE user_id = ?", session["user_id"])
+    if not portfolio:
+        portfolio = []
+    return render_template("index.html", portfolio=portfolio, cash=cash)
     # return apology("TODO")
 
 
@@ -48,7 +53,30 @@ def index():
 @login_required
 def buy():
     """Buy shares of stock"""
-    return apology("TODO")
+    if request.method == "GET":
+        return render_template("buy.html")
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        shares = request.form.get("shares")
+    # quote the price of the stock
+    result = lookup(symbol)
+    if result:
+        # found
+        # calculate the cost
+        cost = shares * result["price"]
+        # check if user has enough money to buy
+        current_cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
+        if current_cash >= cost:
+            # can buy
+            
+        else:
+            # cannot buy
+            return apology("Not enough cash to buy the stock")
+    else:
+        # not found
+        return apology("Stock not found")
+
+    # return apology("TODO")
 
 
 @app.route("/history")
@@ -109,7 +137,17 @@ def logout():
 @login_required
 def quote():
     """Get stock quote."""
-    return apology("TODO")
+    if request.method == "GET":
+        return render_template("quote.html")
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        result = lookup(symbol)
+        if result:
+            # found
+            return render_template("quoted.html", quoted=result)
+        else:
+            # not found
+            return apology("Stock not found")
 
 
 @app.route("/register", methods=["GET", "POST"])

@@ -10,13 +10,15 @@
         <tr>
             <th class="text-start">Symbol</th>
             <th class="text-start">Name</th>
-            <th class="text-end">Shares</th>
-            <th class="text-end">Price</th>
-            <th class="text-end">TOTAL</th>
+            <th class="text-end">Current price</th>
         </tr>
     </thead>
     <tbody>
-        
+        <tr>
+            <td class = "text-start">{{ quoted.symbol }}</td>
+            <td class = "text-start">{{ quoted.name }}</td>
+            <td class = "text-end">{{ quoted.price }}</td>
+        </tr>
     </tbody>
 </table>
 {% endblock %}
