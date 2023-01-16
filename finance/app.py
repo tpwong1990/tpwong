@@ -83,9 +83,9 @@ def buy():
                     db.execute("UPDATE portofolio SET shares = ? WHERE id = ? AND symbol = ?", new_share, session["user_id"], symbol)
                 # update history
                 price = usd(cost)
-                share_1 =
+                share_1 = "+".join(str(shares))
                 time = datetime.datetime.now()
-                db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUE(?, ?, ?, ?, ?)")
+                db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUE(?, ?, ?, ?, ?)", session["user_id"], symbol, share_1, price, time)
                 return redirect("/")
             else:
             # cannot buy
