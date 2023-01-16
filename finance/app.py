@@ -43,7 +43,7 @@ def index():
     """Show portfolio of stocks"""
     # get portfolio and cash
     cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
-    portfolio = db.execute("SELECT symbol, shares FROM portfolio WHERE user_id = ?", session["user_id"])
+    portfolio = db.execute("SELECT symbol, shares, name FROM portfolio WHERE user_id = ?", session["user_id"])
     if not portfolio:
         portfolio = []
     return render_template("index.html", portfolio=portfolio, cash=cash)
