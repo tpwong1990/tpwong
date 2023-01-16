@@ -69,9 +69,9 @@ def buy():
             cost = float(shares) * result["price"]
             # check if user has enough money to buy
             current_cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
-            if current_cash[0]["cash"] >= cost:
+            cash_temp = current_cash[0]["cash"] - cost
+            if cash_temp >= 0:
                 # can buy
-                cash_temp = current_cash[0]["cash"] - cost
                 # update portfolio
                 # check if the current stock exist in portfolio or not
                 portfolio = db.execute("SELECT shares FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
@@ -86,6 +86,8 @@ def buy():
                 share_1 = "+".join(str(shares))
                 time = datetime.datetime.now()
                 db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, share_1, price, time)
+                # update user current cash
+                db.excute("UPDATE users SET cash = ? WHERE id = ?", cash_temp, session["user_id"])
                 return redirect("/")
             else:
             # cannot buy
