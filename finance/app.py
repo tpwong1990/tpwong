@@ -58,23 +58,25 @@ def buy():
     if request.method == "POST":
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
-    # quote the price of the stock
-    result = lookup(symbol)
-    if result:
-        # found
-        # calculate the cost
-        cost = shares * result["price"]
-        # check if user has enough money to buy
-        current_cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
-        if current_cash >= cost:
-            # can buy
-            
-        else:
+        if not shares or not symbol:
+            return apology("input cannot be empty")
+        # quote the price of the stock
+        result = lookup(symbol)
+        if result:
+            # found
+            # calculate the cost
+            cost = shares * result["price"]
+            # check if user has enough money to buy
+            current_cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
+            if current_cash >= cost:
+                # can buy
+                return redirect("/")
+            else:
             # cannot buy
-            return apology("Not enough cash to buy the stock")
-    else:
+                return apology("Not enough cash to buy the stock")
+        else:
         # not found
-        return apology("Stock not found")
+            return apology("Stock not found")
 
     # return apology("TODO")
 
