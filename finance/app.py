@@ -231,15 +231,19 @@ def sell():
                 # quote the current price
                 result = lookup(symbol)
                 price = result["price"]
+                price_usd = usd(price)
+                time = datetime.datetime.now()
                 new_share = stock_share[0]["shares"] - share_sell
+                share_1 = "-".join(str(share_sell))
                 # update portfolio
                 if new_share == 0:
                     db.excute("DELETE FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
                 else:
                     db.execute("UPDATE portfolio SET shares = ? WHERE user_id = ? AND symbol = ?", new_share, session["user_id"], symbol)
                 # update history
-                db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, share_1, price, time)
-
-
-
-        return apology("TODO")
+                db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, share_1, price_usd, time)
+                # update user cash
+                current_cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
+                new_cash = current_cash[0]["cash"] + price * share_sell
+                db.execute("UPDATE users SET cash = ? WHERE id = ?", new_cash, session["user_id"])
+                return redirect("/")
