@@ -87,7 +87,7 @@ def buy():
                 time = datetime.datetime.now()
                 db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, share_1, price, time)
                 # update user current cash
-                db.excute("UPDATE users SET cash = ? WHERE id = ?", cash_temp, session["user_id"])
+                db.execute("UPDATE users SET cash = ? WHERE id = ?", cash_temp, session["user_id"])
                 return redirect("/")
             else:
             # cannot buy
