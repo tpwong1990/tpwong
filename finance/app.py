@@ -54,7 +54,8 @@ def index():
         total_usd = usd(total)
         porfolio_total = porfolio_total + total
         full.append({"symbol":stock["symbol"], "name":stock["name"], "shares":stock["shares"], "price":price, "total":total_usd})
-    porfolio_total = porfolio_total + cash[0]["cash"]
+    if not cash:
+        porfolio_total = porfolio_total + cash[0]["cash"]
     porfolio_total = usd(porfolio_total)
     return render_template("index.html", portfolio=full, cash=usd(cash[0]["cash"]), total=porfolio_total)
     # return apology("TODO")
