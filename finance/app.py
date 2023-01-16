@@ -216,6 +216,30 @@ def sell():
         portfolio = db.execute("SELECT symbol, shares FROM portfolio WHERE user_id = ?", session["user_id"])
         return render_template("sell.html", portfolio=portfolio)
     if request.method == "POST":
-        portfolio = db.execute("SELECT symbol, shares FROM portfolio WHERE user_id = ?", session["user_id"])
+        symbol = request.form.get("symbol")
+        share_sell = request.form.get("shares")
+        # check if the stock eixst in portfolio
+        stock_share = db.execute("SELECT shares FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
+        if not stock_share:
+            return apology("You do not have that stock")
+        else:
+            # check if user have enough shares to sell
+            if share_sell > stock_share[0]["shares"]:
+                return apology("You do not have enough shares")
+            else:
+                # sell the share
+                # quote the current price
+                result = lookup(symbol)
+                price = result["price"]
+                new_share = stock_share[0]["shares"] - share_sell
+                # update portfolio
+                if new_share == 0:
+                    db.excute("DELETE FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
+                else:
+                    db.execute("UPDATE portfolio SET shares = ? WHERE user_id = ? AND symbol = ?", new_share, session["user_id"], symbol)
+                # update history
+                db.execute("INSERT INTO history (history_id, symbol, shares, price, time) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, share_1, price, time)
+
+
 
         return apology("TODO")
