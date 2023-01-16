@@ -79,8 +79,8 @@ def buy():
                     db.execute("INSERT INTO portfolio (user_id, symbol, shares) VALUES (?, ?, ?)", session["user_id"], symbol, shares)
                 else:
                     current_share = portfolio[0]["shares"]
-                    new_share = current_share + shares
-                    db.execute("UPDATE portofolio SET shares = ? WHERE id = ? AND symbol = ?", new_share, session["user_id"], symbol)
+                    new_share = current_share + int(shares)
+                    db.execute("UPDATE portfolio SET shares = ? WHERE user_id = ? AND symbol = ?", new_share, session["user_id"], symbol)
                 # update history
                 price = usd(cost)
                 share_1 = "+".join(str(shares))
