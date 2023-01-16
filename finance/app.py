@@ -217,11 +217,16 @@ def sell():
         return render_template("sell.html", portfolio=portfolio)
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        share_sell = request.form.get("shares")
+        share_sell = int(request.form.get("shares"))
+        try:
+            share_sell = int(request.form.get("shares"))
+        
         # check if the stock eixst in portfolio
         stock_share = db.execute("SELECT shares FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
         if not stock_share:
             return apology("You do not have that stock")
+        elif not share_sell or not symbol:
+            return apology("Input can not be empty")
         else:
             # check if user have enough shares to sell
             if share_sell > stock_share[0]["shares"]:
