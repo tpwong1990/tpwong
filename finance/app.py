@@ -65,10 +65,10 @@ def buy():
         if result:
             # found
             # calculate the cost
-            cost = shares * result["price"]
+            cost = float(shares) * result["price"]
             # check if user has enough money to buy
             current_cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
-            if current_cash >= cost:
+            if current_cash[0] >= cost:
                 # can buy
                 return redirect("/")
             else:
