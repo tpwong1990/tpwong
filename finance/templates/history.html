@@ -1,28 +1,28 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Portfolio
+    History
 {% endblock %}
 
 {% block main %}
-<table class="table">
-    <thead>
-        <tr>
-            <th class="text-start">Symbol</th>
-            <th class="text-end">Shares</th>
-            <th class="text-end">Price</th>
-            <th class="text-end">Transacted</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for hist in history %}
-        <tr>
-            <td class="text-start">{{ hist.symbol }}</td>
-            <td class="text-end">{{ hist.shares }}</td>
-            <td class="text-end">{{ hist.price }}</td>
-            <td class="text-end">{{ hist.time }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Transacted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hist in history %}
+            <tr>
+                <td class="text-start">{{ hist.symbol }}</td>
+                <td class="text-end">{{ hist.shares }}</td>
+                <td class="text-end">{{ hist.price }}</td>
+                <td class="text-end">{{ hist.time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
