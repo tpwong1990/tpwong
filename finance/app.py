@@ -217,10 +217,14 @@ def sell():
         return render_template("sell.html", portfolio=portfolio)
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        share_sell = int(request.form.get("shares"))
         try:
-            share_sell = int(request.form.get("shares"))
-        
+            int(request.form.get("shares"))
+        except ValueError:
+            return apology("Input must be an integer")
+        else: share_sell = int(request.form.get("shares"))
+        # check the shares to sell is positive
+        if share_sell < 0:
+            return apology("Input must be positive")
         # check if the stock eixst in portfolio
         stock_share = db.execute("SELECT shares FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
         if not stock_share:
@@ -242,7 +246,7 @@ def sell():
                 share_1 = "-".join(str(share_sell))
                 # update portfolio
                 if new_share == 0:
-                    db.excute("DELETE FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
+                    db.execute("DELETE FROM portfolio WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
                 else:
                     db.execute("UPDATE portfolio SET shares = ? WHERE user_id = ? AND symbol = ?", new_share, session["user_id"], symbol)
                 # update history
