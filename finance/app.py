@@ -46,12 +46,17 @@ def index():
     portfolio = db.execute("SELECT symbol, shares, name FROM portfolio WHERE user_id = ?", session["user_id"])
     # get current price of each stock and generate new list
     full = []
+    porfolio_total = 0
     for stock in portfolio:
         result = lookup(stock["symbol"])
         price = usd(result["price"])
-        total = usd(result["price"]*float(stock["shares"]))
-        full.append({"symbol":stock["symbol"], "name":stock["name"], "shares":stock["shares"], "price":price, "total":total})
-    return render_template("index.html", portfolio=full, cash=cash)
+        total = result["price"]*float(stock["shares"])
+        total_usd = usd(total)
+        porfolio_total = porfolio_total + total
+        full.append({"symbol":stock["symbol"], "name":stock["name"], "shares":stock["shares"], "price":price, "total":total_usd})
+    porfolio_total = porfolio_total + cash[0]["cash"]
+    porfolio_total = usd(porfolio_total)
+    return render_template("index.html", portfolio=full, cash=usd(cash[0]["cash"]), total=porfolio_total)
     # return apology("TODO")
 
 
