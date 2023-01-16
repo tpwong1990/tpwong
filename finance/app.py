@@ -49,7 +49,8 @@ def index():
     for stock in portfolio:
         result = lookup(stock["symbol"])
         price = usd(result["price"])
-        full.append({"symbol":stock["symbol"], "name":stock["name"], "share":stock["shares"], "price":price})
+        total = usd(result["price"]*float(stock["shares"]))
+        full.append({"symbol":stock["symbol"], "name":stock["name"], "share":stock["shares"], "price":price, "total":total})
     return render_template("index.html", portfolio=full, cash=cash)
     # return apology("TODO")
 
