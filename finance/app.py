@@ -207,9 +207,6 @@ def register():
             # add user data to database
             db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", user_name, user_hash)
             return render_template("login.html")
-    else:
-        return apology("TODO")
-
 
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
@@ -218,4 +215,4 @@ def sell():
     if request.method == "GET":
         return render_template("sell.html")
     if request.method == "POST":
-    return apology("TODO")
+        return apology("TODO")
