@@ -64,9 +64,9 @@ def usd(value):
     return f"${value:,.2f}"
 
 def check_integer(n):
-try:
-    float(n)
-except ValueError:
-    return False
-else:
-    return float(n).is_integer()
+    try:
+        float(n)
+    except ValueError:
+        return False
+    else:
+        return float(n).is_integer()

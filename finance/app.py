@@ -7,7 +7,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, login_required, lookup, usd
+from helpers import apology, login_required, lookup, usd, check_integer
 
 # Configure application
 app = Flask(__name__)
@@ -75,7 +75,7 @@ def buy():
         if check_integer(shares) is False:
             return apology("Value of Shares must be integer")
         # check if shares is positive
-        if shares <= 0:
+        if check_integer(shares) <= 0:
             return apology("Value of Shares must be positive")
         # quote the price of the stock
         result = lookup(symbol)
