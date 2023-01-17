@@ -206,8 +206,10 @@ def register():
         if not (user_pw == user_pw_con):
             return apology("The passwords does not match")
         # check if the pw requirement
-        if ((len(user_pw) < 7) or re.search('[a-zA-Z]', user_pw)) is False:
-            return apology("The passwords must contain at least 8 characters which must contain numbers and letters)
+        if (len(user_pw) < 7):
+            return apology("The passwords must contain at least 8 characters which must contain numbers and letters")
+        if not re.search('[a-zA-Z]', user_pw):
+            return apology("The passwords must contain at least 8 characters which must contain numbers and letters")
         user_hash = generate_password_hash(user_pw)
         # check if the username is exist or not
         exist = db.execute("SELECT * FROM users WHERE username = ?", user_name)
