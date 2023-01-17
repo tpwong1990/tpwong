@@ -197,13 +197,16 @@ def register():
         user_name = request.form.get("username")
         user_pw = request.form.get("password")
         user_pw_con = request.form.get("confirmation")
-        # check if the pw match with pw_con
         if not user_name:
             return apology("The username is empty")
         if not user_pw:
             return apology("The password is empty")
+        # check if the pw match with pw_con
         if not (user_pw == user_pw_con):
             return apology("The passwords does not match")
+        # check if the pw contain number only
+        if user_pw.isdigit() is True:
+            return apology("The passwords must contain at least 8 characters and numbers and letters)
         user_hash = generate_password_hash(user_pw)
         # check if the username is exist or not
         exist = db.execute("SELECT * FROM users WHERE username = ?", user_name)
