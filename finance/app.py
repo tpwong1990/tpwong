@@ -48,12 +48,12 @@ def index():
     full = []
     porfolio_total = 0
     for stock in portfolio:
-        result = lookup(stock["symbol"].upper)
+        result = lookup(stock["symbol"].upper())
         price = usd(result["price"])
         total = result["price"]*float(stock["shares"])
         total_usd = usd(total)
         porfolio_total = porfolio_total + total
-        full.append({"symbol":stock["symbol"].upper, "name":stock["name"], "shares":stock["shares"], "price":price, "total":total_usd})
+        full.append({"symbol":stock["symbol"].upper(), "name":stock["name"], "shares":stock["shares"], "price":price, "total":total_usd})
     porfolio_total = porfolio_total + cash[0]["cash"]
     porfolio_total = usd(porfolio_total)
     return render_template("index.html", portfolio=full, cash=usd(cash[0]["cash"]), total=porfolio_total)
@@ -67,7 +67,7 @@ def buy():
     if request.method == "GET":
         return render_template("buy.html")
     if request.method == "POST":
-        symbol = request.form.get("symbol").upper
+        symbol = request.form.get("symbol").upper()
         shares = request.form.get("shares")
         if not shares or not symbol:
             return apology("input cannot be empty")
@@ -171,7 +171,7 @@ def quote():
     if request.method == "GET":
         return render_template("quote.html")
     if request.method == "POST":
-        symbol = request.form.get("symbol")
+        symbol = request.form.get("symbol").upper()
         result = lookup(symbol)
         if result:
             # found
@@ -216,7 +216,7 @@ def sell():
         portfolio = db.execute("SELECT symbol, shares FROM portfolio WHERE user_id = ?", session["user_id"])
         return render_template("sell.html", portfolio=portfolio)
     if request.method == "POST":
-        symbol = request.form.get("symbol")
+        symbol = request.form.get("symbol").upper()
         try:
             int(request.form.get("shares"))
         except ValueError:
