@@ -1,5 +1,6 @@
 import os
 import datetime
+import re
 
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
@@ -205,11 +206,7 @@ def register():
         if not (user_pw == user_pw_con):
             return apology("The passwords does not match")
         # check if the pw requirement
-        alpha = []
-        for x in range(26):
-            alpha =alpha.append(chr(97+x))
-
-        if (len(user_pw) < 7)or   is True:
+        if ((len(user_pw) < 7) or re.search('[a-zA-Z]', user_pw)) is False:
             return apology("The passwords must contain at least 8 characters which must contain numbers and letters)
         user_hash = generate_password_hash(user_pw)
         # check if the username is exist or not
