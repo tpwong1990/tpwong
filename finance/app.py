@@ -181,6 +181,7 @@ def quote():
         result = lookup(symbol)
         if result:
             # found
+            result["price"] = usd(result["price"])
             return render_template("quoted.html", quoted=result)
         else:
             # not found
