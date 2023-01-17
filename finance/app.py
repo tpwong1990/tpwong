@@ -72,7 +72,7 @@ def buy():
         if not shares or not symbol:
             return apology("input cannot be empty")
         # check if shares is integer or not
-        if 
+        if check_integer(shares):
         # quote the price of the stock
         result = lookup(symbol)
         if result:
