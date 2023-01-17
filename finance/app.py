@@ -205,6 +205,8 @@ def register():
         if not (user_pw == user_pw_con):
             return apology("The passwords does not match")
         # check if the pw contain number only
+        for i 
+        alpha
         if len(user_pw) < 7 and  is True:
             return apology("The passwords must contain at least 8 characters which must contain numbers and letters)
         user_hash = generate_password_hash(user_pw)
