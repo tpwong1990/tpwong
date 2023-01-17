@@ -71,6 +71,8 @@ def buy():
         shares = request.form.get("shares")
         if not shares or not symbol:
             return apology("input cannot be empty")
+        # check if shares is integer or not
+        if 
         # quote the price of the stock
         result = lookup(symbol)
         if result:
