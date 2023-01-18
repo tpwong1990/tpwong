@@ -29,7 +29,7 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
-    return redirect("login.html")
+    return redirect("/")
 
 @app.route("/logout")
 def logout():
@@ -45,3 +45,8 @@ def logout():
 def register():
     if request.method == "GET":
         return render_template("register.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "GET":
+        return render_template("login.html")
