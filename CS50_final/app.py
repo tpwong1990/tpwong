@@ -43,4 +43,5 @@ def logout():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-     # TODO
+    if request.method == "GET":
+        return render_template("register.html")
