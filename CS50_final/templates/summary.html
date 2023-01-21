@@ -14,11 +14,17 @@
         <th>Category</th>
         <th>Expense</th>
         <th>Remarks</th>
-    </tr>
-
-    <tr>
-    </tr>
-
+    {% for exp in expenses %}
+        </tr>
+            <td>{{ exp.day }}</td>
+            <td>{{ exp.month }}</td>
+            <td>{{ exp.year }}</td>
+            <td>{{ exp.name }}</td>
+            <td>{{ exp.category }}</td>
+            <td>{{ exp.expense }}</td>
+            <td>{{ exp.remarks }}</td>
+        </tr>
+    {% endfor %}
 </table>
 
     {% with messages = get_flashed_messages() %}

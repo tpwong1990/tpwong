@@ -33,9 +33,9 @@ def index():
     if request.method == "GET":
 
         # extract the expenses
-        total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
-        
-        return render_template("summary.html")
+        total_expenses = db.execute("SELECT day, month, year, category, name, expense, remarks FROM expenses WHERE user_id = ?", session["user_id"])
+
+        return render_template("summary.html", expenses=total_expenses)
 
 
 @app.route("/logout")
