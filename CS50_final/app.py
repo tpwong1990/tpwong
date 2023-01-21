@@ -129,4 +129,11 @@ def dataimport():
             "December" ]
         return render_template("dataimport.html", months = month)
     if request.method == "POST":
-        return render_template("dataimport.html", months = month)
+        # check if all the required field exist
+        month = request.form.get("month")
+        year = request.form.get("year")
+        category = request.form.get("category")
+        expenses = request.form.get("expenses")
+        if (not month) or (not year) or (not category) or (not expenses):
+            flash("Please input month, year, categort and expenses")
+            return render_template("dataimport.html", months = month)
