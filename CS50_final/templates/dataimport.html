@@ -6,17 +6,34 @@
 
 {% block main %}
     <form action="/dataimport" method="post" id="entry">
-        <input autocomplete="off" class="form-control mx-auto w-auto" id="day" name="day" placeholder="Day" type="text">
-        <select class="form-select mx-auto w-auto" name="month">
-            <option disabled selected>Month</option>
-            {% for mon in months %}
-                <option value = {{ mon }} >{{ mon }}</option>
-            {% endfor %}
-        </select>
-        <input autocomplete="off" class="form-control mx-auto w-auto" id="year" name="year" placeholder="Year" type="text">
-        <input autocomplete="off" class="form-control mx-auto w-auto" id="category" name="category" placeholder="Category" type="text">
-        <input autocomplete="off" class="form-control mx-auto w-auto" id="expenses" name="expenses" placeholder="Expenses" type="text">
-        <input autocomplete="off" class="form-control mx-auto w-auto" id="remarks" name="remarks" placeholder="Remarks" type="text">
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Category</th>
+                <th>Expenses</th>
+                <th>Remarks</th>
+              </tr>
+
+              <tr>
+                <td><input autocomplete="off" class="form-control mx-auto w-auto" id="day" name="day" type="text"></td>
+                <td>
+                    <select class="form-select mx-auto w-auto" name="month">
+                        <option disabled selected>Month</option>
+                        {% for mon in months %}
+                            <option value = {{ mon }} >{{ mon }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td><input autocomplete="off" class="form-control mx-auto w-auto" id="year" name="year" placeholder="Year" type="text"></td>
+                <td><input autocomplete="off" class="form-control mx-auto w-auto" id="category" name="category" placeholder="Category" type="text"></td>
+                <td><input autocomplete="off" class="form-control mx-auto w-auto" id="expenses" name="expenses" placeholder="Expenses" type="text"></td>
+                <td><input autocomplete="off" class="form-control mx-auto w-auto" id="remarks" name="remarks" placeholder="Remarks" type="text"></td>
+
+              </tr>
+        </table>
+        <button class="btn btn-primary" type="submit">Update</button>
     </form>
 
     {% with messages = get_flashed_messages() %}
