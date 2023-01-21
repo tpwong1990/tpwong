@@ -108,10 +108,12 @@ def login():
         return render_template("summary.html")
 
 @app.route("/summary")
+@login_required
 def summary():
     return render_template("summary.html")
 
 @app.route("/dataimport")
+@login_required
 def dataimport():
     if request.method == "GET":
         month_list = [
@@ -130,10 +132,10 @@ def dataimport():
         return render_template("dataimport.html", months = month_list)
     if request.method == "POST":
         # check if all the required field exist
-        month = request.form.get("month")
-        year = request.form.get("year")
-        category = request.form.get("category")
-        expenses = request.form.get("expenses")
+        # month = request.form.get("month")
+        # year = request.form.get("year")
+        #category = request.form.get("category")
+        #expenses = request.form.get("expenses")
         #if (not month) or (not year) or (not category) or (not expenses):
          #   flash("Please input month, year, categort and expenses")
           #  return render_template("summary.html")
