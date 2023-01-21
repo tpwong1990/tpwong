@@ -127,6 +127,6 @@ def dataimport():
             "October",
             "November",
             "December" ]
-        return render_template("dataimport.html", month)
+        return render_template("dataimport.html", months = month)
     if request.method == "POST":
-        return render_template("dataimport.html", month)
+        return render_template("dataimport.html", months = month)
