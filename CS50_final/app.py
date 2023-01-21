@@ -32,7 +32,7 @@ def after_request(response):
 def index():
     if request.method == "GET":
          # extract the expenses
-        total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ? ORDER BY year", session["user_id"])
+        total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ? ORDER BY year DESC", session["user_id"])
         distinct_month = db.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", session["user_id"])
 
         return render_template("summary.html", expenses=total_expenses, months=distinct_month)
