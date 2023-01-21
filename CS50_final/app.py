@@ -41,9 +41,9 @@ def index():
 
     if request.method == "POST":
         selected_month = request.form.get("month")
-        if not select_month = "All":
+        if not select_month == "All":
             total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ? month = ?", session["user_id"], selected_month)
-        return rediect("/")
+        return redirect("/")
 
 
 @app.route("/logout")
