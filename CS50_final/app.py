@@ -75,7 +75,7 @@ def register():
             return render_template("register.html")
 
         # register the user
-        userhash = generate_password_hash(user_pw)
+        userhash = generate_password_hash(pw)
         db.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", username, userhash)
         flash("Account registration successful")
         return render_template("login.html")
