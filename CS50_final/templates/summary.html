@@ -8,7 +8,10 @@
 <script>
     function DoSubmit(sel)
     {
-     if(sel.val()!='0') this.form.submit();
+     if(sel.val()!='0') {
+        console.log("A")
+        this.form.submit();
+     }
     }
 </script>
 <form action="/select", method = "post">
