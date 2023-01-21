@@ -50,9 +50,11 @@ def register():
         pw = request.form.get("password")
         pw_con = request.form.get("confirmation")
 
-        if (pw == pw_con):
-            
+        if not (pw == pw_con):
+            flash('Password dose not match')
+            return render_template("register.html")
         return render_template("login.html")
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
