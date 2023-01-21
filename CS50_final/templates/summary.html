@@ -14,7 +14,7 @@
      }
     }
 </script>
-<form action="/select", method = "post">
+<form action="/select", method = "post", name="month_select">
 <table class = "table">
     <thread>
         <tr>
@@ -31,7 +31,7 @@
         <tr>
             <td></td>
             <td>
-                <select class="form-select mx-auto w-auto" name="month" onchange='DoSubmit()';>
+                <select class="form-select mx-auto w-auto" name="month" onchange='DoSubmit(month_select)';>
                     <option disabled selected>Month</option>
                     <option value = "All">All</option>
                     {% for mon in months %}
