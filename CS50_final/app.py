@@ -50,6 +50,17 @@ def register():
         pw = request.form.get("password")
         pw_con = request.form.get("confirmation")
 
+        # check input empty
+        if (not username ) or (not pw) or (not pw_con):
+            flash("All fields are required")
+            return render_template("register.html")
+        # check if pw fulfill requirement
+        if (len(user_pw) < 7):
+            flash("Password's length should be at least 8")
+            return render_template("register.html")
+        if not re.search('[a-zA-Z]', user_pw) :
+            flash("Password's length should be at least 8")
+        # pw confirmation correct
         if not (pw == pw_con):
             flash('Password dose not match')
             return render_template("register.html")
