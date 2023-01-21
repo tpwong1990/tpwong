@@ -6,6 +6,21 @@
 
 {% block main %}
     <strong>Account registration</strong>
+    <script>
+        function required()
+            {
+                var empt = document.form1.text1.value;
+                if (empt === "")
+                {
+                    alert("Please input a Value");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+    </script>
     <form action="/register" method="post" onsumbit="required()">
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
@@ -22,5 +37,5 @@
         <button class="btn btn-primary" type="submit">Register</button>
     </form>
 
-    <script src="script.js"></script>
+
 {% endblock %}
