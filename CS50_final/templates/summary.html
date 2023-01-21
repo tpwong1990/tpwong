@@ -5,26 +5,31 @@
 {% endblock %}
 
 {% block main %}
-<table>
-    <tr>
-        <th>Day</th>
-        <th>Month</th>
-        <th>Year</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Expense</th>
-        <th>Remarks</th>
-    {% for exp in expenses %}
+<table class = "table">
+    <thread>
+        <tr>
+            <th>Day</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Expense</th>
+            <th>Remarks</th>
         </tr>
-            <td>{{ exp.day }}</td>
-            <td>{{ exp.month }}</td>
-            <td>{{ exp.year }}</td>
-            <td>{{ exp.name }}</td>
-            <td>{{ exp.category }}</td>
-            <td>{{ exp.expense }}</td>
-            <td>{{ exp.remarks }}</td>
-        </tr>
-    {% endfor %}
+    </thread>
+    <tbody>
+        {% for exp in expenses %}
+            </tr>
+                <td>{{ exp.day }}</td>
+                <td>{{ exp.month }}</td>
+                <td>{{ exp.year }}</td>
+                <td>{{ exp.name }}</td>
+                <td>{{ exp.category }}</td>
+                <td>{{ exp.expense }}</td>
+                <td>{{ exp.remarks }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
     {% with messages = get_flashed_messages() %}
