@@ -56,6 +56,11 @@ def register():
             flash("All fields are required")
             return render_template("register.html")
 
+        # check the username exist or not
+        exist = db.execute("SELECT user_name FROM users WHERE user_name = ?", username)
+        if exist:
+            flash('The username has been registered already')
+
         # pw confirmation correct
         if not (pw == pw_con):
             flash('Password dose not match')
@@ -68,6 +73,12 @@ def register():
         if not re.search('[a-zA-Z]', pw) or not re.search('[0-9]', pw):
             flash("Password's length should be a mix of letters and numbers")
             return render_template("register.html")
+
+        # register the user
+        userhash = generate_password_hash(user_pw)
+        db.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", username userhash)
+
+
 
         return render_template("login.html")
 
