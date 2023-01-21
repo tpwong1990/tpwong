@@ -43,6 +43,9 @@ def index():
         selected_month = request.form.get("month")
         if not select_month == "All":
             total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ? month = ?", session["user_id"], selected_month)
+        else:
+            total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
+
         return render_template("summary.html", expenses=total_expenses, months=distinct_month)
 
 
