@@ -45,12 +45,12 @@ def logout():
 def register():
     if request.method == "GET":
         return render_template("register.html")
-   # if request.method == "POST":
+   if request.method == "POST":
         username = request.form.get("username")
         pw = request.form.get("password")
         pw_con = request.form.get("confirmation")
 
-       # return render_template("login.html")
+       #return render_template("login.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
