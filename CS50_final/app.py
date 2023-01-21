@@ -84,3 +84,23 @@ def register():
 def login():
     if request.method == "GET":
         return render_template("login.html")
+    if request.method == "POST":
+        username = request.form.get("username")
+        pw = request.form.get("password")
+
+        # check input empty
+        if (not username ) or (not pw):
+            flash("All fields are required")
+            return render_template("login.html")
+
+        # check if username exist:
+        exist = db.execute("SELECT user_name FROM users WHERE user_name = ?", username)
+        if not (exist):
+            flash("Username does not exist")
+            return render_template("login.html")
+
+        # check if pw is correct:
+        hash_check = db.execute("SELECT hash FROM users WHERE user_name = ?", hash)
+
+
+        return redirect("/")
