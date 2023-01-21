@@ -23,13 +23,38 @@
             <td></td>
             <td>
                 <select class="form-select mx-auto w-auto" name="month" onchange="javascript: if(this.value != '0') this.form.submit();">
-                    <option disabled selected value = '0'>Month</option>
-                    <option value ='All'>All</option>
-                    {% for mon in months %}
+                    <option selected value ='All'>All</option>
+                    {% for mon in d_months %}
                         <option value = {{ mon["month"] }} >{{ mon["month"] }}</option>
                     {% endfor %}
                 </select>
             </td>
+            <td>
+                <select class="form-select mx-auto w-auto" name="year" onchange="javascript: if(this.value != '0') this.form.submit();">
+                    <option selected value ='All'>All</option>
+                    {% for yr in d_years %}
+                        <option value = {{ yr["year"] }} >{{ yr["year"] }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <select class="form-select mx-auto w-auto" name="name" onchange="javascript: if(this.value != '0') this.form.submit();">
+                    <option selected value ='All'>All</option>
+                    {% for na in d_names %}
+                        <option value = {{ na["name"] }} >{{ na["name"] }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <select class="form-select mx-auto w-auto" name="category" onchange="javascript: if(this.value != '0') this.form.submit();">
+                    <option selected value ='All'>All</option>
+                    {% for ca in d_categories %}
+                        <option value = {{ ca["category"] }} >{{ ca["category"] }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td></td>
+            <td></td>
         </tr>
         {% for exp in expenses %}
             </tr>

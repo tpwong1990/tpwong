@@ -37,7 +37,7 @@ def index():
         distinct_year = db.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", session["user_id"])
         distinct_name = db.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", session["user_id"])
         distinct_category = db.execute("SELECT DISTINCT category FROM expenses WHERE user_id = ?", session["user_id"])
-        return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_category=distinct_category)
+        return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
 
 
 @app.route("/select", methods=["GET", "POST"])
@@ -48,13 +48,16 @@ def select():
     distinct_name = db.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", session["user_id"])
     distinct_category = db.execute("SELECT DISTINCT category FROM expenses WHERE user_id = ?", session["user_id"])
     if request.method == "POST":
-        distinct_month = request.form.get("month")
-        if not selected_month == "All":
-            total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ? AND month = ?", session["user_id"], selected_month)
-            return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_category=distinct_category)
+        selected_month = request.form.get("month")
+        selected_year = request.form.get("year")
+        selected_name = request.form.get("name")
+        selected_category = request.form.get("category")
+        if (selected_month == "All") and (selected_year == "All") and (selected_name == "All") and (selected_category == "All"):
+            total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
+            return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
         else:
             total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
-            return render_template("summary.html", expenses=total_expenses, months=distinct_month)
+            return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
 
 
 @app.route("/logout")
