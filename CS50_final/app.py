@@ -152,9 +152,9 @@ def dataimport():
             return redirect("/dataimport")
 
         # check if expense is float value
-        if not (float(expense)):
+        if not (check_float(expense)):
             flash("Expenses should be numeric value")
 
         # update the database
         db.execute("INSERT INTO expenses (user_id, day, month, year, category, name, expense, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", session["user_id"], day, month, year, category, name, expense, remarks)
-        return redirect("/")
+        return redirect("/dataimport")
