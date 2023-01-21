@@ -105,4 +105,4 @@ def login():
         # login successful
         session["user_id"] = account[0]["id"]
         flash("Login successful")
-        return redirect("/")
+        return render_template("summary.html")
