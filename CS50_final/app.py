@@ -114,7 +114,7 @@ def summary():
 @app.route("/dataimport")
 def dataimport():
     if request.method == "GET":
-        month = [
+        month_list = [
             "January",
             "Februnary",
             "March",
@@ -127,13 +127,14 @@ def dataimport():
             "October",
             "November",
             "December" ]
-        return render_template("dataimport.html", months = month)
+        return render_template("dataimport.html", months = month_list)
     if request.method == "POST":
         # check if all the required field exist
         month = request.form.get("month")
         year = request.form.get("year")
         category = request.form.get("category")
         expenses = request.form.get("expenses")
-        if (not month) or (not year) or (not category) or (not expenses):
-            flash("Please input month, year, categort and expenses")
-            return redirect("/dataimport")
+        #if (not month) or (not year) or (not category) or (not expenses):
+         #   flash("Please input month, year, categort and expenses")
+          #  return render_template("summary.html")
+        return render_template("summary.html")
