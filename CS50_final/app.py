@@ -54,18 +54,21 @@ def register():
         if (not username ) or (not pw) or (not pw_con):
             flash("All fields are required")
             return render_template("register.html")
-        # check if pw fulfill requirement
-        if (len(user_pw) < 7):
-            flash("Password's length should be at least 8")
-            return render_template("register.html")
-        if not re.search('[a-zA-Z]', user_pw) :
-            flash("Password's length should be at least 8")
+
         # pw confirmation correct
         if not (pw == pw_con):
             flash('Password dose not match')
             return render_template("register.html")
-        return render_template("login.html")
 
+        # check if pw fulfill requirement
+        if (len(user_pw) < 7):
+            flash("Password's length should be at least 8")
+            return render_template("register.html")
+        if not re.search('[a-zA-Z]', pw) or not re.search('[0-9]', pw):
+            flash("Password's length should be a mix of letters and numbers")
+            return render_template("register.html")
+
+        return render_template("login.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
