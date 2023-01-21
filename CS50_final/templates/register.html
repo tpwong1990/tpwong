@@ -9,6 +9,7 @@
     <script>
         function required()
             {
+                console.log("A")
                 var user_name = document.getElementById("registration").username.value;
                 var user_pw = document.getElementById("registration").password.value;
                 var user_pw_con = document.getElementById("registration").confirmation.value;
@@ -23,7 +24,7 @@
                 }
             }
     </script>
-    <form action="/register" method="post" onsumbit="return required()" id="registration">
+    <form action="/register" method="post" onsumbit="required()" id="registration">
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
         </div>
