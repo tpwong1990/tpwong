@@ -9,8 +9,10 @@
     <script>
         function required()
             {
-                var empt = document.form1.text1.value;
-                if (empt === "")
+                var user_name = document.getElementById("registration").username.value;
+                var user_pw = document.getElementById("registration").password.value;
+                var user_pw_con = document.getElementById("registration").password.confirmation;
+                if (user_name === "")
                 {
                     alert("Please input a Value");
                     return false;
@@ -21,7 +23,7 @@
                 }
             }
     </script>
-    <form action="/register" method="post" onsumbit="required()">
+    <form action="/register" method="post" onsumbit="required()" id="registration">
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
         </div>
