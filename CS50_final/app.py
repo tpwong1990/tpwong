@@ -1,5 +1,6 @@
 import os
 import datetime
+import re
 
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
@@ -61,7 +62,7 @@ def register():
             return render_template("register.html")
 
         # check if pw fulfill requirement
-        if (len(user_pw) < 7):
+        if (len(pw) < 7):
             flash("Password's length should be at least 8")
             return render_template("register.html")
         if not re.search('[a-zA-Z]', pw) or not re.search('[0-9]', pw):
