@@ -9,7 +9,14 @@
     <thread>
         <tr>
             <th>Day</th>
-            <th>Month</th>
+            <th>
+                <select class="form-select mx-auto w-auto" name="month">
+                    <option disabled selected>Month</option>
+                    {% for mon in months %}
+                        <option value = {{ mon }} >{{ mon }}</option>
+                    {% endfor %}
+                </select>
+            </th>
             <th>Year</th>
             <th>Name</th>
             <th>Category</th>
