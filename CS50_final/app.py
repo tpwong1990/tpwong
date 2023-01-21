@@ -6,7 +6,7 @@ from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import login_required
+from helpers import login_required, check_integer
 
 # Configure application
 app = Flask(__name__)
@@ -140,7 +140,13 @@ def dataimport():
         expenses = request.form.get("expenses")
         remarks = request.form.get("remarks")
         if (not month) or (not year) or (not category) or (not expenses):
-            flash("Please input month, year, categort and expenses")
-            return render_template("summary.html")
-        if
+            flash("Please input month, year, category and expenses")
+            return redirect("/dataimport")
+        # check if day and year is integer
+        if (not check_integer(day)) or (not check_integer(year)):
+            flash("Day and Year should be an integer")
+            return redirect("/dataimport")
+
+        # check if day format correct
+        
         return redirect("/")
