@@ -76,10 +76,8 @@ def register():
 
         # register the user
         userhash = generate_password_hash(user_pw)
-        db.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", username userhash)
-
-
-
+        db.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", username, userhash)
+        flash("Account registration successful")
         return render_template("login.html")
 
 @app.route("/login", methods=["GET", "POST"])
