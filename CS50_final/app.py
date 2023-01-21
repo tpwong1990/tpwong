@@ -32,7 +32,7 @@ def after_request(response):
 def index():
     if request.method == "GET":
          # extract the expenses
-        total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
+        total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ? ORDER BY year", session["user_id"])
         distinct_month = db.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", session["user_id"])
 
         return render_template("summary.html", expenses=total_expenses, months=distinct_month)
@@ -45,7 +45,7 @@ def select():
     if request.method == "POST":
         selected_month = request.form.get("month")
         if not selected_month == "All":
-            total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ? month = ?", session["user_id"], selected_month)
+            total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ? AND month = ?", session["user_id"], selected_month)
             return render_template("summary.html", expenses=total_expenses, months=distinct_month)
         else:
             total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
