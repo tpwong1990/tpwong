@@ -96,9 +96,9 @@ def login():
             return render_template("login.html")
 
         # check if username exist and pw is correct:
-        account = db.execute("SELECT * FROM users WHERE user_name = ?", username, pw)
+        account = db.execute("SELECT * FROM users WHERE user_name = ?", username)
         hash_check = account[0]["hash"]
-        if (not account) or (not check_password_hash(hash_check)):
+        if (not account) or (not check_password_hash(hash_check, pw)):
             flash("Username does not exist or password is not correct")
             return render_template("login.html")
 
