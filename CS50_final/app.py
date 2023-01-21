@@ -27,10 +27,16 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
-    return render_template("summary.html")
+    if request.method == "GET":
+
+        # extract the expenses
+        total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
+        
+        return render_template("summary.html")
+
 
 @app.route("/logout")
 def logout():
