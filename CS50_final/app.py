@@ -152,5 +152,5 @@ def dataimport():
             flash("Expenses should be numeric value")
 
         # update the database
-        db.execute("INSERT INTO expenses (day, month, year, category, name, expense, remarks) VALUE (?, ?, ?, ?, ?, ?, ?) WHERE user_id = ?", day, month, year, category, name, expense, remarks, session["user_id"])
+        db.execute("INSERT INTO expenses (day, month, year, category, name, expense, remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", day, month, year, category, name, expense, remarks, session["user_id"])
         return redirect("/")
