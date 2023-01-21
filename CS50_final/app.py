@@ -113,4 +113,5 @@ def summary():
 
 @app.route("/dataimport")
 def dataimport():
+    month = ["January", Feb]
     return render_template("dataimport.html")

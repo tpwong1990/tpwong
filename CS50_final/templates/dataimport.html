@@ -6,7 +6,12 @@
 
 {% block main %}
     <form action="/dataimport" method="post" id="entry">
-        <input 
+        <select class="form-select mx-auto w-auto" name="month">
+            <option disabled selected>Month</option>
+            {% for sym in portfolio %}
+                <option value = {{ sym.symbol }} >{{ sym.symbol }}</option>
+            {% endfor %}
+        </select>
 
     </form>
 
