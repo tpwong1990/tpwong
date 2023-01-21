@@ -5,16 +5,17 @@
 {% endblock %}
 
 {% block main %}
+<script>
+    function DoSubmit(sel)
+    {
+     if(sel.val()!='0') this.form.submit();
+    }
+</script>
 <table class = "table">
     <thread>
         <tr>
             <th>Day</th>
-            <th>
-                <select class="form-select mx-auto w-auto" name="month">
-                    <option disabled selected>Month</option>
-                        <option value = 1 >2</option>
-                </select>
-            </th>
+            <th>Month</th>
             <th>Year</th>
             <th>Name</th>
             <th>Category</th>
@@ -23,6 +24,18 @@
         </tr>
     </thread>
     <tbody>
+        <tr>
+            <td></td>
+            <td>
+                <select class="form-select mx-auto w-auto" name="month" onchange='DoSubmit()';>
+                    <option disabled selected>Month</option>
+                    <option value = "All">All</option>
+                    {% for mon in months %}
+                        <option value = {{ mon }} >{{ mon }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
         {% for exp in expenses %}
             </tr>
                 <td>{{ exp.day }}</td>

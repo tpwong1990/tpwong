@@ -33,9 +33,11 @@ def index():
     if request.method == "GET":
 
         # extract the expenses
-        total_expenses = db.execute("SELECT day, month, year, category, name, expense, remarks FROM expenses WHERE user_id = ?", session["user_id"])
+        total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
+        distinct_month = db.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", session["user_id"])
+        distinct_year = db.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", session["user_id"])
 
-        return render_template("summary.html", expenses=total_expenses)
+        return render_template("summary.html", expenses=total_expenses, months=distinct_month)
 
 
 @app.route("/logout")
