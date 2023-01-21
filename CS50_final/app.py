@@ -137,10 +137,10 @@ def dataimport():
         year = request.form.get("year")
         name =request.form.get("name")
         category = request.form.get("category")
-        expense = request.form.get("expenses")
+        expense = request.form.get("expense")
         remarks = request.form.get("remarks")
-        if (not month) or (not year) or (not category) or (not expense):
-            flash("Please input month, year, category and expenses")
+        if (not month) or (not year) or (not category) or (not name) or (not expense):
+            flash("Please input month, year, name, category and expense")
             return redirect("/dataimport")
         # check if day and year is integer
         if (not check_integer(day)) or (not check_integer(year)):
@@ -148,7 +148,7 @@ def dataimport():
             return redirect("/dataimport")
 
         # check if expense is float value
-        if not (float(expens)):
+        if not (float(expense)):
             flash("Expenses should be numeric value")
 
         # update the database
