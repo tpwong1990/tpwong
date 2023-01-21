@@ -113,5 +113,20 @@ def summary():
 
 @app.route("/dataimport")
 def dataimport():
-    month = ["January", Feb]
-    return render_template("dataimport.html")
+    if request.method == "GET":
+        month = [
+            "January",
+            "Februnary",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December" ]
+        return render_template("dataimport.html", month)
+    if request.method == "POST":
+        return render_template("dataimport.html", month)
