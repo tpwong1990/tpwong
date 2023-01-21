@@ -30,7 +30,7 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
-    return redirect("/")
+    return render_template("summary.html")
 
 @app.route("/logout")
 def logout():
