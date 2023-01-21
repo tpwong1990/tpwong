@@ -55,10 +55,10 @@ def select():
         if (selected_month == "All") and (selected_year == "All") and (selected_name == "All") and (selected_category == "All"):
             total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
             return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
-        else:
-            
-            total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
-            return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
+        sql_string = "SELECT * FROM expenses WHERE user_id = ?"
+        if not selected_month == "All":
+            sql_string = sql_string + " AND month = ?)"
+        return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
 
 
 @app.route("/logout")
