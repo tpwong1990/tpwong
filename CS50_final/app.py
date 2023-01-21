@@ -31,22 +31,25 @@ def after_request(response):
 @login_required
 def index():
     if request.method == "GET":
-
-        # extract the expenses
-        #total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
-
+         # extract the expenses
+        total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
         distinct_month = db.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", session["user_id"])
 
         return render_template("summary.html", expenses=total_expenses, months=distinct_month)
 
+
+@app.route("/select", methods=["GET", "POST"])
+@login_required
+def select():
+    distinct_month = db.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", session["user_id"])
     if request.method == "POST":
         selected_month = request.form.get("month")
         if not select_month == "All":
             total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ? month = ?", session["user_id"], selected_month)
+            return render_template("summary.html", expenses=total_expenses, months=distinct_month)
         else:
             total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
-
-        return render_template("summary.html", expenses=total_expenses, months=distinct_month)
+            return render_template("summary.html", expenses=total_expenses, months=distinct_month)
 
 
 @app.route("/logout")
