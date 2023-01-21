@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block main %}
-    <form action="/dataimport" method="post" id="entry">
-        <table>
+    <form action="/dataimport" method="post">
+       <!-- <table>
             <tr>
                 <th>Day</th>
                 <th>Month</th>
@@ -33,6 +33,9 @@
 
               </tr>
         </table>
+    -->
+        <input autocomplete="off" class="form-control mx-auto w-auto" id="day" name="day" type="text">
+
         <button class="btn btn-primary" type="submit">Update</button>
     </form>
 

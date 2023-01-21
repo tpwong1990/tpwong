@@ -133,12 +133,12 @@ def dataimport():
     if request.method == "POST":
         # check if all the required field exist
         day = request.form.get("day")
-        month = request.form.get("month")
-        year = request.form.get("year")
-        category = request.form.get("category")
-        expenses = request.form.get("expenses")
-        remarks = request.form.get("remarks")
+       # month = request.form.get("month")
+        #year = request.form.get("year")
+        #category = request.form.get("category")
+        #expenses = request.form.get("expenses")
+        #remarks = request.form.get("remarks")
         #if (not month) or (not year) or (not category) or (not expenses):
          #   flash("Please input month, year, categort and expenses")
           #  return render_template("summary.html")
-        return render_template("summary.html")
+        return render_template("dataimport.html")
