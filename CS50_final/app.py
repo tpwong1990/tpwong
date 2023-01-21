@@ -44,7 +44,6 @@ def logout():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "GET":
-        flash('You are already registered, please log in')
         return render_template("register.html")
     if request.method == "POST":
         username = request.form.get("username")
