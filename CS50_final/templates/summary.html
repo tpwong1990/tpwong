@@ -5,15 +5,6 @@
 {% endblock %}
 
 {% block main %}
-<script>
-    function DoSubmit(sel)
-    {
-     if(sel.val()!='0') {
-        console.log("A")
-        this.form.submit();
-     }
-    }
-</script>
 <form action="/select", method = "post", name="month_select">
 <table class = "table">
     <thread>
@@ -31,9 +22,9 @@
         <tr>
             <td></td>
             <td>
-                <select class="form-select mx-auto w-auto" name="month" onchange='DoSubmit(month_select)';>
-                    <option disabled selected>Month</option>
-                    <option value = "All">All</option>
+                <select class="form-select mx-auto w-auto" name="month" onchange="javascript: if(this.value != '0') this.form.submit();">
+                    <option disabled selected value = '0'>Month</option>
+                    <option value ='All'>All</option>
                     {% for mon in months %}
                         <option value = {{ mon["month"] }} >{{ mon["month"] }}</option>
                     {% endfor %}
