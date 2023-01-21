@@ -6,7 +6,7 @@ from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import login_required, check_integer
+from helpers import login_required, check_integer, check_float
 
 # Configure application
 app = Flask(__name__)
@@ -137,9 +137,9 @@ def dataimport():
         year = request.form.get("year")
         name =request.form.get("name")
         category = request.form.get("category")
-        expenses = request.form.get("expenses")
+        expense = request.form.get("expenses")
         remarks = request.form.get("remarks")
-        if (not month) or (not year) or (not category) or (not expenses):
+        if (not month) or (not year) or (not category) or (not expense):
             flash("Please input month, year, category and expenses")
             return redirect("/dataimport")
         # check if day and year is integer
@@ -147,6 +147,10 @@ def dataimport():
             flash("Day and Year should be an integer")
             return redirect("/dataimport")
 
-        # check if day format correct
-        
+        # check if expense is float value
+        if not (float(expens)):
+            flash("Expenses should be numeric value")
+
+        # update the database
+        db.execute("INSERT INTO expenses (day, month, year, category, name, expense, remarks) VALUE (?, ?, ?, ?, ?, ?, ?) WHERE user_id = ?", day, month, year, category, name, expense, remarks, session["user_id"])
         return redirect("/")

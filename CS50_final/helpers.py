@@ -25,3 +25,11 @@ def check_integer(n):
         return False
     else:
         return float(n).is_integer()
+
+def check_float(n):
+    try:
+        float(n)
+    except ValueError:
+        return False
+    else:
+        return float(n)
