@@ -113,11 +113,6 @@ def login():
         flash("Login successful")
         return render_template("summary.html")
 
-@app.route("/summary")
-@login_required
-def summary():
-    return render_template("summary.html")
-
 @app.route("/dataimport", methods=["GET", "POST"])
 @login_required
 def dataimport():
