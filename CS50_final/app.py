@@ -95,14 +95,14 @@ def login():
             flash("All fields are required")
             return render_template("login.html")
 
-        # check if username exist:
-        exist = db.execute("SELECT user_name FROM users WHERE user_name = ?", username)
-        if not (exist):
-            flash("Username does not exist")
+        # check if username exist and pw is correct:
+        account = db.execute("SELECT * FROM users WHERE user_name = ?", username)
+        hash_check = account[0]["hash"]
+        if (not account) or (not check_password_hash(hash_check)):
+            flash("Username does not exist or password is not correct")
             return render_template("login.html")
-
-        # check if pw is correct:
-        hash_check = db.execute("SELECT hash FROM users WHERE user_name = ?", hash)
-
-
+            
+        # login successful
+        session["user_id"] = account[0]["id"]
+        flash("Login successful")
         return redirect("/")
