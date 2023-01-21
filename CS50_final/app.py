@@ -142,9 +142,13 @@ def dataimport():
         if (not month) or (not year) or (not category) or (not name) or (not expense):
             flash("Please input month, year, name, category and expense")
             return redirect("/dataimport")
-        # check if day and year is integer
-        if (not check_integer(day)) or (not check_integer(year)):
-            flash("Day and Year should be an integer")
+        # check if year is integer
+        if not check_integer(year):
+            flash("Year should be an integer")
+            return redirect("/dataimport")
+        # check if day is integer
+        if day and (not check_integer(day)):
+            flash("Day should be an integer")
             return redirect("/dataimport")
 
         # check if expense is float value
@@ -152,5 +156,5 @@ def dataimport():
             flash("Expenses should be numeric value")
 
         # update the database
-        db.execute("INSERT INTO expenses (day, month, year, category, name, expense, remarks) VALUES (?, ?, ?, ?, ?, ?, ?) WHERE user_id = ?", day, month, year, category, name, expense, remarks, session["user_id"])
+        db.execute("INSERT INTO expenses (user_id, day, month, year, category, name, expense, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", session["user_id"], day, month, year, category, name, expense, remarks)
         return redirect("/")
