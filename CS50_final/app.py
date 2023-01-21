@@ -49,6 +49,9 @@ def register():
         username = request.form.get("username")
         pw = request.form.get("password")
         pw_con = request.form.get("confirmation")
+
+        if (pw == pw_con):
+            
         return render_template("login.html")
 
 @app.route("/login", methods=["GET", "POST"])
