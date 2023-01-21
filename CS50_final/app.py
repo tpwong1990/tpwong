@@ -83,6 +83,8 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
+        # Forget any user_id
+        session.clear()
         return render_template("login.html")
     if request.method == "POST":
         username = request.form.get("username")
