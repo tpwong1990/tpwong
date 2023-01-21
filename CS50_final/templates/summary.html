@@ -31,7 +31,7 @@
                     <option disabled selected>Month</option>
                     <option value = "All">All</option>
                     {% for mon in months %}
-                        <option value = {{ mon }} >{{ mon }}</option>
+                        <option value = {{ mon["month"] }} >{{ mon["month"] }}</option>
                     {% endfor %}
                 </select>
             </td>
