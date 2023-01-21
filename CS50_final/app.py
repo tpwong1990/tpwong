@@ -136,4 +136,4 @@ def dataimport():
         expenses = request.form.get("expenses")
         if (not month) or (not year) or (not category) or (not expenses):
             flash("Please input month, year, categort and expenses")
-            return render_template("dataimport.html", months = month)
+            return redirect("/dataimport")
