@@ -106,3 +106,11 @@ def login():
         session["user_id"] = account[0]["id"]
         flash("Login successful")
         return render_template("summary.html")
+
+@app.route("/summary")
+def summary():
+    return render_template("summary.html")
+
+@app.route("/dataimport")
+def dataimport():
+    return render_template("dataimport.html")
