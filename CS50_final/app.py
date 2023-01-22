@@ -57,7 +57,7 @@ def select():
         if selected_month == "All":
             sql_string = sql_string + "month = month"
         else:
-            sql_string = sql_string +
+            sql_string = sql_string + "month
             selected_month = "month"
         if selected_year == "All":
             selected_year = "year"
