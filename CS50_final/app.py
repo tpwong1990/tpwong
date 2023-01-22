@@ -53,8 +53,11 @@ def select():
         selected_year = request.form.get("year")
         selected_name = request.form.get("name")
         selected_category = request.form.get("category")
-        sql_string = "SELECT * FROM expenses WHERE user_id = ? AND month = ? AND year = ? AND name = ? AND category = ?"
+        sql_string = "SELECT * FROM expenses WHERE user_id = ?"
         if selected_month == "All":
+            sql_string = sql_string + "month = month"
+        else:
+            sql_string = sql_string +
             selected_month = "month"
         if selected_year == "All":
             selected_year = "year"
