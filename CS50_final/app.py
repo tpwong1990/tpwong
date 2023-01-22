@@ -58,6 +58,8 @@ def select():
         sql_string = "SELECT * FROM expenses WHERE user_id = ?"
         if not selected_month == "All":
             sql_string = sql_string + " AND month = ?)"
+        else:
+            
         return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
 
 
