@@ -67,18 +67,18 @@ def select():
             temp_string = f"year = '{selected_year}'"
             sql_string = sql_string + " AND " + temp_string
 
-        if selected_name == "All":
-            sql_string = sql_string + "AND name = name"
-        else:
-            temp_string = f"name = '{selected_name}'"
-            sql_string = sql_string + " AND " + temp_string
+        #if selected_name == "All":
+        #    sql_string = sql_string + "AND name = name"
+        #else:
+        #    temp_string = f"name = '{selected_name}'"
+        #   sql_string = sql_string + " AND " + temp_string
 
-        if selected_category == "All":
-            sql_string = sql_string + "AND year = year"
-        else:
-            temp_string = f"category = '{selected_category}'"
-            sql_string = sql_string + " AND " + temp_string
-            
+        #if selected_category == "All":
+         #   sql_string = sql_string + "AND category = category"
+        #else:
+         #   temp_string = f"category = '{selected_category}'"
+         #   sql_string = sql_string + " AND " + temp_string
+
         total_expenses = db.execute(sql_string, session["user_id"])
         return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
 
