@@ -56,13 +56,13 @@ def select():
         sql_string = "SELECT * FROM expenses WHERE user_id = ?"
 
         if selected_month == "All":
-            sql_string = sql_string + " AND month = month"
+            sql_string = sql_string
         else:
             temp_string = f"month = '{selected_month}'"
             sql_string = sql_string + " AND " + temp_string
 
         if selected_year == "All":
-            sql_string = sql_string + "AND year = year"
+            sql_string = sql_string
         else:
             temp_string = f"year = '{selected_year}'"
             sql_string = sql_string + " AND " + temp_string
@@ -161,7 +161,7 @@ def login():
         # login successful
         session["user_id"] = account[0]["id"]
         flash("Login successful")
-        return render_template("summary.html")
+        return redirect("/")
 
 @app.route("/dataimport", methods=["GET", "POST"])
 @login_required
