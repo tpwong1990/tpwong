@@ -53,7 +53,8 @@ def select():
         selected_year = request.form.get("year")
         selected_name = request.form.get("name")
         selected_category = request.form.get("category")
-        sql_string = "SELECT * FROM expenses WHERE user_id = ?"
+        # create tmp table in sqlite
+        sql_string = "CREATE TABLE tmp AS SELECT * FROM expenses WHERE user_id = ?"
 
         if selected_month == "All":
             sql_string = sql_string
