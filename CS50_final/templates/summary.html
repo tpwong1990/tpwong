@@ -5,8 +5,33 @@
 {% endblock %}
 
 {% block main %}
-<
-<form action="/select", method = "post", name="month_select">
+<script>
+    function select_save_auto_sumbit(select_key, val){
+            //console.log(val)
+            console.log(select_key)
+            sessionStorage.setItem(select_key, val);
+            //console.log(sessionStorage.getItem('SelectedItem'));
+            document.getElementById("month_select").submit();
+        }
+
+    function load_selected(select_key){
+        let tmp = sessionStorage.getItem(select_key);
+        //console.log(tmp);
+        return tmp
+    }
+
+    function set_selected_option(select_id, select_key){
+        var mySelect = document.getElementById(select_id);
+        for(var i, j = 0; i = mySelect.options[j]; j++) {
+        if(i.value == load_selected(select_key)) {
+            mySelect.selectedIndex = j;
+            break;
+        }
+    }
+    }
+
+</script>
+<form action="/select", method = "post", id="month_select" name="month_select">
 <table class = "table">
     <thread>
         <tr>
@@ -23,7 +48,7 @@
         <tr>
             <td></td>
             <td>
-                <select class="form-select mx-auto w-auto" name="month" onchange="javascript: if(this.value != '0') this.form.submit();">
+                <select class="form-select mx-auto w-auto" id="month" name="month" onchange="select_save_auto_sumbit('month_key', this.value)">
                     <option value ='All'>All</option>
                     {% for mon in d_months %}
                         <option value = {{ mon["month"] }} >{{ mon["month"] }}</option>
@@ -31,7 +56,7 @@
                 </select>
             </td>
             <td>
-                <select class="form-select mx-auto w-auto" name="year" onchange="javascript: if(this.value != '0') this.form.submit();">
+                <select class="form-select mx-auto w-auto" id="year" name="year" onchange="select_save_auto_sumbit('year_key', this.value)">
                     <option value ='All'>All</option>
                     {% for yr in d_years %}
                         <option value = {{ yr["year"] }} >{{ yr["year"] }}</option>
@@ -39,7 +64,7 @@
                 </select>
             </td>
             <td>
-                <select class="form-select mx-auto w-auto" name="name" onchange="javascript: if(this.value != '0') this.form.submit();">
+                <select class="form-select mx-auto w-auto" id="name" name="name" onchange="select_save_auto_sumbit('name_key', this.value)">
                     <option value ='All'>All</option>
                     {% for na in d_names %}
                         <option value = {{ na["name"] }} >{{ na["name"] }}</option>
@@ -47,7 +72,7 @@
                 </select>
             </td>
             <td>
-                <select class="form-select mx-auto w-auto" name="category" onchange="javascript: if(this.value != '0') this.form.submit();">
+                <select class="form-select mx-auto w-auto" id="category" name="category" onchange="select_save_auto_sumbit('category_key', this.value)">
                     <option value ='All'>All</option>
                     {% for ca in d_categories %}
                         <option value = {{ ca["category"] }} >{{ ca["category"] }}</option>
@@ -71,6 +96,15 @@
     </tbody>
 </table>
 </form>
+
+<script>
+    set_selected_option("month", 'month_key')
+    set_selected_option("year", 'year_key')
+    set_selected_option("name", 'name_key')
+    set_selected_option("category", 'category_key')
+    //window.location.reload();
+    //sessionStorage.clear();
+</script>
 
     {% with messages = get_flashed_messages() %}
         {% if messages %}
