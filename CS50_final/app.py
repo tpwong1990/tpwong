@@ -43,10 +43,6 @@ def index():
 @app.route("/select", methods=["GET", "POST"])
 @login_required
 def select():
-    distinct_month = db.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", session["user_id"])
-    distinct_year = db.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", session["user_id"])
-    distinct_name = db.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", session["user_id"])
-    distinct_category = db.execute("SELECT DISTINCT category FROM expenses WHERE user_id = ?", session["user_id"])
     if request.method == "POST":
         # selected codition search
         selected_month = request.form.get("month")
@@ -79,8 +75,13 @@ def select():
         else:
             temp_string = f"category = '{selected_category}'"
             sql_string = sql_string + " AND " + temp_string
-
-        total_expenses = db.execute(sql_string, session["user_id"])
+        db.exec
+        db.execute(sql_string, session["user_id"])
+        total_expenses = db.execute("SELECT * FROM tmp")
+        distinct_month = db.execute("SELECT DISTINCT month FROM tmp")
+        distinct_year = db.execute("SELECT DISTINCT year FROM tmp")
+        distinct_name = db.execute("SELECT DISTINCT name FROM tmp")
+        distinct_category = db.execute("SELECT DISTINCT category FROM tmp")
         return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
 
 
