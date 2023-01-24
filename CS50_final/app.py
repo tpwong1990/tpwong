@@ -167,19 +167,7 @@ def login():
 @login_required
 def dataimport():
     if request.method == "GET":
-        month_list = [
-            "January",
-            "Februnary",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December" ]
+        month_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         return render_template("dataimport.html", months = month_list)
     if request.method == "POST":
         # check if all the required field exist
