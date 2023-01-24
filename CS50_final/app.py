@@ -75,7 +75,7 @@ def select():
         else:
             temp_string = f"category = '{selected_category}'"
             sql_string = sql_string + " AND " + temp_string
-        db.exec
+        db.execute("DROP TABLE tmp")
         db.execute(sql_string, session["user_id"])
         total_expenses = db.execute("SELECT * FROM tmp")
         distinct_month = db.execute("SELECT DISTINCT month FROM tmp")
