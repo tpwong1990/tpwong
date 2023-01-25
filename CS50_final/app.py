@@ -247,27 +247,26 @@ def edit():
         remarks = request.form.get("remarks")
 
         cursor = connection.cursor()
-        edit_row = cursor.execute("SELECT * FROM expenses WHERE row_id = ?", [int(edit_check)]).fetchall()
+        edit_row = cursor.execute("SELECT * FROM expenses WHERE row_id = ?", row_id).fetchall()
         selected_month = edit_row[0][2]
         month_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-            return render_template("edit.html", row = edit_row[0], months = month_list)
 
         if (not month) or (not year) or (not category) or (not name) or (not expense):
             flash("Please input month, year, name, category and expense")
-            return redirect("/")
+            return render_template("edit.html", row = edit_row[0], months = month_list)
         # check if year is integer
         if not check_integer(year):
             flash("Year should be an integer")
-            return redirect("/")
+            return render_template("edit.html", row = edit_row[0], months = month_list)
         # check if day is integer
         if day and (not check_integer(day)):
             flash("Day should be an integer")
-            return redirect("/")
+            return render_template("edit.html", row = edit_row[0], months = month_list)
 
         # check if expense is float value
         if not (check_float(expense)):
             flash("Expenses should be numeric value")
-            return redirect("/")
+            return render_template("edit.html", row = edit_row[0], months = month_list)
         # update the database
         cursor = connection.cursor()
         cursor.execute("UPDATE expenses SET day = ?, month = ?, year = ?, category = ?, name = ?, expense = ?, remarks = ? WHERE row_id = ?", (day, month, year, category, name, expense, remarks, row_id))
