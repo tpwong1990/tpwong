@@ -32,7 +32,8 @@
 
 </script>
 <form action="/select", method = "post", id="month_select" name="month_select">
-<table class="table" id="summary_table">
+<div id="summary_table">
+<table class="table">
     <thread>
         <tr>
             <th>Day</th>
@@ -95,8 +96,10 @@
         {% endfor %}
     </tbody>
 </table>
+</div>
 </form>
 <form action="/delete", method = "post", id="delete_table" name="delete_table">
+    <div id="summary_table"></div>
     <table id="delete_table">
         <thread>
             <tr></tr>
