@@ -37,6 +37,7 @@ def index():
         cursor = connection.cursor()
         total_expenses = cursor.execute("SELECT * FROM expenses WHERE user_id = ?", [(session["user_id"])]).fetchall()
         distinct_month = cursor.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+        print(int(distinct_month[0]))
         distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         distinct_category = cursor.execute("SELECT DISTINCT category FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
