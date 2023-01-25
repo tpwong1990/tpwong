@@ -138,7 +138,7 @@ def register():
 
         # register the user
         userhash = generate_password_hash(pw)
-        cursor.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", [username, userhash])
+        cursor.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", (username, userhash))
         flash("Account registration successful")
         return render_template("login.html")
 
