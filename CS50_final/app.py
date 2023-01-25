@@ -20,7 +20,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///expenses.db")
+#db = SQL("sqlite:///expenses.db")
 
 @app.after_request
 def after_request(response):
@@ -139,6 +139,7 @@ def register():
         # register the user
         userhash = generate_password_hash(pw)
         cursor.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", (username, userhash))
+        connection.commit()
         flash("Account registration successful")
         return render_template("login.html")
 
