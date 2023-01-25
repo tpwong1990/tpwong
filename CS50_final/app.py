@@ -4,6 +4,7 @@ import re
 
 import sqlite3
 connection = sqlite3.connect("expenses.db", check_same_thread=False)
+from cs50 import SQL
 
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
@@ -19,7 +20,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-#db = SQL("sqlite:///expenses.db")
+db = SQL("sqlite:///expenses.db")
 
 @app.after_request
 def after_request(response):
@@ -37,7 +38,6 @@ def index():
         cursor = connection.cursor()
         total_expenses = cursor.execute("SELECT * FROM expenses WHERE user_id = ?", [(session["user_id"])]).fetchall()
         distinct_month = cursor.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
-        print(int(distinct_month[0]))
         distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         distinct_category = cursor.execute("SELECT DISTINCT category FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()

@@ -51,7 +51,7 @@
                 <select class="form-select mx-auto w-auto" id="month" name="month" onchange="select_save_auto_sumbit('month_key', this.value)">
                     <option value ='All'>All</option>
                     {% for mon in d_months %}
-                        <option value = {{ mon["month"] }} >{{ mon["month"] }}</option>
+                        <option value = {{ mon[0] }} >{{ mon[0] }}</option>
                     {% endfor %}
                 </select>
             </td>
@@ -59,7 +59,7 @@
                 <select class="form-select mx-auto w-auto" id="year" name="year" onchange="select_save_auto_sumbit('year_key', this.value)">
                     <option value ='All'>All</option>
                     {% for yr in d_years %}
-                        <option value = {{ yr["year"] }} >{{ yr["year"] }}</option>
+                        <option value = {{ yr[0] }} >{{ yr[0] }}</option>
                     {% endfor %}
                 </select>
             </td>
@@ -67,7 +67,7 @@
                 <select class="form-select mx-auto w-auto" id="name" name="name" onchange="select_save_auto_sumbit('name_key', this.value)">
                     <option value ='All'>All</option>
                     {% for na in d_names %}
-                        <option value = {{ na["name"] }} >{{ na["name"] }}</option>
+                        <option value = {{ na[0] }} >{{ na[0] }}</option>
                     {% endfor %}
                 </select>
             </td>
@@ -75,7 +75,7 @@
                 <select class="form-select mx-auto w-auto" id="category" name="category" onchange="select_save_auto_sumbit('category_key', this.value)">
                     <option value ='All'>All</option>
                     {% for ca in d_categories %}
-                        <option value = {{ ca["category"] }} >{{ ca["category"] }}</option>
+                        <option value = {{ ca[0] }} >{{ ca[0] }}</option>
                     {% endfor %}
                 </select>
             </td>
