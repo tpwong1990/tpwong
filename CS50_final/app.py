@@ -49,6 +49,10 @@ def index():
 @login_required
 def select():
     if request.method == "POST":
+        delete_check = request.form.get("delete")
+        print(int(delete_check))
+        if int(delete_check) >0:
+            return redirect("/dataimport")
         # selected codition search
         selected_month = request.form.get("month")
         selected_year = request.form.get("year")
