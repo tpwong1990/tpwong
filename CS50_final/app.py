@@ -51,7 +51,7 @@ def select():
     if request.method == "POST":
         delete_check = request.form.get("delete")
         #print(int(delete_check))
-        if int(delete_check) >0:
+        if int(delete_check) > 0:
             cursor = connection.cursor()
             cursor.execute("DROP TABLE IF EXISTS tmp")
             return redirect("/")
