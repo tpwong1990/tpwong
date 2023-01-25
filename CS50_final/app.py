@@ -159,7 +159,7 @@ def login():
             return render_template("login.html")
 
         # check if username exist and pw is correct:
-        account = cursor.execute("SELECT * FROM users WHERE user_name = ?", [username])
+        account = cursor.execute("SELECT * FROM users WHERE user_name = ?", [username]).fetchall()
         print(account)
         if (not account):
             flash("Username does not exist or Password is not correct")
