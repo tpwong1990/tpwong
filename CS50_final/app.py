@@ -64,7 +64,7 @@ def select():
             edit_row = cursor.execute("SELECT * FROM expenses WHERE row_id = ?", [int(edit_check)]).fetchall()
             selected_month = edit_row[0][2]
             month_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-            return render_template("edit.html", row = edit_row[0], months = month_list, load_option = load_selected_option)
+            return render_template("edit.html", row = edit_row[0], months = month_list)
 
         # selected codition search
         selected_month = request.form.get("month")
