@@ -24,5 +24,10 @@ nav .navbar-brand .green
 
 #summary_table
 {
-    float
+    float:left;
+}
+
+#delete_table
+{
+    float:left;
 }
