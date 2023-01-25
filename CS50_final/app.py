@@ -228,6 +228,8 @@ def dataimport():
         return redirect("/dataimport")
 
 
-@app.route("/")
+@app.route("/edit", methods=["GET", "POST"])
 @login_required
-def index():
+def edit():
+    if request.method == "POST":
+        return redirect("/")
