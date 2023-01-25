@@ -60,7 +60,9 @@ def select():
 
         # check if edit button is clicked
         if not (edit_check == None):
-            return render_template("edit.html", edit_id=int(edit_check))
+            cursor = connection.cursor()
+            edit_row = cursor.execute("SELECT * FROM expenses WHERE row_id = ?", [int(edit_check)]).fetchall()
+            return render_template("edit.html", row = edit_row)
 
         # selected codition search
         selected_month = request.form.get("month")
