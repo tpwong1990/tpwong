@@ -237,6 +237,7 @@ def dataimport():
 def edit():
     if request.method == "POST":
         # check if all the required field exist
+        row_id = request.form.get("row_id")
         day = request.form.get("day")
         month = request.form.get("month")
         year = request.form.get("year")
@@ -263,6 +264,6 @@ def edit():
             return redirect("/dataimport")
         # update the database
         cursor = connection.cursor()
-        cursor.execute("UPDATE expenses SET day = ?, SET month = ?, SET year = ?, SET category = ?, SET name = ?, SET expense = ?, SET remarks = ?)  (session["user_id"], day, month, year, category, name, expense, remarks))
+        cursor.execute("UPDATE expenses SET day = ?, SET month = ?, SET year = ?, SET category = ?, SET name = ?, SET expense = ?, SET remarks = ? WHERE row_id = ?", (day, month, year, category, name, expense, remarks, ))
         connection.commit()
         return redirect("/")
