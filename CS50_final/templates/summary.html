@@ -98,11 +98,12 @@
 </form>
 
 <script>
-    if {{load_option}}
-    set_selected_option("month", 'month_key')
-    set_selected_option("year", 'year_key')
-    set_selected_option("name", 'name_key')
-    set_selected_option("category", 'category_key')
+    if ({{ load_option }} == 1) {
+        set_selected_option("month", 'month_key')
+        set_selected_option("year", 'year_key')
+        set_selected_option("name", 'name_key')
+        set_selected_option("category", 'category_key')
+    }
     //window.location.reload();
     //sessionStorage.clear();
 </script>

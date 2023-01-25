@@ -41,7 +41,7 @@ def index():
         distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         distinct_category = cursor.execute("SELECT DISTINCT category FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
-        load_selected_option = False
+        load_selected_option = 0
         return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category, load_option = load_selected_option)
 
 
@@ -89,7 +89,8 @@ def select():
         distinct_year = cursor.execute("SELECT DISTINCT year FROM tmp").fetchall()
         distinct_name = cursor.execute("SELECT DISTINCT name FROM tmp").fetchall()
         distinct_category = cursor.execute("SELECT DISTINCT category FROM tmp").fetchall()
-        return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
+        load_selected_option = 1
+        return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category, load_option = load_selected_option)
 
 
 
