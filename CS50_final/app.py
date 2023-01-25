@@ -35,7 +35,7 @@ def index():
     if request.method == "GET":
          # extract the expenses
         cursor = connection.cursor()
-        total_expenses = cursor.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"])
+        total_expenses = cursor.execute("SELECT * FROM expenses WHERE user_id = ?", session["user_id"]).fetchall()
         distinct_month = cursor.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", session["user_id"])
         distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", session["user_id"])
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", session["user_id"])
