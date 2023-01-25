@@ -236,4 +236,33 @@ def dataimport():
 @login_required
 def edit():
     if request.method == "POST":
+        # check if all the required field exist
+        day = request.form.get("day")
+        month = request.form.get("month")
+        year = request.form.get("year")
+        name =request.form.get("name")
+        category = request.form.get("category")
+        expense = request.form.get("expense")
+        remarks = request.form.get("remarks")
+
+        if (not month) or (not year) or (not category) or (not name) or (not expense):
+            flash("Please input month, year, name, category and expense")
+            return redirect("/dataimport")
+        # check if year is integer
+        if not check_integer(year):
+            flash("Year should be an integer")
+            return redirect("/dataimport")
+        # check if day is integer
+        if day and (not check_integer(day)):
+            flash("Day should be an integer")
+            return redirect("/dataimport")
+
+        # check if expense is float value
+        if not (check_float(expense)):
+            flash("Expenses should be numeric value")
+            return redirect("/dataimport")
+        # update the database
+        cursor = connection.cursor()
+        cursor.execute("UPDATE expenses SET day = ?, SET month = ?, SET year = ?, SET category = ?, SET name = ?, SET expense = ?, SET remarks = ?)  (session["user_id"], day, month, year, category, name, expense, remarks))
+        connection.commit()
         return redirect("/")
