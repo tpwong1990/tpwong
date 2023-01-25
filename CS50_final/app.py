@@ -57,9 +57,11 @@ def select():
             cursor.execute("DELETE FROM expenses WHERE row_id = ?", [int(delete_check)])
             connection.commit()
             return redirect("/")
+
         # check if edit button is clicked
         if not (edit_check == None):
-            return render_template("edit.html", int(edit_check)))
+            return render_template("edit.html", edit_id=int(edit_check))
+
         # selected codition search
         selected_month = request.form.get("month")
         selected_year = request.form.get("year")
