@@ -32,7 +32,6 @@
 
 </script>
 <form action="/select", method = "post", id="month_select" name="month_select">
-<div id="summary_table">
 <table class="table">
     <thread>
         <tr>
@@ -43,6 +42,7 @@
             <th>Category</th>
             <th>Expense</th>
             <th>Remarks</th>
+            <th></th>
         </tr>
     </thread>
     <tbody>
@@ -92,28 +92,11 @@
                 <td>{{ exp[4] }}</td>
                 <td>{{ exp[6] }}</td>
                 <td>{{ exp[7] }}</td>
+                <td><button class="btn btn-primary" type="submit" value = {{ exp[0] }}>Delete</button></td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
-</div>
-</form>
-<form action="/delete", method = "post", id="delete_table" name="delete_table">
-    <div id="delete_table">
-    <table class="table">
-        <thread>
-            <tr><th>Edit</th></tr>
-        </thread>
-        <tbody>
-            <tr><td></td></tr>
-            {% for exp in expenses %}
-                </tr>
-                    <td><button type="submit" value="1">Edit</button></td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    </div>
 </form>
 
 <script>
