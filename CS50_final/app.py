@@ -118,8 +118,7 @@ def register():
             return render_template("register.html")
 
         # check the username exist or not
-        exist = cursor.execute("SELECT user_name FROM users WHERE user_name = ?", [username])
-        print(exist)
+        exist = cursor.execute("SELECT user_name FROM users WHERE user_name = ?", [username]).fetchall()
         if exist:
             flash('The username has been registered already')
             return render_template("register.html")
