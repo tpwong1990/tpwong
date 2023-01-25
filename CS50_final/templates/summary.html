@@ -30,7 +30,12 @@
     }
     }
     function ToConfirm() {
-        confirm("Are you sure to delete the data?");
+        let text = "Are you sure to delete the data?";
+        if (confirm(text) == true) {
+            let a=1
+        } else {
+            break;
+        }
     }
 
 </script>
