@@ -248,22 +248,22 @@ def edit():
 
         if (not month) or (not year) or (not category) or (not name) or (not expense):
             flash("Please input month, year, name, category and expense")
-            return redirect("/dataimport")
+            return redirect("/")
         # check if year is integer
         if not check_integer(year):
             flash("Year should be an integer")
-            return redirect("/dataimport")
+            return redirect("/")
         # check if day is integer
         if day and (not check_integer(day)):
             flash("Day should be an integer")
-            return redirect("/dataimport")
+            return redirect("/")
 
         # check if expense is float value
         if not (check_float(expense)):
             flash("Expenses should be numeric value")
-            return redirect("/dataimport")
+            return redirect("/")
         # update the database
         cursor = connection.cursor()
-        cursor.execute("UPDATE expenses SET day = ?, SET month = ?, SET year = ?, SET category = ?, SET name = ?, SET expense = ?, SET remarks = ? WHERE row_id = ?", (day, month, year, category, name, expense, remarks, row_id))
+        cursor.execute("UPDATE expenses SET day = ?, month = ?, year = ?, category = ?, name = ?, expense = ?, remarks = ? WHERE row_id = ?", (day, month, year, category, name, expense, remarks, row_id))
         connection.commit()
         return redirect("/")
