@@ -34,11 +34,12 @@ def after_request(response):
 def index():
     if request.method == "GET":
          # extract the expenses
-        total_expenses = db.execute("SELECT * FROM expenses WHERE user_id = ? ORDER BY year DESC", session["user_id"])
-        distinct_month = db.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", session["user_id"])
-        distinct_year = db.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", session["user_id"])
-        distinct_name = db.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", session["user_id"])
-        distinct_category = db.execute("SELECT DISTINCT category FROM expenses WHERE user_id = ?", session["user_id"])
+        cursor = connection.cursor()
+        total_expenses = cursor.execute("SELECT * FROM expenses WHERE user_id = ? ORDER BY year DESC", session["user_id"])
+        distinct_month = cursor.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", session["user_id"])
+        distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", session["user_id"])
+        distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", session["user_id"])
+        distinct_category = cursor.execute("SELECT DISTINCT category FROM expenses WHERE user_id = ?", session["user_id"])
         return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
 
 
@@ -52,6 +53,7 @@ def select():
         selected_name = request.form.get("name")
         selected_category = request.form.get("category")
         # create tmp table in sqlite
+        cursor = connection.cursor()
         sql_string = "CREATE TABLE tmp AS SELECT * FROM expenses WHERE user_id = ?"
 
         if selected_month == "All":
@@ -78,13 +80,13 @@ def select():
             temp_string = f"category = '{selected_category}'"
             sql_string = sql_string + " AND " + temp_string
         # sql_string = sql_string
-        db.execute("DROP TABLE IF EXISTS tmp")
-        tmp_id = db.execute(sql_string, session["user_id"])
-        total_expenses = db.execute("SELECT * FROM tmp")
-        distinct_month = db.execute("SELECT DISTINCT month FROM tmp")
-        distinct_year = db.execute("SELECT DISTINCT year FROM tmp")
-        distinct_name = db.execute("SELECT DISTINCT name FROM tmp")
-        distinct_category = db.execute("SELECT DISTINCT category FROM tmp")
+        cursor.execute("DROP TABLE IF EXISTS tmp")
+        cursor.execute(sql_string, session["user_id"])
+        total_expenses = cursor.execute("SELECT * FROM tmp")
+        distinct_month = cursor.execute("SELECT DISTINCT month FROM tmp")
+        distinct_year = cursor.execute("SELECT DISTINCT year FROM tmp")
+        distinct_name = cursor.execute("SELECT DISTINCT name FROM tmp")
+        distinct_category = cursor.execute("SELECT DISTINCT category FROM tmp")
         return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
 
 
@@ -108,6 +110,7 @@ def register():
         username = request.form.get("username")
         pw = request.form.get("password")
         pw_con = request.form.get("confirmation")
+        cursor = connection.cursor()
 
         # check input empty
         if (not username ) or (not pw) or (not pw_con):
@@ -115,7 +118,7 @@ def register():
             return render_template("register.html")
 
         # check the username exist or not
-        exist = db.execute("SELECT user_name FROM users WHERE user_name = ?", username)
+        exist = cursor.execute("SELECT user_name FROM users WHERE user_name = ?", username)
         if exist:
             flash('The username has been registered already')
 
@@ -134,7 +137,7 @@ def register():
 
         # register the user
         userhash = generate_password_hash(pw)
-        db.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", username, userhash)
+        cursor.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", username, userhash)
         flash("Account registration successful")
         return render_template("login.html")
 
@@ -147,6 +150,7 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         pw = request.form.get("password")
+        cursor = connection.cursor()
 
         # check input empty
         if (not username ) or (not pw):
@@ -154,7 +158,7 @@ def login():
             return render_template("login.html")
 
         # check if username exist and pw is correct:
-        account = db.execute("SELECT * FROM users WHERE user_name = ?", username)
+        account = cursor.execute("SELECT * FROM users WHERE user_name = ?", username)
         if (not account):
             flash("Username does not exist or Password is not correct")
             return render_template("login.html")
@@ -201,5 +205,6 @@ def dataimport():
             return redirect("/dataimport")
 
         # update the database
-        db.execute("INSERT INTO expenses (user_id, day, month, year, category, name, expense, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", session["user_id"], day, month, year, category, name, expense, remarks)
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO expenses (user_id, day, month, year, category, name, expense, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", session["user_id"], day, month, year, category, name, expense, remarks)
         return redirect("/dataimport")
