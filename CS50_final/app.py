@@ -112,7 +112,6 @@ def register():
         pw = request.form.get("password")
         pw_con = request.form.get("confirmation")
         cursor = connection.cursor()
-
         # check input empty
         if (not username ) or (not pw) or (not pw_con):
             flash("All fields are required")
@@ -120,6 +119,7 @@ def register():
 
         # check the username exist or not
         exist = cursor.execute("SELECT user_name FROM users WHERE user_name = ?", [username])
+        print(exist)
         if exist:
             flash('The username has been registered already')
             return render_template("register.html")
