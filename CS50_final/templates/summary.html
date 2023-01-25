@@ -29,6 +29,9 @@
         }
     }
     }
+    function ToConfirm() {
+        confirm("Are you sure to delete the data?");
+    }
 
 </script>
 <form action="/select", method = "post", id="month_select" name="month_select">
@@ -92,7 +95,7 @@
                 <td>{{ exp[4] }}</td>
                 <td>{{ exp[6] }}</td>
                 <td>{{ exp[7] }}</td>
-                <td><button class="btn btn-primary" type="submit" id="delete" name ="delete" value = {{ exp[0] }}>Delete</button></td>
+                <td><button class="btn btn-primary" type="submit" onclick="ToConfirm()" id="delete" name ="delete" value = {{ exp[0] }}>Delete</button></td>
             </tr>
         {% endfor %}
     </tbody>
