@@ -51,9 +51,9 @@ def select():
     if request.method == "POST":
         delete_check = request.form.get("delete")
         #print(int(delete_check))
-        if int(delete_check) > 0:
+        if not delete_check:
             cursor = connection.cursor()
-            cursor.execute("DELETE TABLE expenses WHERE row_id = ?", [int(delete_check)])
+            cursor.execute("DELETE TABLE expenses WHERE row_id = ?", [check_integer(delete_check)])
             return redirect("/")
         # selected codition search
         selected_month = request.form.get("month")
