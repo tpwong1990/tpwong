@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block main %}
+<form action="/edit" method="post">
+    <table class="table">
+         <thead>
+         <tr>
+                 <th>Day</th>
+                 <th>Month</th>
+                 <th>Year</th>
+                 <th>Name</th>
+                 <th>Category</th>
+                 <th>Expense</th>
+                 <th>Remarks</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+             <td><input autocomplete="off" class="form-control mx-auto w-auto" id="day" name="day" type="text"></td>
+             <td>
+                 <select class="form-select mx-auto w-auto" name="month">
+                     <option disabled selected>Month</option>
+                     {% for mon in months %}
+                         <option value = {{ mon }} >{{ mon }}</option>
+                     {% endfor %}
+                 </select>
+             </td>
+             <td><input autocomplete="off" class="form-control mx-auto w-auto" id="year" name="year" placeholder="Year" type="text"></td>
+             <td><input autocomplete="off" class="form-control mx-auto w-auto" id="name" name="name" placeholder="Name" type="text"></td>
+             <td><input autocomplete="off" class="form-control mx-auto w-auto" id="category" name="category" placeholder="Category" type="text"></td>
+             <td><input autocomplete="off" class="form-control mx-auto w-auto" id="expense" name="expense" placeholder="Expense" type="text"></td>
+             <td><input autocomplete="off" class="form-control mx-auto w-auto" id="remarks" name="remarks" placeholder="Remarks" type="text"></td>
+
+             </tr>
+         </tbody>
+     </table>
+     <button class="btn btn-primary" type="submit">Update</button>
+ </form>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+        {% for message in messages %}
+            <script>window.alert({{ message|tojson }} );</script>
+        {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% endblock %}

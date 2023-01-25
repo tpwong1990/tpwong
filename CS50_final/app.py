@@ -50,11 +50,16 @@ def index():
 def select():
     if request.method == "POST":
         delete_check = request.form.get("delete")
+        edit_check = request.form.get("edit")
+        # check if delete button is clicked
         if not (delete_check == None):
             cursor = connection.cursor()
             cursor.execute("DELETE FROM expenses WHERE row_id = ?", [int(delete_check)])
             connection.commit()
             return redirect("/")
+        # check if edit button is clicked
+        if not (edit_check == None):
+            return render_template("edit.html", int(edit_check)))
         # selected codition search
         selected_month = request.form.get("month")
         selected_year = request.form.get("year")
