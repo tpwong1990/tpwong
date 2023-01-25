@@ -5,6 +5,17 @@
 {% endblock %}
 
 {% block main %}
+<script>
+function set_selected_option(select_id, select_key){
+    var mySelect = document.getElementById(select_id);
+    for(var i, j = 0; i = mySelect.options[j]; j++) {
+    if(i.value == load_selected(select_key)) {
+        mySelect.selectedIndex = j;
+        break;
+    }
+}
+}
+</script>
 <form action="/edit" method="post">
     <table class="table">
          <thead>
@@ -22,7 +33,7 @@
              <tr>
              <td><input autocomplete="off" class="form-control mx-auto w-auto" id="day" name="day" type="text" value = {{ row[1] }}></td>
              <td>
-                 <select class="form-select mx-auto w-auto" name="month">
+                 <select class="form-select mx-auto w-auto" name="month" id="month">
                      <option disabled selected>Month</option>
                      {% for mon in months %}
                          <option value = {{ mon }} >{{ mon }}</option>
@@ -40,6 +51,10 @@
      </table>
      <button class="btn btn-primary" type="submit">Update</button>
  </form>
+ <script>
+    mySelect = document.getElementById("month");
+    mySelect.selectedIndex = j;
+ </script>
 {% with messages = get_flashed_messages() %}
 {% if messages %}
         {% for message in messages %}
