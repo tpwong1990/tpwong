@@ -119,7 +119,7 @@ def register():
             return render_template("register.html")
 
         # check the username exist or not
-        exist = cursor.execute("SELECT user_name FROM users WHERE user_name = ?", username)
+        exist = cursor.execute("SELECT user_name FROM users WHERE user_name = ?", [username])
         if exist:
             flash('The username has been registered already')
 
@@ -138,7 +138,7 @@ def register():
 
         # register the user
         userhash = generate_password_hash(pw)
-        cursor.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", username, userhash)
+        cursor.execute("INSERT INTO users (user_name, hash) VALUES (?,?)", [username, userhash])
         flash("Account registration successful")
         return render_template("login.html")
 
@@ -160,17 +160,16 @@ def login():
 
         # check if username exist and pw is correct:
         account = cursor.execute("SELECT * FROM users WHERE user_name = ?", [username]).fetchall()
-        print(account)
         if (not account):
             flash("Username does not exist or Password is not correct")
             return render_template("login.html")
-        hash_check = account[0]["hash"]
+        hash_check = account[0][2]
         if not check_password_hash(hash_check, pw):
             flash("Username does not exist or Password is not correct")
             return render_template("login.html")
 
         # login successful
-        session["user_id"] = account[0]["id"]
+        session["user_id"] = account[0][0]
         flash("Login successful")
         return redirect("/")
 
