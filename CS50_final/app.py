@@ -246,6 +246,12 @@ def edit():
         expense = request.form.get("expense")
         remarks = request.form.get("remarks")
 
+        cursor = connection.cursor()
+        edit_row = cursor.execute("SELECT * FROM expenses WHERE row_id = ?", [int(edit_check)]).fetchall()
+        selected_month = edit_row[0][2]
+        month_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+            return render_template("edit.html", row = edit_row[0], months = month_list)
+
         if (not month) or (not year) or (not category) or (not name) or (not expense):
             flash("Please input month, year, name, category and expense")
             return redirect("/")
