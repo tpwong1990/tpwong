@@ -52,7 +52,8 @@ def select():
         delete_check = request.form.get("delete")
         if not (delete_check == None):
             cursor = connection.cursor()
-            cursor.execute("DELETE FROM expenses WHERE row_id = ?", [check_integer(delete_check)])
+            cursor.execute("DELETE FROM expenses WHERE row_id = ?", [int(delete_check)])
+            connection.commit()
             return redirect("/")
         # selected codition search
         selected_month = request.form.get("month")
