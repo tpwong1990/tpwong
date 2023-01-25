@@ -84,13 +84,13 @@
         </tr>
         {% for exp in expenses %}
             </tr>
-                <td>{{ exp.day }}</td>
-                <td>{{ exp.month }}</td>
-                <td>{{ exp.year }}</td>
-                <td>{{ exp.name }}</td>
-                <td>{{ exp.category }}</td>
-                <td>{{ exp.expense }}</td>
-                <td>{{ exp.remarks }}</td>
+                <td>{{ exp[1] }}</td>
+                <td>{{ exp[2] }}</td>
+                <td>{{ exp[3] }}</td>
+                <td>{{ exp[5] }}</td>
+                <td>{{ exp[4] }}</td>
+                <td>{{ exp[6] }}</td>
+                <td>{{ exp[7] }}</td>
             </tr>
         {% endfor %}
     </tbody>

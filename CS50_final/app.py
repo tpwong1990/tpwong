@@ -82,12 +82,12 @@ def select():
             sql_string = sql_string + " AND " + temp_string
         # sql_string = sql_string
         cursor.execute("DROP TABLE IF EXISTS tmp")
-        cursor.execute(sql_string, session["user_id"])
-        total_expenses = cursor.execute("SELECT * FROM tmp")
-        distinct_month = cursor.execute("SELECT DISTINCT month FROM tmp")
-        distinct_year = cursor.execute("SELECT DISTINCT year FROM tmp")
-        distinct_name = cursor.execute("SELECT DISTINCT name FROM tmp")
-        distinct_category = cursor.execute("SELECT DISTINCT category FROM tmp")
+        cursor.execute(sql_string, [session["user_id"]])
+        total_expenses = cursor.execute("SELECT * FROM tmp").fetchall()
+        distinct_month = cursor.execute("SELECT DISTINCT month FROM tmp").fetchall()
+        distinct_year = cursor.execute("SELECT DISTINCT year FROM tmp").fetchall()
+        distinct_name = cursor.execute("SELECT DISTINCT name FROM tmp").fetchall()
+        distinct_category = cursor.execute("SELECT DISTINCT category FROM tmp").fetchall()
         return render_template("summary.html", expenses=total_expenses, d_months=distinct_month, d_years=distinct_year, d_names=distinct_name,d_categories=distinct_category)
 
 
