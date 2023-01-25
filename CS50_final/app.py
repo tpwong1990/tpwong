@@ -226,3 +226,8 @@ def dataimport():
         cursor.execute("INSERT INTO expenses (user_id, day, month, year, category, name, expense, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (session["user_id"], day, month, year, category, name, expense, remarks))
         connection.commit()
         return redirect("/dataimport")
+
+
+@app.route("/")
+@login_required
+def index():
