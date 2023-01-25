@@ -122,6 +122,7 @@ def register():
         exist = cursor.execute("SELECT user_name FROM users WHERE user_name = ?", [username])
         if exist:
             flash('The username has been registered already')
+            return render_template("register.html")
 
         # pw confirmation correct
         if not (pw == pw_con):
