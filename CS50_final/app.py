@@ -53,7 +53,7 @@ def select():
         #print(int(delete_check))
         if int(delete_check) > 0:
             cursor = connection.cursor()
-            cursor.execute("DROP TABLE IF EXISTS tmp")
+            cursor.execute("DELETE TABLE expenses WHERE row_id = ?", [int(delete_check)])
             return redirect("/")
         # selected codition search
         selected_month = request.form.get("month")
