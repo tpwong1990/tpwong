@@ -3,7 +3,7 @@ import datetime
 import re
 
 import sqlite3
-connection = sqlite3.connect("expenses.db")
+connection = sqlite3.connect("expenses.db", check_same_thread=False)
 
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
