@@ -311,3 +311,9 @@ def edit():
         cursor.execute("UPDATE expenses SET day = ?, month = ?, year = ?, category = ?, name = ?, expense = ?, remarks = ? WHERE row_id = ?", (day, month, year, category, name, expense, remarks, row_id))
         connection.commit()
         return redirect("/")
+
+
+@app.route("/summary", methods=["GET", "POST"])
+@login_required
+def summary():
+    return render_template("summary.html")

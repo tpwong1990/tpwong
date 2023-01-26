@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Summary.html
+{% endblock %}
+
+{% block main %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+        {% for message in messages %}
+            <script>window.alert({{ message|tojson }} );</script>
+        {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% endblock %}
