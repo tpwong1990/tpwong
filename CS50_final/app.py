@@ -239,13 +239,10 @@ def dataimport_csv():
         if 'fileupload' not in request.files:
             flash('No file part')
             return redirect("/")
-        filename = file.filename
+        filename = secure_filename(file.filename)
         realpath = os.path.realpath('app.py')
-        realpath.replace("app.py", "upload/")
-        print(realpath)
-        filepath = join(realpth, filename)
-        print(filename)
-        print(filepath)
+        realpath = realpath.replace("app.py", "upload/")
+        filepath = realpath + filename
         file.save(filepath)
         flash('file uploaded successfully')
     return redirect("/")
