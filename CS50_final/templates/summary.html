@@ -7,12 +7,26 @@
 {% block main %}
 <table class="table">
     <thread>
-        <th>Month</th>
-        <th>Year</th>
+        <th>
+            <select class="form-select mx-auto w-auto" id="month" name="month" onchange="select_save_auto_sumbit('month_key', this.value)">
+                <option value="No" disabled>Month</option>
+                {% for mon in d_months %}
+                    <option value = {{ mon[0] }} >{{ mon[0] }}</option>
+                {% endfor %}
+            </select>
+        </th>
+        <th>
+            <select class="form-select mx-auto w-auto" id="month" name="month" onchange="select_save_auto_sumbit('month_key', this.value)">
+                <option value="No" disabled>Year</option>
+                {% for yr in d_years %}
+                    <option value = {{ yr[0] }} >{{ yr[0] }}</option>
+                {% endfor %}
+            </select>
+        </th>
         <th>Name</th>
         <th>Paid total expenses</th>
         <th>Average expenses per person</th>
-        <th></th>
+        <th>Debits/Credits</th>
     </thread>
 </table>
 

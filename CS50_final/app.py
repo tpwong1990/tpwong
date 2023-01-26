@@ -317,6 +317,9 @@ def edit():
 @login_required
 def summary():
     if request.method == "GET":
-        return render_template("summary.html")
+        cursor = connection.cursor()
+        distinct_month = cursor.execute("SELECT DISTINCT month FROM expenses").fetchall()
+        distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses").fetchall()
+        return render_template("summary.html", d_months=distinct_month)
     if request.method == "POST":
         return render_template("summary.html")
