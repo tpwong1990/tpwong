@@ -262,7 +262,7 @@ def dataimport_csv():
                     flash("The data format in the csv file is not correct-2")
                     return redirect("/")
                 # check if day is integer
-                if day and (not check_integer(row["day"])):
+                if row["day"] and (not check_integer(row["day"])):
                     flash("Day should be an integer")
                     return redirect("/")
                 # check if expense is float value
