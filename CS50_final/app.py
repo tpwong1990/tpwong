@@ -322,12 +322,11 @@ def summary():
         distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         # calculate total expenses by person
-        total_expenses_name=[]
+        expenses_summary=[]
         for name in distinct_name:
-            print(name[0])
-            tmp = cursor.execute("SELECT SUM(expense) FROM expenses WHERE user_id = ? AND name = ?",(session["user_id"], name[0]))
-            total_expenses_name.append(tmp)
-        print(total_expenses_name)
-        return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name)
+            tmp = cursor.execute("SELECT SUM(expense) FROM expenses WHERE user_id = ? AND name = ?",(session["user_id"], name[0])).fetchall()
+            expenses_summary.append([{"name":name[0],"total":tmp[0][0], "average":tmp[0][0]/len(distinct_name)}])
+        print(expenses_summary)
+        return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name, total_exp=expenses_summary)
     if request.method == "POST":
         return render_template("summary.html")

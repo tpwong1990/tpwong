@@ -29,11 +29,13 @@
         <th>Debits/Credits</th>
     </thread>
     <tbody>
-        {% for name in d_names %}
+        {% for row in total_exp %}
             <tr>
                 <td></td>
                 <td></td>
-                <td>{{name[0]}}</td>
+                <td>{{row[0]["name"]}}</td>
+                <td>{{row[0]["total"]}}</td>
+                <td>{{row[0]["average"]}}</td>
             </tr>
         {% endfor %}
     </tbody>
