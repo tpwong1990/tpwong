@@ -8,7 +8,7 @@ from cs50 import SQL
 
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash, secure_filename
 from werkzeug import secure_filename
 from helpers import login_required, check_integer, check_float
 
@@ -19,9 +19,6 @@ app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-
-#Configure the upload file folder
-app.config['UPLOAD_FOLDER']=
 
 # Configure CS50 Library to use SQLite database
 #db = SQL("sqlite:///expenses.db")
@@ -238,6 +235,10 @@ def dataimport():
 @app.route("/dataimport_csv", methods=["GET", "POST"])
 @login_required
 def dataimport_csv():
+    if request.method == 'POST':
+        f = request.files['myfile']
+        f.save(secure_filename(f.filename))
+        flash('file uploaded successfully')
     return redirect("/")
 
 @app.route("/edit", methods=["GET", "POST"])
