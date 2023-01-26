@@ -235,8 +235,9 @@ def dataimport():
 @login_required
 def dataimport_csv():
     if request.method == 'POST':
-        f = request.files['fileupload']
-        f.save(secure_filename(f.filename))
+        file = request.files['fileupload']
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         flash('file uploaded successfully')
     return redirect("/")
 
