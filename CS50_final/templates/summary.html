@@ -28,6 +28,15 @@
         <th>Average expenses per person</th>
         <th>Debits/Credits</th>
     </thread>
+    <tbody>
+        {% for name in d_names %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td>{{name[0]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
 {% with messages = get_flashed_messages() %}
