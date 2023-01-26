@@ -50,8 +50,8 @@
     </form>
     <form id="csvupload" enctype="multipart/form-data" method="post" action="/dataimport_csv">
         <div class="choose_file">
+            <input name="fileupload" id="fileupload" type="file" accept=".csv" />
             <button type="button" class="btn btn-primary" type="submit">Import by CSV file</button>
-            <input name="fileupload" id="fileupload" type="file" accept="csv" />
         </div>
     </form>
 <script>
