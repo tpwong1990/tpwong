@@ -5,6 +5,18 @@
 {% endblock %}
 
 {% block main %}
+    <script>
+        function csv_upload() {
+                document.getElementById('upload_click').addEventListener('click', openDialog);
+                function openDialog() {
+                    document.getElementById('fileupload').click();
+                }
+                document.getElementById('fileupload').addEventListener('change', submitForm);
+                function submitForm() {
+                    document.getElementById('csvupload').submit();
+                }
+            }
+    </script>
     <form action="/dataimport" method="post">
        <table class="table">
             <thead>
@@ -40,10 +52,12 @@
         </table>
         <button class="btn btn-primary" type="submit">Update</button>
     </form>
-    <form id="uploadbanner" enctype="multipart/form-data" method="post" action="/dataimport_csv">
-        <input id="fileupload" name="myfile" type="file" hidden/>
-        <button class="btn btn-primary" type="submit">Import data by CSV file</button>
-    </form>
+    <div onload="csv_upload()">
+        <form id="csvupload" enctype="multipart/form-data" method="post" action="/dataimport_csv">
+            <input id="fileupload" name="myfile" type="file" hidden/>
+            <button class="btn btn-primary" type="submit" id="upload_click">Import data by CSV file</button>
+        </form>
+    </div>
 
     {% with messages = get_flashed_messages() %}
         {% if messages %}
