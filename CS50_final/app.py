@@ -241,9 +241,9 @@ def dataimport_csv():
             return redirect("/")
         filename = file.filename
         realpath = os.path.realpath('app.py')
-        realpath = 
+        realpath.replace("app.py", "upload/")
         print(realpath)
-        filepath = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        filepath = join(realpth, filename)
         print(filename)
         print(filepath)
         file.save(filepath)
