@@ -321,6 +321,10 @@ def summary():
         distinct_month = cursor.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+
+        # calculate total expenses by person
+        for name in distinct_name:
+            
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name)
     if request.method == "POST":
         return render_template("summary.html")
