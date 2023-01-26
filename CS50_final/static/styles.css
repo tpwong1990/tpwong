@@ -27,7 +27,7 @@ nav .navbar-brand .green
     float:left;
 }
 
-.choose_file {
+#upload_button{
     position: relative;
     display: inline-block;
     font: normal 14px Myriad Pro, Verdana, Geneva, sans-serif;
