@@ -235,6 +235,7 @@ def dataimport():
 @login_required
 def dataimport_csv():
     if request.method == 'POST':
+        print("A")
         file = request.files['fileupload']
         if 'file' not in request.files:
             flash('No file part')
