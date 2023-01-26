@@ -248,7 +248,10 @@ def dataimport_csv():
         file.save(filepath)
         #flash('file uploaded successfully')
         # read file
-
+        with open(filepath, newline='') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+            for row in spamreader:
+                print(row)
     return redirect("/")
 
 @app.route("/edit", methods=["GET", "POST"])
