@@ -251,7 +251,6 @@ def dataimport_csv():
         with open(filepath, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                print(row)
                 # check if required fields has correct value
                 # check if the field is empty of not
                 if (not row["month"]) or (not row["year"]) or (not row["category"]) or (not row["name"]) or (not row["expense"]):
@@ -269,6 +268,11 @@ def dataimport_csv():
                 if not (check_float(row["expense"])):
                     flash("Expenses should be numeric value")
                     return redirect("/")
+                # add data to the database
+                cursor = connection.cursor()
+                cursor.execute("INSERT INTO expenses (user_id, day, month, year, category, name, expense, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (session["user_id"], row["day"], row["month"], row["year"], row["category"], row["name"], row["expense"], row["remarks"]))
+                connection.commit()
+        flash('file uploaded successfully')
     return redirect("/")
 
 @app.route("/edit", methods=["GET", "POST"])
