@@ -249,9 +249,26 @@ def dataimport_csv():
         #flash('file uploaded successfully')
         # read file
         with open(filepath, newline='') as csvfile:
-            spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-            for row in spamreader:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
                 print(row)
+                # check if required fields has correct value
+                # check if the field is empty of not
+                if (not row["month"]) or (not row["year"]) or (not row["category"]) or (not row["name"]) or (not row["expense"]):
+                    flash("The data format in the csv file is not correct")
+                    return redirect("/")
+                # check if year is integer
+                if not check_integer(row["year"]):
+                    flash("The data format in the csv file is not correct")
+                    return redirect("/")
+                # check if day is integer
+                if day and (not check_integer(row["day"])):
+                    flash("Day should be an integer")
+                    return redirect("/")
+                # check if expense is float value
+                if not (check_float(row["expense"])):
+                    flash("Expenses should be numeric value")
+                    return redirect("/")
     return redirect("/")
 
 @app.route("/edit", methods=["GET", "POST"])
