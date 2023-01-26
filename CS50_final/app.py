@@ -236,6 +236,9 @@ def dataimport():
 def dataimport_csv():
     if request.method == 'POST':
         file = request.files['fileupload']
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect("/")
         filename = file.filename
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         print(filename)
