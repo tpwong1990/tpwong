@@ -49,8 +49,10 @@
         <button class="btn btn-primary" type="submit">Update</button>
     </form>
     <form id="csvupload" enctype="multipart/form-data" method="post" action="/dataimport_csv">
-        <input id="fileupload" name="fileupload" type="file" hidden accept=".csv"/>
-        <button class="btn btn-primary" id="upload_click">Import data by CSV file</button>
+        <div class="choose_file">
+            <button type="button" class="btn btn-primary" type="submit">Import by CSV file</button>
+            <input name="fileupload" id="fileupload" type="file" accept="csv" />
+        </div>
     </form>
 <script>
     document.getElementById('upload_click').addEventListener('click', openDialog);
