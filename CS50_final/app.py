@@ -20,7 +20,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-app.config['UPLOAD_FOLDER'] = "/"
+app.config['UPLOAD_FOLDER'] = "/CS50_final_upload/"
 
 @app.after_request
 def after_request(response):
@@ -236,8 +236,11 @@ def dataimport():
 def dataimport_csv():
     if request.method == 'POST':
         file = request.files['fileupload']
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        filename = file.filename
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        print(filename)
+        print(filepath)
+        file.save(filepath)
         flash('file uploaded successfully')
     return redirect("/")
 
