@@ -5,6 +5,16 @@
 {% endblock %}
 
 {% block main %}
+<table class="table">
+    <thread>
+        <th>Month</th>
+        <th>Year</th>
+        <th>Name</th>
+        <th>Total expenses</th>
+        <th>Average expenses</th>
+        <th></th>
+    </thread>
+</table>
 
 {% with messages = get_flashed_messages() %}
 {% if messages %}

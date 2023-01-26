@@ -316,4 +316,7 @@ def edit():
 @app.route("/summary", methods=["GET", "POST"])
 @login_required
 def summary():
-    return render_template("summary.html")
+    if request.method == "GET":
+        return render_template("summary.html")
+    if request.method == "POST":
+        return render_template("summary.html")
