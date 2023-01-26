@@ -231,6 +231,10 @@ def dataimport():
         connection.commit()
         return redirect("/dataimport")
 
+@app.route("/dataimport_csv", methods=["GET", "POST"])
+@login_required
+def dataimport_csv():
+    return redirect("/")
 
 @app.route("/edit", methods=["GET", "POST"])
 @login_required
