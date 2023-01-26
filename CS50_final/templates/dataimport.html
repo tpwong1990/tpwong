@@ -9,6 +9,7 @@
         function csv_upload() {
                 document.getElementById('upload_click').addEventListener('click', openDialog);
                 function openDialog() {
+                    console.log("a")
                     document.getElementById('fileupload').click();
                 }
                 document.getElementById('fileupload').addEventListener('change', submitForm);
