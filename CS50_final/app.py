@@ -254,20 +254,16 @@ def dataimport_csv():
                 # check if required fields has correct value
                 # check if the field is empty of not
                 if (not row["month"]) or (not row["year"]) or (not row["category"]) or (not row["name"]) or (not row["expense"]):
-                    flash("The data format in the csv file is not correct-1")
-                    return redirect("/")
+                    continue
                 # check if year is integer
                 if not check_integer(row["year"]):
-                    flash("The data format in the csv file is not correct-2")
-                    return redirect("/")
+                    continue
                 # check if day is integer
                 if row["day"] and (not check_integer(row["day"])):
-                    flash("Day should be an integer")
-                    return redirect("/")
+                    continue
                 # check if expense is float value
                 if not (check_float(row["expense"])):
-                    flash("Expenses should be numeric value")
-                    return redirect("/")
+                    continue
                 # add data to the database
                 cursor = connection.cursor()
                 cursor.execute("INSERT INTO expenses (user_id, day, month, year, category, name, expense, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (session["user_id"], row["day"], row["month"], row["year"], row["category"], row["name"], row["expense"], row["remarks"]))
