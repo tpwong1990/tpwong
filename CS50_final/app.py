@@ -240,8 +240,7 @@ def dataimport_csv():
             flash('No file part')
             return redirect("/")
         filename = file.filename
-        filepath = '\\'.join(os.path.dirname(__file__).split("/"))
-        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        filepath = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         print(filename)
         print(filepath)
         file.save(filepath)
