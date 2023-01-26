@@ -20,7 +20,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-app.config['UPLOAD_FOLDER'] = "\CS50_final\upload\"
+app.config['UPLOAD_FOLDER'] = "/CS50_final/upload/"
 
 @app.after_request
 def after_request(response):
@@ -240,6 +240,7 @@ def dataimport_csv():
             flash('No file part')
             return redirect("/")
         filename = file.filename
+        filepath = '\\'.join(os.path.dirname(__file__).split("/"))
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         print(filename)
         print(filepath)
