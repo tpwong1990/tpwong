@@ -243,6 +243,7 @@ def dataimport_csv():
         filepath = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         print(filename)
         print(filepath)
+        print(os.path.realpath('app.py'))
         file.save(filepath)
         flash('file uploaded successfully')
     return redirect("/")
