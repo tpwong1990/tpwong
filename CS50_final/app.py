@@ -235,6 +235,7 @@ def dataimport():
 @login_required
 def dataimport_csv():
     if request.method == 'POST':
+        # check upload file
         file = request.files['fileupload']
         if 'fileupload' not in request.files:
             flash('No file part')
@@ -244,7 +245,9 @@ def dataimport_csv():
         realpath = realpath.replace("app.py", "upload/")
         filepath = realpath + filename
         file.save(filepath)
-        flash('file uploaded successfully')
+        #flash('file uploaded successfully')
+        # read file
+
     return redirect("/")
 
 @app.route("/edit", methods=["GET", "POST"])
