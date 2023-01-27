@@ -8,7 +8,7 @@
 <script>
     function select_save_auto_sumbit(select_key, val){
             sessionStorage.setItem(select_key, val);
-            document.getElementById("month_select").submit();
+            document.getElementById("filter_select").submit();
         }
 
     function load_selected(select_key){
@@ -39,7 +39,7 @@
             <button class="btn btn-primary" type="submit" id="export" name ="export">Export to CSV file</button></td>
         </form>
     </div>
-<form action="/select", method = "post", id="month_select" name="month_select">
+<form action="/select", method = "post", id="filter_select" name="filter_select">
 <table class="table">
     <thread>
         <tr>
