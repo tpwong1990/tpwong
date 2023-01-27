@@ -284,9 +284,8 @@ def edit():
         category = request.form.get("category")
         expense = request.form.get("expense")
         remarks = request.form.get("remarks")
-
         cursor = connection.cursor()
-        edit_row = cursor.execute("SELECT * FROM expenses WHERE row_id = ?", row_id).fetchall()
+        edit_row = cursor.execute("SELECT * FROM expenses WHERE row_id = ?", [row_id]).fetchall()
         selected_month = edit_row[0][2]
         month_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
@@ -333,8 +332,7 @@ def summary():
             print(name[0])
             print(tmp[0][0])
             if not tmp[0][0]:
-                print("a")
-                tmp = 0
+                tmp = [(0,)]
             ave = float("{:.2f}".format(total_expenses[0][0]//len(distinct_name)))
             c_d = tmp[0][0]-ave
             expenses_summary.append([{"name":name[0],"total":tmp[0][0], "average":ave, "c/d":c_d }])
