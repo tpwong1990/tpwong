@@ -348,6 +348,7 @@ def summary():
                 ave = float("{:.2f}".format(total_expenses[0][0]/len(distinct_name)))
                 c_d = tmp[0][0]-ave
                 expenses_summary.append([{"name":name[0],"total":tmp[0][0], "average":ave, "c/d":c_d }])
+        cursor.execute("DROP TABLE IF EXISTS tmp")
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year,load_option = load_option, total_exp=expenses_summary)
 
     if request.method == "GET":
@@ -363,5 +364,8 @@ def summary():
 def export():
     if request.method == "POST":
         export_month = request.form.get("export_month")
-        print(export_month)
+        export_year = request.form.get("export_year")
+        export_name = request.form.get("export_name")
+        export_category = request.form.get("export_caterogry")
+        sql_string = "
     return redirect("/")
