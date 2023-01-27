@@ -319,6 +319,7 @@ def summary():
         # get month and year
         month = request.form.get("summary_select_month")
         year = request.form.get("summary_select_year")
+        cal = request.form.get("summary_cal")
         sql_string = "CREATE TABLE tmp AS SELECT * FROM expenses WHERE user_id = ?"
         if month:
             tmp_string = f"month = '{month}'"
@@ -330,12 +331,23 @@ def summary():
         #print(sql_string)
         cursor.execute("DROP TABLE IF EXISTS tmp")
         cursor.execute(sql_string, [session["user_id"]])
-        distinct_year = cursor.execute("SELECT DISTINCT year FROM tmp WHERE user_id = ?", [session["user_id"]]).fetchall()
-        distinct_month = cursor.execute("SELECT DISTINCT month FROM tmp WHERE user_id = ?", [session["user_id"]]).fetchall()
-        cursor.execute("DROP TABLE IF EXISTS tmp")
-        distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+        distinct_year = cursor.execute("SELECT DISTINCT year FROM tmp").fetchall()
+        distinct_month = cursor.execute("SELECT DISTINCT month FROM tmp").fetchall()
         load_option = 1
-        return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name, load_option = load_option)
+        expenses_summary=[]
+        if cal == "show":
+            total_expenses = cursor.execute("SELECT SUM(expense) FROM tmp").fetchall()
+            distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses").fetchall()
+            for name in distinct_name:
+                tmp = cursor.execute("SELECT SUM(expense) FROM tmp WHERE name = ?", [name[0]]).fetchall()
+                print(name[0])
+                print(tmp[0][0])
+                if not tmp[0][0]:
+                    tmp = [(0,)]
+                ave = float("{:.2f}".format(total_expenses[0][0]//len(distinct_name)))
+                c_d = tmp[0][0]-ave
+                expenses_summary.append([{"name":name[0],"total":tmp[0][0], "average":ave, "c/d":c_d }])
+        return render_template("summary.html", d_months=distinct_month, d_years=distinct_year,load_option = load_option, total_exp=expenses_summary)
 
     if request.method == "GET":
         cursor = connection.cursor()
