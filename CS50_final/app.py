@@ -339,6 +339,8 @@ def summary():
         #print(expenses_summary)
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name, total_exp=expenses_summary)
     if request.method == "GET":
-        cursor = connection.cursor()
-        select_month = request.get()
+        select_month = request.form.get("summary_select_month")
+        select_year = request.form.get("summary_select_year")
+        print(select_month)
+        print(select_year)
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year)
