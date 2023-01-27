@@ -6,7 +6,7 @@
 
 {% block main %}
 
-<a href={{ filepath }} download>Update</a>
+<a href="{{ url_for('download', filename="downloadFile.txt") }}">Update</a>
 {% with messages = get_flashed_messages() %}
 {% if messages %}
         {% for message in messages %}
