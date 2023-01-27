@@ -361,8 +361,11 @@ def summary():
 @app.route("/export", methods=["GET", "POST"])
 @login_required
 def export():
-    cursor = connection.cursor()
-    cursor.execute(".headers on")
-    cursor.execute(".mode csv")
-    cursor.execute("output selected_data.csv")
+    if request.method == "POST":
+        export_month = request.form.get("export_month")
+        print(export_month)
+        cursor = connection.cursor()
+        cursor.execute(".headers on")
+        cursor.execute(".mode csv")
+        cursor.execute("output selected_data.csv")
     return redirect("/")
