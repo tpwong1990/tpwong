@@ -316,12 +316,16 @@ def edit():
 @app.route("/summary", methods=["GET", "POST"])
 @login_required
 def summary():
-    if request.method == "GET":
-        cursor = connection.cursor()
-        distinct_month = cursor.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
-        distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+    cursor = connection.cursor()
+    distinct_month = cursor.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+    distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+    if request.method == "POST":
+        # get month and year
+        month = request.method.form.get("month")
+        year = request.method.form.get("year")
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
-        total_expenses = cursor.execute("SELECT Sum(expense) FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+        total_expenses = cursor.execute("SELECT Sum(expense) FROM expenses WHERE user_id = ? AND year = ? AND month = ?", (session["user_id"], year, month)).fetchall()
+        print(total_expenses[0])
         # calculate total expenses by person
         expenses_summary=[]
         for name in distinct_name:
@@ -331,5 +335,8 @@ def summary():
             expenses_summary.append([{"name":name[0],"total":tmp[0][0], "average":ave, "c/d":c_d }])
         print(expenses_summary)
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name, total_exp=expenses_summary)
-    if request.method == "POST":
-        return render_template("summary.html")
+    if request.method == "GET":
+        cursor = connection.cursor()
+        distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+        total_expenses = cursor.execute("SELECT Sum(expense) FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+        return render_template("summary.html", d_months=distinct_month, d_years=distinct_year)

@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block main %}
+<form action="/summary", method = "post">
 <table class="table">
     <thread>
         <th>
@@ -41,6 +42,7 @@
         {% endfor %}
     </tbody>
 </table>
+</form>
 
 {% with messages = get_flashed_messages() %}
 {% if messages %}
