@@ -398,7 +398,7 @@ def export():
         cursor.execute("DROP TABLE IF EXISTS tmp")
         cursor.execute(sql_string, [session["user_id"]])
         # outpur file
-        csv_output = sqlite3.connect(db_file, isolation_level=None, detect_types=sqlite3.PARSE_COLNAMES)
+        csv_output = sqlite3.connect("expenses.db", isolation_level=None, detect_types=sqlite3.PARSE_COLNAMES)
         db_df = pd.read_sql_query("SELECT * FROM tmp", csv_output)
         db_df.to_csv('database.csv', index=False)
 
