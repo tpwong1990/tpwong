@@ -367,8 +367,9 @@ def export():
         export_month = request.form.get("export_month")
         export_year = request.form.get("export_year")
         export_name = request.form.get("export_name")
-        export_category = request.form.get("export_cateogry")
+        export_category = request.form.get("export_category")
         sql_string = "CREATE TABLE tmp AS SELECT * FROM expenses WHERE user_id = ?"
+        filename="Expense"
 
         if export_month == "All":
             sql_string = sql_string
@@ -396,11 +397,14 @@ def export():
 
         cursor = connection.cursor()
         cursor.execute("DROP TABLE IF EXISTS tmp")
-        print(sql_string)
         cursor.execute(sql_string, [session["user_id"]])
         # outpur file
         csv_output = sqlite3.connect("expenses.db", isolation_level=None, detect_types=sqlite3.PARSE_COLNAMES)
-        db_df = pd.read_sql_query("SELECT * FROM tmp", csv_output)
-        db_df.to_csv('database.csv', index=False)
+        db_df = pd.read_sql_query("SELECT day, month, year, category, name, expense, remarks FROM tmp", csv_output)
+        filename="export/Expense_"
+        tmp = cursor.execute("SELECT user_name FROM users WHERE id = ?", [session["user_id"]]).fetchall()
+        filename = filename + str(tmp[0][0]) +".csv"
+        db_df.to_csv(filename, index=False)
+        cursor.execute("DROP TABLE IF EXISTS tmp")
 
     return redirect("/")
