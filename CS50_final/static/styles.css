@@ -38,10 +38,12 @@ nav .navbar-brand .green
 
 #summary_select_month{
     position: relative;
+    display: inline-block;
     float:left;
 }
 
 #summary_select_year{
     position: relative;
+    display: inline-block;
     float:left;
 }
