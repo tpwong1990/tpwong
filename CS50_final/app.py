@@ -367,5 +367,34 @@ def export():
         export_year = request.form.get("export_year")
         export_name = request.form.get("export_name")
         export_category = request.form.get("export_caterogry")
-        sql_string = "
+        sql_string = "CREATE TABLE tmp AS SELECT * FROM expenses WHERE user_id = ?"
+
+        if export_month == "All":
+            sql_string = sql_string
+        else:
+            temp_string = f"month = '{export_month}'"
+            sql_string = sql_string + " AND " + temp_string
+
+        if export_year == "All":
+            sql_string = sql_string
+        else:
+            temp_string = f"year = '{export_year}'"
+            sql_string = sql_string + " AND " + temp_string
+
+        if export_name == "All":
+            sql_string = sql_string
+        else:
+            temp_string = f"name = '{export_name}'"
+            sql_string = sql_string + " AND " + temp_string
+
+        if export_category == "All":
+            sql_string = sql_string
+        else:
+            temp_string = f"category = '{export_category}'"
+            sql_string = sql_string + " AND " + temp_string
+
+        cursor = connection.cursor()
+        cursor.execute("DROP TABLE IF EXISTS tmp")
+        cursor.execute(sql_string, [session["user_id"]])
+        
     return redirect("/")
