@@ -411,3 +411,14 @@ def export():
         realpath = realpath + filename
 
     return render_template("download.html", filepath = realpath)
+
+app.route('/export/<path:filename>', methods=['GET', 'POST'])
+@login_required
+def download(filename):
+    realpath = os.path.realpath('app.py')
+    realpath = realpath.replace("app.py","export/")
+    filename="Expense_"
+    cursor = connection.cursor()
+    tmp = cursor.execute("SELECT user_name FROM users WHERE id = ?", [session["user_id"]]).fetchall()
+    filename = filename + str(tmp[0][0]) +".csv"
+    return render_template("download.html", directory =realpath, filepath = realpath)
