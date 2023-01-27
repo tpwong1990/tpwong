@@ -8,7 +8,7 @@ import sqlite3
 connection = sqlite3.connect("expenses.db", check_same_thread=False)
 from cs50 import SQL
 
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, request, session, send_file
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
@@ -409,16 +409,4 @@ def export():
         realpath = os.path.realpath('app.py')
         realpath = realpath.replace("app.py","")
         realpath = realpath + filename
-
-    return render_template("download.html", filepath = realpath)
-
-app.route('/export/<path:filename>', methods=['GET', 'POST'])
-@login_required
-def download(filename):
-    realpath = os.path.realpath('app.py')
-    realpath = realpath.replace("app.py","export/")
-    filename="Expense_"
-    cursor = connection.cursor()
-    tmp = cursor.execute("SELECT user_name FROM users WHERE id = ?", [session["user_id"]]).fetchall()
-    filename = filename + str(tmp[0][0]) +".csv"
-    return render_template("download.html", directory =realpath, filepath = realpath)
+    return send_file(realpath, as_attachment=True)
