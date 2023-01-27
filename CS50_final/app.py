@@ -2,6 +2,7 @@ import os
 import datetime
 import re
 import csv
+import pandas as pd
 
 import sqlite3
 connection = sqlite3.connect("expenses.db", check_same_thread=False)
@@ -22,6 +23,9 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 app.config['UPLOAD_FOLDER'] = "/CS50_final/upload/"
+
+conn = sqlite3.connect(db_file, isolation_level=None,
+                       detect_types=sqlite3.PARSE_COLNAMES)
 
 @app.after_request
 def after_request(response):
@@ -396,5 +400,5 @@ def export():
         cursor = connection.cursor()
         cursor.execute("DROP TABLE IF EXISTS tmp")
         cursor.execute(sql_string, [session["user_id"]])
-        
+
     return redirect("/")
