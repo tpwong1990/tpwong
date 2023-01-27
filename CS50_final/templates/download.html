@@ -1,7 +1,18 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Edit
+    Download
 {% endblock %}
 
 {% block main %}
+
+<button class="btn btn-primary" href={{ filepath }} download>Update</button>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+        {% for message in messages %}
+            <script>window.alert({{ message|tojson }} );</script>
+        {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% endblock %}
