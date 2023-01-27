@@ -7,11 +7,8 @@
 {% block main %}
 <script>
     function select_save_auto_sumbit(select_key, val){
-       break;
-        }
-        }
-    }           sessionStorage.setItem(select_key, val);
-            document.getElementById("filter_select").submit();
+        sessionStorage.setItem(select_key, val);
+        document.getElementById("filter_select").submit();
         }
 
     function load_selected(select_key){
@@ -22,8 +19,12 @@
     function set_selected_option(select_id, select_key){
         var mySelect = document.getElementById(select_id);
         for(var i, j = 0; i = mySelect.options[j]; j++) {
-        if(i.value == load_selected(select_key)) {
-            mySelect.selectedIndex = j;
+            if(i.value == load_selected(select_key)) {
+                mySelect.selectedIndex = j;
+                break;
+            }
+        }
+    }
 
     function ToConfirm() {
         let text = "Are you sure to delete the data?";

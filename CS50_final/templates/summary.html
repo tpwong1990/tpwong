@@ -5,7 +5,28 @@
 {% endblock %}
 
 {% block main %}
-<form action="/summary", method = "post" id ="summary_select">
+<script>
+    function select_save_auto_sumbit(select_key, val){
+        sessionStorage.setItem(select_key, val);
+        document.getElementById("filter_select").submit();
+    }
+
+    function load_selected(select_key){
+        let tmp = sessionStorage.getItem(select_key);
+        return tmp
+    }
+
+    function set_selected_option(select_id, select_key){
+        var mySelect = document.getElementById(select_id);
+        for(var i, j = 0; i = mySelect.options[j]; j++) {
+            if(i.value == load_selected(select_key)) {
+                mySelect.selectedIndex = j;
+                break;
+            }
+        }
+    }
+</script>
+<form action="/summary", method = "get" id ="summary_select">
     <style type="text/css">
         #expense_select select,
         #expense_select p {
@@ -14,13 +35,13 @@
       </style>
     <div id = "expense_select">
         <p><h2>Expenses summary in</h2></p>
-        <select class="form-select mx-auto w-auto" id="summary_select_month" name="summary_select_month">
+        <select class="form-select mx-auto w-auto" id="summary_select_month" name="summary_select_month" onchange="select_save_auto_sumbit('month_key', this.value)">
             <option value="No" disabled>Month</option>
             {% for mon in d_months %}
                 <option value = {{ mon[0] }} >{{ mon[0] }}</option>
             {% endfor %}
         </select>
-        <select class="form-select mx-auto w-auto" id="summary_select_year" name="summary_select_year">
+        <select class="form-select mx-auto w-auto" id="summary_select_year" name="summary_select_year" onchange="select_save_auto_sumbit('year_key', this.value)">
             <option value="No" disabled>Year</option>
             {% for yr in d_years %}
                 <option value = {{ yr[0] }} >{{ yr[0] }}</option>
