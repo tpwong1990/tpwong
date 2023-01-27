@@ -37,7 +37,12 @@
     }
 
 </script>
-    <div>Expenses details</div>
+    <div><h2>Expenses details</h2></div>
+    <div>
+        <form action="/export", method ="post">
+            <button class="btn btn-primary" type="submit" id="export" name ="export">Export to CSV file</button></td>
+        </form>
+    </div>
 <form action="/select", method = "post", id="month_select" name="month_select">
 <table class="table">
     <thread>
