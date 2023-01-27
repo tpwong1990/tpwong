@@ -7,16 +7,12 @@
 {% block main %}
 <script>
     function select_save_auto_sumbit(select_key, val){
-            //console.log(val)
-            //console.log(select_key)
             sessionStorage.setItem(select_key, val);
-            //console.log(sessionStorage.getItem('SelectedItem'));
             document.getElementById("month_select").submit();
         }
 
     function load_selected(select_key){
         let tmp = sessionStorage.getItem(select_key);
-        //console.log(tmp);
         return tmp
     }
 
@@ -120,8 +116,6 @@
         set_selected_option("name", 'name_key')
         set_selected_option("category", 'category_key')
     }
-    //window.location.reload();
-    //sessionStorage.clear();
 </script>
 
     {% with messages = get_flashed_messages() %}
