@@ -356,3 +356,9 @@ def summary():
         distinct_month = cursor.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         load_option = 0
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, load_option=load_option)
+
+
+@app.route("/export", methods=["GET", "POST"])
+@login_required
+def export():
+    return redirect("/")
