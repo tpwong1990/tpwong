@@ -33,6 +33,11 @@
         }
     }
 
+    function PassValue(select_id, target_id) {
+        let tmp = document.getElementById(select_id)
+        document.getElementById(target_id).value = tmp
+    }
+
 </script>
     <div><h2>Expenses details</h2></div>
     <div>
@@ -121,6 +126,10 @@
         set_selected_option("name", 'name_key')
         set_selected_option("category", 'category_key')
     }
+    PassValue("month", "export_month")
+    PassValue("year", "export_year")
+    PassValue("name", "export_name")
+    PassValue("category", "export_category")
 </script>
 
     {% with messages = get_flashed_messages() %}
