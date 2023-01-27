@@ -321,8 +321,8 @@ def summary():
     distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
     if request.method == "POST":
         # get month and year
-        month = request.method.form.get("month")
-        year = request.method.form.get("year")
+        month = request.method.form.get("summary_select_month")
+        year = request.method.form.get("summary_select_year")
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         total_expenses = cursor.execute("SELECT Sum(expense) FROM expenses WHERE user_id = ? AND year = ? AND month = ?", (session["user_id"], year, month)).fetchall()
         print(total_expenses[0])
