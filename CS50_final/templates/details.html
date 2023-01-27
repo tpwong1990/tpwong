@@ -34,8 +34,10 @@
     }
 
     function PassValue(select_id, target_id) {
-        let tmp = document.getElementById(select_id)
+        let tmp = document.getElementById(select_id).value
         document.getElementById(target_id).value = tmp
+        console.log(tmp)
+        console.log(document.getElementById(target_id).value)
     }
 
 </script>
