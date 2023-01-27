@@ -406,5 +406,6 @@ def export():
         filename = filename + str(tmp[0][0]) +".csv"
         db_df.to_csv(filename, index=False)
         cursor.execute("DROP TABLE IF EXISTS tmp")
+        filepath = 
 
     return render_template("download.html", filepath = filename)

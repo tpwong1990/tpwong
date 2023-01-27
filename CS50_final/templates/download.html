@@ -6,7 +6,7 @@
 
 {% block main %}
 
-<button class="btn btn-primary" href={{ filepath }} download>Update</button>
+<a href={{ filepath }} download>Update</a>
 {% with messages = get_flashed_messages() %}
 {% if messages %}
         {% for message in messages %}
