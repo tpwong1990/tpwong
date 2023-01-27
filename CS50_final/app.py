@@ -340,11 +340,9 @@ def summary():
             distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses").fetchall()
             for name in distinct_name:
                 tmp = cursor.execute("SELECT SUM(expense) FROM tmp WHERE name = ?", [name[0]]).fetchall()
-                print(name[0])
-                print(tmp[0][0])
                 if not tmp[0][0]:
                     tmp = [(0,)]
-                ave = float("{:.2f}".format(total_expenses[0][0]//len(distinct_name)))
+                ave = float("{:.2f}".format(total_expenses[0][0]/len(distinct_name)))
                 c_d = tmp[0][0]-ave
                 expenses_summary.append([{"name":name[0],"total":tmp[0][0], "average":ave, "c/d":c_d }])
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year,load_option = load_option, total_exp=expenses_summary)
