@@ -36,12 +36,11 @@ nav .navbar-brand .green
     background: white;
 }
 
-#summary_select_month{
-    position: relative;
+#expense_select{
     display: inline-block;
 }
 
-#summary_select_year{
+#summary_select_month{
     position: relative;
-    display: inline-block;
 }
+
