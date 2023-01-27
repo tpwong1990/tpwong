@@ -5,44 +5,72 @@
 {% endblock %}
 
 {% block main %}
-<form action="/summary", method = "post">
-<table class="table">
-    <thread>
-        <th>
-            <select class="form-select mx-auto w-auto" id="month" name="month" onchange="select_save_auto_sumbit('month_key', this.value)">
-                <option value="No" disabled>Month</option>
-                {% for mon in d_months %}
-                    <option value = {{ mon[0] }} >{{ mon[0] }}</option>
-                {% endfor %}
-            </select>
-        </th>
-        <th>
-            <select class="form-select mx-auto w-auto" id="month" name="month" onchange="select_save_auto_sumbit('year_key', this.value)">
-                <option value="No" disabled>Year</option>
-                {% for yr in d_years %}
-                    <option value = {{ yr[0] }} >{{ yr[0] }}</option>
-                {% endfor %}
-            </select>
-        </th>
-        <th>Name</th>
-        <th>Paid total expenses</th>
-        <th>Average expenses per person</th>
-        <th>Debits/Credits</th>
-    </thread>
-    <tbody>
-        {% for row in total_exp %}
-            <tr>
-                <td></td>
-                <td></td>
-                <td>{{row[0]["name"]}}</td>
-                <td>{{row[0]["total"]}}</td>
-                <td>{{row[0]["average"]}}</td>
-                <td>{{row[0]["c/d"]}}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<script>
+        function select_save_auto_sumbit(select_key, val){
+            sessionStorage.setItem(select_key, val);
+            document.getElementById("summary_selectt").submit();
+        }
+
+    function load_selected(select_key){
+        let tmp = sessionStorage.getItem(select_key);
+        return tmp
+    }
+
+    function set_selected_option(select_id, select_key){
+        var mySelect = document.getElementById(select_id);
+        for(var i, j = 0; i = mySelect.options[j]; j++) {
+        if(i.value == load_selected(select_key)) {
+            mySelect.selectedIndex = j;
+            break;
+        }
+    }
+    }
+</script>
+<form action="/summary", method = "post" id ="summary_select">
+    <table class="table">
+        <thread>
+            <th>
+                <select class="form-select mx-auto w-auto" id="month" name="month" onchange="select_save_auto_sumbit('month_key', this.value)">
+                    <option value="No" disabled>Month</option>
+                    {% for mon in d_months %}
+                        <option value = {{ mon[0] }} >{{ mon[0] }}</option>
+                    {% endfor %}
+                </select>
+            </th>
+            <th>
+                <select class="form-select mx-auto w-auto" id="month" name="month" onchange="select_save_auto_sumbit('year_key', this.value)">
+                    <option value="No" disabled>Year</option>
+                    {% for yr in d_years %}
+                        <option value = {{ yr[0] }} >{{ yr[0] }}</option>
+                    {% endfor %}
+                </select>
+            </th>
+            <th>Name</th>
+            <th>Paid total expenses</th>
+            <th>Average expenses per person</th>
+            <th>Debits/Credits</th>
+        </thread>
+        <tbody>
+            {% for row in total_exp %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>{{row[0]["name"]}}</td>
+                    <td>{{row[0]["total"]}}</td>
+                    <td>{{row[0]["average"]}}</td>
+                    <td>{{row[0]["c/d"]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </form>
+
+<script>
+    if ({{ load_option }} == 1) {
+        set_selected_option("month", 'month_key')
+        set_selected_option("year", 'year_key')
+    }
+</script>
 
 {% with messages = get_flashed_messages() %}
 {% if messages %}
