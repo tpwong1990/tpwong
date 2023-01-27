@@ -325,15 +325,20 @@ def summary():
         year = request.form.get("summary_select_year")
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         total_expenses = cursor.execute("SELECT Sum(expense) FROM expenses WHERE user_id = ? AND year = ? AND month = ?", (session["user_id"], year, month)).fetchall()
-        print(total_expenses[0])
+        #print(total_expenses[0])
         # calculate total expenses by person
         expenses_summary=[]
         for name in distinct_name:
             tmp = cursor.execute("SELECT SUM(expense) FROM expenses WHERE user_id = ? AND name = ? AND year = ? AND month = ?",(session["user_id"], name[0] ,year, month)).fetchall()
+            print(name[0])
+            print(tmp[0][0])
+            if not tmp[0][0]:
+                print("a")
+                tmp = 0
             ave = float("{:.2f}".format(total_expenses[0][0]//len(distinct_name)))
             c_d = tmp[0][0]-ave
             expenses_summary.append([{"name":name[0],"total":tmp[0][0], "average":ave, "c/d":c_d }])
-        print(expenses_summary)
+        #print(expenses_summary)
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name, total_exp=expenses_summary)
     if request.method == "GET":
         cursor = connection.cursor()
