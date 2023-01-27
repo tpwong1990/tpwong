@@ -326,7 +326,10 @@ def summary():
         if year:
             tmp_string = f"year = '{year}'"
             sql_string = sql_string + " AND " + tmp_string
-        print(sql_string)
+        cursor = connection.cursor()
+        #print(sql_string)
+        tmp_result=cursor.execute(sql_string, [session["user_id"]])
+        
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name, total_exp=expenses_summary)
 
