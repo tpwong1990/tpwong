@@ -319,7 +319,7 @@ def summary():
         # get month and year
         month = request.form.get("summary_select_month")
         year = request.form.get("summary_select_year")
-        sql_string = "SELECT * FROM expenses WHERE user_id = ?"
+        sql_string = "CREATE TABLE tmp AS SELECT * FROM expenses WHERE user_id = ?"
         if month:
             tmp_string = f"month = '{month}'"
             sql_string = sql_string + " AND " + tmp_string
@@ -328,10 +328,14 @@ def summary():
             sql_string = sql_string + " AND " + tmp_string
         cursor = connection.cursor()
         #print(sql_string)
-        tmp_result=cursor.execute(sql_string, [session["user_id"]])
-        
+        cursor.execute("DROP TABLE IF EXISTS tmp")
+        cursor.execute(sql_string, [session["user_id"]])
+        distinct_year = cursor.execute("SELECT DISTINCT year FROM tmp WHERE user_id = ?", [session["user_id"]]).fetchall()
+        distinct_month = cursor.execute("SELECT DISTINCT month FROM tmp WHERE user_id = ?", [session["user_id"]]).fetchall()
+        cursor.execute("DROP TABLE IF EXISTS tmp")
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
-        return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name, total_exp=expenses_summary)
+        load_option = 1
+        return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name, load_option = load_option)
 
     if request.method == "GET":
         cursor = connection.cursor()
