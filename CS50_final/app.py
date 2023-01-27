@@ -335,6 +335,9 @@ def summary():
         distinct_month = cursor.execute("SELECT DISTINCT month FROM tmp").fetchall()
         load_option = 1
         expenses_summary=[]
+        if cal == "show" and (not month or not year):
+            flash("Please select month and year to show the summary")
+            return redirect("/summary")
         if cal == "show":
             total_expenses = cursor.execute("SELECT SUM(expense) FROM tmp").fetchall()
             distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses").fetchall()
