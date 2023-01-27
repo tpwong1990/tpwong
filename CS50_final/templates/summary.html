@@ -69,6 +69,11 @@
     </table>
 </form>
 
+<script>
+    set_selected_option("summary_select_month", 'month_key')
+    set_selected_option("summary_select_year", 'year_key')
+</script>
+
 {% with messages = get_flashed_messages() %}
 {% if messages %}
         {% for message in messages %}

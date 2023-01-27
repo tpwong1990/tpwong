@@ -339,8 +339,9 @@ def summary():
         #print(expenses_summary)
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year, d_names=distinct_name, total_exp=expenses_summary)
     if request.method == "GET":
-        select_month = request.form.get("summary_select_month")
-        select_year = request.form.get("summary_select_year")
-        print(select_month)
-        print(select_year)
+        select_month = request.args.get("summary_select_month")
+        select_year = request.args.get("summary_select_year")
+        cursor = connection.cursor()
+        distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+        distinct_month = cursor.execute("SELECT DISTINCT month FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         return render_template("summary.html", d_months=distinct_month, d_years=distinct_year)
