@@ -6,8 +6,14 @@
 
 {% block main %}
 <form action="/summary", method = "post" id ="summary_select">
+    <style type="text/css">
+        #expense_select select,
+        #expense_select p {
+          display: inline;
+        }
+      </style>
     <div id = "expense_select">
-        <h2>Expenses summary in</h2>
+        <p><h2>Expenses summary in</h2></p>
         <select class="form-select mx-auto w-auto" id="summary_select_month" name="summary_select_month">
             <option value="No" disabled>Month</option>
             {% for mon in d_months %}
