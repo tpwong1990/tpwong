@@ -367,7 +367,7 @@ def export():
         export_month = request.form.get("export_month")
         export_year = request.form.get("export_year")
         export_name = request.form.get("export_name")
-        export_category = request.form.get("export_caterogry")
+        export_category = request.form.get("export_cateogry")
         sql_string = "CREATE TABLE tmp AS SELECT * FROM expenses WHERE user_id = ?"
 
         if export_month == "All":
@@ -396,6 +396,7 @@ def export():
 
         cursor = connection.cursor()
         cursor.execute("DROP TABLE IF EXISTS tmp")
+        print(sql_string)
         cursor.execute(sql_string, [session["user_id"]])
         # outpur file
         csv_output = sqlite3.connect("expenses.db", isolation_level=None, detect_types=sqlite3.PARSE_COLNAMES)
