@@ -35,3 +35,13 @@ nav .navbar-brand .green
     margin-top: 2px;
     background: white;
 }
+
+#summary_select_month{
+    position: relative;
+    float:left;
+}
+
+#summary_select_year{
+    position: relative;
+    float:left;
+}

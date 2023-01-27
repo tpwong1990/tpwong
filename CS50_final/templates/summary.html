@@ -8,16 +8,16 @@
 <form action="/summary", method = "post" id ="summary_select">
     <div>
         <h2>Expenses summary in</h2>
-        <select class="form-select mx-auto w-auto" id="month" name="month" onchange="select_save_auto_sumbit('month_key', this.value)">
+        <select class="form-select mx-auto w-auto" id="summary_select_month" name="summary_select_month">
             <option value="No" disabled>Month</option>
             {% for mon in d_months %}
                 <option value = {{ mon[0] }} >{{ mon[0] }}</option>
             {% endfor %}
         </select>
-        <select class="form-select mx-auto w-auto" id="month" name="month" onchange="select_save_auto_sumbit('month_key', this.value)">
-            <option value="No" disabled>Month</option>
-            {% for mon in d_months %}
-                <option value = {{ mon[0] }} >{{ mon[0] }}</option>
+        <select class="form-select mx-auto w-auto" id="summary_select_year" name="summary_select_year">
+            <option value="No" disabled>Year</option>
+            {% for yr in d_years %}
+                <option value = {{ yr[0] }} >{{ yr[0] }}</option>
             {% endfor %}
         </select>
         <button class="btn btn-primary" type="submit" id="summary_cal" name ="summary_cal">Show</button></td>
