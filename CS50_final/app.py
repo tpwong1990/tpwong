@@ -321,15 +321,15 @@ def summary():
     distinct_year = cursor.execute("SELECT DISTINCT year FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
     if request.method == "POST":
         # get month and year
-        month = request.method.form.get("summary_select_month")
-        year = request.method.form.get("summary_select_year")
+        month = request.form.get("summary_select_month")
+        year = request.form.get("summary_select_year")
         distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
         total_expenses = cursor.execute("SELECT Sum(expense) FROM expenses WHERE user_id = ? AND year = ? AND month = ?", (session["user_id"], year, month)).fetchall()
         print(total_expenses[0])
         # calculate total expenses by person
         expenses_summary=[]
         for name in distinct_name:
-            tmp = cursor.execute("SELECT SUM(expense) FROM expenses WHERE user_id = ? AND name = ?",(session["user_id"], name[0])).fetchall()
+            tmp = cursor.execute("SELECT SUM(expense) FROM expenses WHERE user_id = ? AND name = ? AND year = ? AND month = ?",(session["user_id"], name[0] ,year, month)).fetchall()
             ave = float("{:.2f}".format(total_expenses[0][0]//len(distinct_name)))
             c_d = tmp[0][0]-ave
             expenses_summary.append([{"name":name[0],"total":tmp[0][0], "average":ave, "c/d":c_d }])
