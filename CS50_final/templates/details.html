@@ -7,7 +7,10 @@
 {% block main %}
 <script>
     function select_save_auto_sumbit(select_key, val){
-            sessionStorage.setItem(select_key, val);
+       break;
+        }
+        }
+    }           sessionStorage.setItem(select_key, val);
             document.getElementById("filter_select").submit();
         }
 
@@ -21,10 +24,7 @@
         for(var i, j = 0; i = mySelect.options[j]; j++) {
         if(i.value == load_selected(select_key)) {
             mySelect.selectedIndex = j;
-            break;
-        }
-        }
-    }
+
     function ToConfirm() {
         let text = "Are you sure to delete the data?";
         if (confirm(text) == true) {
