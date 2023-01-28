@@ -21,31 +21,20 @@
 
     <body>
 
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand"><span class="blue">Family</span><span class="red"> Expenses</span>
                 <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar container">
+                <div class="collapse navbar-collapse" id="navbar">
                     {% if session["user_id"] %}
                         <ul class="navbar-nav me-auto mt-2">
-                            <li><a class="nav-link" href="/">Expenses details</a></li>
-                            <li><a class="nav-link" href="/dataimport">Import</a></li>
-                            <li><a class="nav-link" href="/summary">Summary</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/">Expenses details</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/dataimport">Import</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/summary">Summary</a></li>
                         </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a class="nav-link" href="/logout">Log out</a></li>
-                        </ul>
-                    {% else %}
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a class="nav-link" href="/register">Register</a></li>
-                            <li><a class="nav-link" href="/login">Log In</a></li>
-                        </ul>
-                    {% endif %}
-                </div>
-            </div>
-        </nav>
+         
 
         <main class="container-fluid py-5 text-center">
             {% block main %}{% endblock %}
