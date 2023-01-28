@@ -84,5 +84,5 @@ white-space:nowrap;
 
 li
 {
-display:inline;
+display:inline-block;
 }
