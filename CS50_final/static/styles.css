@@ -76,7 +76,7 @@ background-color: DodgerBlue !important;
 color: #ffffff;
 }
 
-/*ul
+ul
 {
 overflow-x:hidden;
 white-space:nowrap;
@@ -84,9 +84,5 @@ white-space:nowrap;
 
 li
 {
-display:inline-block;
-}
-
-#logout{
-    float:right;
+display:inline;
 }
