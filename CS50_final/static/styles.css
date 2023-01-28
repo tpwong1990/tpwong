@@ -76,8 +76,14 @@ background-color: DodgerBlue !important;
 color: #ffffff;
 }
 
-#headleft{
-    overflow-x:hidden;
-    white-space:nowrap;
+ul
+{
+overflow-x:hidden;
+white-space:nowrap;
+}
+
+li
+{
+display:inline-block;
 }
 

@@ -29,16 +29,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbar">
                     {% if session["user_id"] %}
-                        <ul class="navbar-nav me-auto mt-2" id = "headleft" style="white-space:nowrap">
-                            <li class="nav-item"><a class="nav-link" href="/">Expenses details</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/dataimport">Import</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/summary">Summary</a></li>
+                        <ul>
+                            <li><a class="nav-link" href="/">Expenses details</a></li>
+                            <li><a class="nav-link" href="/dataimport">Import</a></li>
+                            <li><a class="nav-link" href="/summary">Summary</a></li>
                         </ul>
-                        <ul class="navbar-nav ms-auto mt-2">
+                        <ul style="float: right">
                             <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
                         </ul>
                     {% else %}
-                        <ul class="navbar-nav ms-auto mt-2">
+                        <ul>
                             <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
                             <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
                         </ul>
