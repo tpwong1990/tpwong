@@ -46,6 +46,7 @@
             <input type="text" id="export_year" name="export_year" hidden>
             <input type="text" id="export_name" name="export_name" hidden>
             <input type="text" id="export_category" name="export_category" hidden>
+            <input type="text" id="export_order" name="export_order" hidden>
             <button class="btn btn-primary" type="submit" id="export" name ="export">Export to CSV file</button></td>
         </form>
     </div>
@@ -101,6 +102,13 @@
             </td>
             <td></td>
             <td></td>
+            <td>
+                <select class="form-select mx-auto w-auto" id="order" name="order" onchange="select_save_auto_sumbit('order_key', this.value)">
+                    <option value ='No' selected value>Order by date</option>
+                    <option value ='latest'>Latest</option>
+                    <option value ='oldest'>Oldest</option>
+                </select>
+                </td>
         </tr>
         {% for exp in expenses %}
             </tr>
@@ -109,10 +117,10 @@
                 <td>{{ exp[3] }}</td>
                 <td>{{ exp[5] }}</td>
                 <td>{{ exp[4] }}</td>
-                <td>{{ exp[6] }}</td>
+                <td>£{{ exp[6] }}</td>
                 <td>{{ exp[7] }}</td>
-                <td><button class="btn btn-primary" type="submit" id="edit" name ="edit" value = {{ exp[0] }}>Edit</button></td>
-                <td><button class="btn btn-primary" type="submit" onclick="return confirm('Are you sure?')" id="delete" name ="delete" value = {{ exp[0] }}>Delete</button></td>
+                <td><button class="btn btn-primary" type="submit" id="edit" name ="edit" value = {{ exp[0] }}>Edit</button>
+                <button class="btn btn-primary" type="submit" onclick="return confirm('Are you sure?')" id="delete" name ="delete" value = {{ exp[0] }}>Delete</button></td>
             </tr>
         {% endfor %}
     </tbody>
@@ -125,11 +133,13 @@
         set_selected_option("year", 'year_key')
         set_selected_option("name", 'name_key')
         set_selected_option("category", 'category_key')
+        set_selected_option("order", 'order_key')
     }
     PassValue("month", "export_month")
     PassValue("year", "export_year")
     PassValue("name", "export_name")
     PassValue("category", "export_category")
+    PassValue("order", "export_order")
 </script>
 
     {% with messages = get_flashed_messages() %}

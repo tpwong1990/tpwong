@@ -33,3 +33,13 @@ def check_float(n):
         return False
     else:
         return float(n)
+
+def sql_select_append(query_string, column, value):
+    if value == "All":
+        return query_string
+    else:
+        temp_string = f"{column} = '{value}'"
+        query_string = query_string + " AND " + temp_string
+        print(query_string)
+        return query_string
+

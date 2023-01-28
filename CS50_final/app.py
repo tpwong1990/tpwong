@@ -12,7 +12,7 @@ from flask import Flask, flash, redirect, render_template, request, session, sen
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
-from helpers import login_required, check_integer, check_float
+from helpers import login_required, check_integer, check_float, sql_select_append
 
 # Configure application
 app = Flask(__name__)
@@ -73,34 +73,22 @@ def select():
         selected_year = request.form.get("year")
         selected_name = request.form.get("name")
         selected_category = request.form.get("category")
+        selected_order = request.form.get("order")
+
         # create tmp table in sqlite
         cursor = connection.cursor()
         sql_string = "CREATE TABLE tmp AS SELECT * FROM expenses WHERE user_id = ?"
 
-        if selected_month == "All":
-            sql_string = sql_string
-        else:
-            temp_string = f"month = '{selected_month}'"
-            sql_string = sql_string + " AND " + temp_string
+        sql_string = sql_select_append(sql_string, "month", selected_month)
+        sql_string = sql_select_append(sql_string, "year", selected_year)
+        sql_string = sql_select_append(sql_string, "name", selected_name)
+        sql_string = sql_select_append(sql_string, "category", selected_category)
 
-        if selected_year == "All":
-            sql_string = sql_string
-        else:
-            temp_string = f"year = '{selected_year}'"
-            sql_string = sql_string + " AND " + temp_string
+        if selected_order == "latest":
+            sql_string = sql_string + " ORDER BY year DESC, month DESC, day DESC"
+        if selected_order == "oldest":
+            sql_string = sql_string + " ORDER BY year ASC, month ASC, day ASC"
 
-        if selected_name == "All":
-            sql_string = sql_string
-        else:
-            temp_string = f"name = '{selected_name}'"
-            sql_string = sql_string + " AND " + temp_string
-
-        if selected_category == "All":
-            sql_string = sql_string
-        else:
-            temp_string = f"category = '{selected_category}'"
-            sql_string = sql_string + " AND " + temp_string
-        # sql_string = sql_string
         cursor.execute("DROP TABLE IF EXISTS tmp")
         cursor.execute(sql_string, [session["user_id"]])
         total_expenses = cursor.execute("SELECT * FROM tmp").fetchall()
@@ -200,7 +188,10 @@ def login():
 def dataimport():
     if request.method == "GET":
         month_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        return render_template("dataimport.html", months = month_list)
+        cursor = connection.cursor()
+        distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+        distinct_category = cursor.execute("SELECT DISTINCT category FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
+        return render_template("dataimport.html", months = month_list, d_names = distinct_name, d_cateogry = distinct_category)
     if request.method == "POST":
         # check if all the required field exist
         day = request.form.get("day")
@@ -368,32 +359,19 @@ def export():
         export_year = request.form.get("export_year")
         export_name = request.form.get("export_name")
         export_category = request.form.get("export_category")
+        export_order = request.form.get("export_order")
         sql_string = "CREATE TABLE tmp AS SELECT * FROM expenses WHERE user_id = ?"
         filename="Expense"
 
-        if export_month == "All":
-            sql_string = sql_string
-        else:
-            temp_string = f"month = '{export_month}'"
-            sql_string = sql_string + " AND " + temp_string
+        sql_string = sql_select_append(sql_string, "month", export_month)
+        sql_string = sql_select_append(sql_string, "year", export_year)
+        sql_string = sql_select_append(sql_string, "name", export_name)
+        sql_string = sql_select_append(sql_string, "category", export_category)
 
-        if export_year == "All":
-            sql_string = sql_string
-        else:
-            temp_string = f"year = '{export_year}'"
-            sql_string = sql_string + " AND " + temp_string
-
-        if export_name == "All":
-            sql_string = sql_string
-        else:
-            temp_string = f"name = '{export_name}'"
-            sql_string = sql_string + " AND " + temp_string
-
-        if export_category == "All":
-            sql_string = sql_string
-        else:
-            temp_string = f"category = '{export_category}'"
-            sql_string = sql_string + " AND " + temp_string
+        if export_order == "latest":
+            sql_string = sql_string + " ORDER BY year DESC, month DESC, day DESC"
+        if export_order == "oldest":
+            sql_string = sql_string + " ORDER BY year ASC, month ASC, day ASC"
 
         cursor = connection.cursor()
         cursor.execute("DROP TABLE IF EXISTS tmp")
