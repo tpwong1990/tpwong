@@ -37,7 +37,14 @@ he/she login again.
 
 4. '/'
 
-This route is the main pages of the application, which is the "expenses detail". The 
+This route is the main pages of the application, which is the "expenses detail". The route queries the information from
+database "expenses.db" for the user and show those data on this page.
+
+5. '/select'
+
+This route define the function of the data selection, data editing and delete. For data selection, the route get
+the selected values from "details.html". And then the route queriese the information from database by condition(s)
+and display the data agian in "details.html". For data editing, the route
 
 
 
