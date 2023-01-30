@@ -77,5 +77,6 @@ color: #ffffff;
 }
 
 #upload_button{
-    background-color: Green;
+    background-color: #0066ff;
+    color: white;
 }

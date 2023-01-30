@@ -120,7 +120,7 @@
                 <td>£{{ exp[6] }}</td>
                 <td>{{ exp[7] }}</td>
                 <td><button class="btn btn-primary" type="submit" id="edit" name ="edit" value = {{ exp[0] }}>Edit</button>
-                <button class="btn btn-primary" type="submit" onclick="return confirm('Are you sure?')" id="delete" name ="delete" value = {{ exp[0] }}>Delete</button></td>
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure?')" id="delete" name ="delete" value = {{ exp[0] }}>Delete</button></td>
             </tr>
         {% endfor %}
     </tbody>
