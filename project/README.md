@@ -19,11 +19,15 @@ This is the main programme. The file defines all the routes which the applicatio
 The routes of the programmes are:
 1. '/login'
 
-This route is to setup the login function. Most of the routes(function) are available after login.
+This route setup the login function. Most of the routes(function) are available after login.
 The user has to input username and pw for login checking. The programme which compare the input
-with the data "table users" from "expenses.db" to verifty the login information.
+with the data in databases "expenses.db" to verifty the login information.
 
-2. '/registe
+2. '/register'
+
+This route setup the register account function. User can creat account by inputing the username and pw.
+System will verify the username has been used or not by comparing with the databases "expenses.db".
+System will also check if the password fulfill the requirement. 
 
 
 
