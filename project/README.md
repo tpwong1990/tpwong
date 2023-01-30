@@ -66,7 +66,13 @@ system add the data in the databases. If some rows of data fail the data verific
 9. '/summary'
 
 This route defines the summary function. The system calculates the total expenses, averages expenses per person and credit/debit value
-bases on user selection on month and year. 
+bases on user selection on month and year.
+
+10. '/export'
+
+This route defines the export function. The system export the data selected by user to csv file and user can download that file.
+
+
 
 
 
