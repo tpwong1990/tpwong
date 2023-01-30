@@ -37,11 +37,11 @@ The routes of the programmes are:
    database "expenses.db" for the user and show those data on this page.
 
 5. '/select'
-   - This route defines the function of the data selection, data editing and deleting. For data selection, the route get
+   - This route defines the function of the data selection, ordering, data editing and deleting. For data selection, the route get
    the selected values from "details.html". And then the route queriese the information from database by condition(s)
-   and display the data agian in "details.html". For data editing, the route queries the information of the data being
+   and display the data agian in "details.html". For ordering, user can choose ordering the data by latest date or oldest date. For data editing, the route queries the information of the data being
    selected to be edited from database and pass the value to "edit.html". For data deleting, system ask confirmation from
-   user to delete the data. After confirmation, system delete the selected row from database "expenses.db"
+   user to delete the data. After confirmation, system delete the selected row from database "expenses.db".
 
 6. '/edt'
     - This route defines the function of data editting. System ask user to input the information in "edit.html". After data verification, system updates the data in the databases.
@@ -88,9 +88,27 @@ This is the databases file which cotain three tables:
 3. tmp
    - this is temporary table for storing expenses details which user has placed condition in route '/select'
 
-##### 
+##### templates:
 
+1. layout.html
+   - define the layout of the web pages. There are some hyperlinks to let users to swithc to difference pages.
 
+2. login.html
+   - this is the login page. User can input username and password to login.
+
+3. register.html
+   - this is the account registration page. User can create account by inputing username and password.
+
+4. details.html
+   - this is the main pages/expenses details page. The page diplays the expenses details from the database. User can filter the data by selecting certain conditions (month, year, name , category). User can order the data by date. User can export the selected data to csv file.
+
+5. dataimport.html
+   - this is the page for data importing. User can input expenses details by manually or import the data by csv file. If by csv file, user can choose file to upload to server.
+
+6. edit.html
+   - this is the page for data editing. User can edit the expense details by input the infomration.
+
+7. 
 
 
 
