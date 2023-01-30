@@ -108,7 +108,16 @@ This is the databases file which cotain three tables:
 6. edit.html
    - this is the page for data editing. User can edit the expense details by input the infomration.
 
-7. 
+7. summary.html
+   - this is the page for expenses summary display. User is asked which month to show the expense summary.
+
+##### static:
+
+1. styles.css
+   - this is css file to style the html.
+
+2. favicon.ico
+   - this is the file for using the 
 
 
 
