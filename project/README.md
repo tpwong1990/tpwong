@@ -64,10 +64,31 @@ The routes of the programmes are:
 This file contains the user-defined function:
 
 1. 'login_required(f)'
-   - check if the user_id is get or not, if not, redirect to the route '/login'
+   - check if the user_id is get or not, if not, redirect to the route '/login'.
 
 2. 'check_integer(n)'
-   - check if value n can be change to integer of not, if not, return false, if yes return 
+   - check if value 'n' can be change to integer, if not, return false, if yes, return true.
+
+3. 'check_float(n)'
+   - check if value 'n' can be change to float, if not, return false, if yes, return true.
+
+4. 'sql_select_append(query_string, column, value)'
+   - edit the 'query_string' by the input 'column' and 'value'
+
+##### expenses.db:
+
+This is the databases file which cotain three tables:
+
+1. users
+   - storing the user_name and hash for account login information checking.
+
+2. expenses
+   - storing the expenses details for all users.
+
+3. tmp
+   - this is temporary table for storing expenses details which user has placed condition in route '/select'
+
+##### 
 
 
 
