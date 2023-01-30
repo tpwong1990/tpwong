@@ -42,7 +42,7 @@ database "expenses.db" for the user and show those data on this page.
 
 5. '/select'
 
-This route define the function of the data selection, data editing and deleting. For data selection, the route get
+This route defines the function of the data selection, data editing and deleting. For data selection, the route get
 the selected values from "details.html". And then the route queriese the information from database by condition(s)
 and display the data agian in "details.html". For data editing, the route queries the information of the data being
 selected to be edited from database and pass the value to "edit.html". For data deleting, system ask confirmation from
@@ -50,7 +50,23 @@ user to delete the data. After confirmation, system delete the selected row from
 
 6. '/edt'
 
-The route define the function of data editting. The func
+This route defines the function of data editting. System ask user to input the information in "edit.html". After data verification,
+system updates the data in the databases.
+
+7. '/dataimport'
+
+This route defines the data importing function. System ask user to input the information in "dataimport.html" After data verification,
+system add the data in the databases.
+
+8. '/dataimport_csv'
+
+This route defines the data importion by csv function. System ask user to upload the csv file. After data verification,
+system add the data in the databases. If some rows of data fail the data verification, system skips that row (not adding to database).
+
+9. '/summary'
+
+This route defines the summary function. The system calculates the total expenses, averages expenses per person and credit/debit value
+bases on user selection on month and year. 
 
 
 
