@@ -20,14 +20,24 @@ The routes of the programmes are:
 1. '/login'
 
 This route setup the login function. Most of the routes(function) are available after login.
-The user has to input username and pw for login checking. The programme which compare the input
+The user has to input username and password for login checking. The programme which compare the input
 with the data in databases "expenses.db" to verifty the login information.
 
 2. '/register'
 
 This route setup the register account function. User can creat account by inputing the username and pw.
 System will verify the username has been used or not by comparing with the databases "expenses.db".
-System will also check if the password fulfill the requirement. 
+System will also check if the password fulfill the requirement. Account is created and the username
+and passcode_hash will be added to the database when the information passes the checking.
+
+3. './logout'
+
+This route use to clear the session information. User cannot access the login required function anymore unless
+he/she login again.
+
+4. '/'
+
+This route is the main pages of the application, which is the "expenses detail". The 
 
 
 
