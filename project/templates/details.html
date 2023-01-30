@@ -57,8 +57,8 @@
             <th>Day</th>
             <th>Month</th>
             <th>Year</th>
-            <th>Name</th>
             <th>Category</th>
+            <th>Name</th>
             <th>Expense</th>
             <th>Remarks</th>
             <th></th>
@@ -85,18 +85,18 @@
                 </select>
             </td>
             <td>
-                <select class="form-select mx-auto w-auto" id="name" name="name" onchange="select_save_auto_sumbit('name_key', this.value)">
-                    <option value ='All'>All</option>
-                    {% for na in d_names %}
-                        <option value = {{ na[0] }} >{{ na[0] }}</option>
-                    {% endfor %}
-                </select>
-            </td>
-            <td>
                 <select class="form-select mx-auto w-auto" id="category" name="category" onchange="select_save_auto_sumbit('category_key', this.value)">
                     <option value ='All'>All</option>
                     {% for ca in d_categories %}
                         <option value = {{ ca[0] }} >{{ ca[0] }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <select class="form-select mx-auto w-auto" id="name" name="name" onchange="select_save_auto_sumbit('name_key', this.value)">
+                    <option value ='All'>All</option>
+                    {% for na in d_names %}
+                        <option value = {{ na[0] }} >{{ na[0] }}</option>
                     {% endfor %}
                 </select>
             </td>
@@ -115,8 +115,8 @@
                 <td>{{ exp[1] }}</td>
                 <td>{{ exp[2] }}</td>
                 <td>{{ exp[3] }}</td>
-                <td>{{ exp[5] }}</td>
                 <td>{{ exp[4] }}</td>
+                <td>{{ exp[5] }}</td>
                 <td>£{{ exp[6] }}</td>
                 <td>{{ exp[7] }}</td>
                 <td><button class="btn btn-primary" type="submit" id="edit" name ="edit" value = {{ exp[0] }}>Edit</button>
