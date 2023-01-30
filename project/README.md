@@ -42,9 +42,15 @@ database "expenses.db" for the user and show those data on this page.
 
 5. '/select'
 
-This route define the function of the data selection, data editing and delete. For data selection, the route get
+This route define the function of the data selection, data editing and deleting. For data selection, the route get
 the selected values from "details.html". And then the route queriese the information from database by condition(s)
-and display the data agian in "details.html". For data editing, the route
+and display the data agian in "details.html". For data editing, the route queries the information of the data being
+selected to be edited from database and pass the value to "edit.html". For data deleting, system ask confirmation from
+user to delete the data. After confirmation, system delete the selected row from database "expenses.db"
+
+6. '/edt'
+
+The route define the function of data editting. The func
 
 
 
