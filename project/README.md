@@ -16,6 +16,14 @@ The application has several functions:
 ##### app.py:
 
 This is the main programme. The file defines all the routes which the application used.
-The routes of the programme are:
-1. L
+The routes of the programmes are:
+1. '/login'
+
+This route is to setup the login function. Most of the routes(function) are available after login.
+The user has to input username and pw for login checking. The programme which compare the input
+with the data "table users" from "expenses.db" to verifty the login information.
+
+2. '/registe
+
+
 
