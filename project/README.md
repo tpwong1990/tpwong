@@ -67,7 +67,7 @@ This file contains the user-defined function:
    - check if the user_id is get or not, if not, redirect to the route '/login'
 
 2. 'check_integer(n)'
-   - check if value n can be change to integer of not
+   - check if value n can be change to integer of not, if not, return false, if yes return 
 
 
 
