@@ -12,6 +12,10 @@ The application has several functions:
 4. User can export and download the expenses details with csv file format.
 5. User can have the summary of the expenses and monthly shared expenses.
 
+A demo account is created.
+username: cs50projectdemo
+password: demo2023
+
 #### Programme structure:
 ##### app.py:
 
