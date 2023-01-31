@@ -112,12 +112,17 @@ This is the databases file which cotain three tables:
    - this is the page for expenses summary display. User is asked which month to show the expense summary.
 
 ##### static:
-
 1. styles.css
    - this is css file to style the html.
 
-2. favicon.ico
-   - this is the file for using the 
+##### upload:
+This is the folder for users to upload their csv file.
+
+##### export:
+This is the folder for users to download their csv file.
+
+##### flask_session
+This is the folder for storing the session file from flask.
 
 
 
