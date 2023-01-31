@@ -332,9 +332,9 @@ def summary():
             return redirect("/summary")
         if cal == "show":
             total_expenses = cursor.execute("SELECT SUM(expense) FROM tmp").fetchall()
-            distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses").fetchall()
+            distinct_name = cursor.execute("SELECT DISTINCT name FROM expenses WHERE user_id = ?", [session["user_id"]]).fetchall()
             for name in distinct_name:
-                tmp = cursor.execute("SELECT SUM(expense) FROM tmp WHERE name = ?", [name[0]]).fetchall()
+                tmp = cursor.execute("SELECT SUM(expense) FROM tmp WHERE name = ? AND user_id = ?", (name[0],session["user_id"])).fetchall()
                 if not tmp[0][0]:
                     tmp = [(0,)]
                 ave = float("{:.2f}".format(total_expenses[0][0]/len(distinct_name)))
